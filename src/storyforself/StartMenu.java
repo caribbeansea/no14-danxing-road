@@ -19,41 +19,19 @@ package storyforself;
  * ************************************************************************/
 
 /*
- * Creates on 2020/12/25.
+ * Creates on 2020/12/28.
  */
 
-import javax.swing.*;
-import java.awt.*;
+import storyforself.component.RoadPanel;
 
 /**
- * 开始编写你的故事
+ * 开始菜单
  *
  * @author tiansheng
  */
-public class WriteYourStory extends JFrame
+public class StartMenu extends RoadPanel
 {
 
-    public static int width = 1018;
-    public static int height = 830;
 
-    public WriteYourStory() {
-        super("单行路22号");
-        setSize(width,height);
-
-        Container panels = getContentPane();
-
-        // --------------------------------------------
-        // 加载地图
-        panels.add(new StartMenu());
-        // --------------------------------------------
-
-        setVisible(true);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    }
-
-    public static void main(String[] args)
-    {
-        new WriteYourStory();
-    }
 
 }

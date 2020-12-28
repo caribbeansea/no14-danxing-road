@@ -1,4 +1,4 @@
-package storyforself.controller;
+package storyforself.npc;
 
 /* ************************************************************************
  *
@@ -19,16 +19,17 @@ package storyforself.controller;
  * ************************************************************************/
 
 /*
- * Creates on 2020/12/25.
+ * Creates on 2020/12/28.
  */
 
+import storyforself.Resources;
+
 /**
- * 按键监听
+ * NPC超类
  *
  * @author tiansheng
  */
-public class KeyListener {
-
-
+public abstract class RoadNPC implements Resources
+{
 
 }
