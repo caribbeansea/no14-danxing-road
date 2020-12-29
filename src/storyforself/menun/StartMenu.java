@@ -132,15 +132,15 @@ public class StartMenu extends RoadPanel
         if (isDrawGroup1)
         {
             currXGroup1Speed();
-            g.drawImage(ResourcesCollects.TerrariaBcakgroup_25, curr_x_group1, curr_y_group1, null);
-            g.drawImage(ResourcesCollects.TerrariaBcakgroup_61, curr_x_group1, curr_y_group1, null);
+            g.drawImage(ResourcesCollects.terraria_background_25, curr_x_group1, curr_y_group1, null);
+            g.drawImage(ResourcesCollects.terraria_background_61, curr_x_group1, curr_y_group1, null);
         }
 
         if (isDrawGroup2)
         {
             currXGroup2Speed();
-            g.drawImage(ResourcesCollects.TerrariaBcakgroup_25, curr_x_group2, curr_y_group2, null);
-            g.drawImage(ResourcesCollects.TerrariaBcakgroup_61, curr_x_group2, curr_y_group2, null);
+            g.drawImage(ResourcesCollects.terraria_background_25, curr_x_group2, curr_y_group2, null);
+            g.drawImage(ResourcesCollects.terraria_background_61, curr_x_group2, curr_y_group2, null);
         }
 
         if (curr_x_group1 < 0 && !isDrawGroup2)

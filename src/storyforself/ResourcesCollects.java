@@ -22,10 +22,14 @@ package storyforself;
  * Creates on 2020/12/28.
  */
 
+import storyforself.utils.Lists;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.Random;
 
 /**
  * @author tiansheng
@@ -33,9 +37,56 @@ import java.io.IOException;
 public interface ResourcesCollects
 {
 
-    Image TerrariaBcakgroup_61 = ImageRead.read("/ui/Background_61.png");
+    Image terraria_background_61 = ImageRead.read("/ui/Background_61.png");
 
-    Image TerrariaBcakgroup_25 = ImageRead.read("/ui/Background_25.png");
+    Image terraria_background_25 = ImageRead.read("/ui/Background_25.png");
+
+    /**
+     * 泰拉瑞亚中的云彩
+     */
+    List<Image> terraria_clouds = Lists.newArrayList(
+            ImageRead.read("/ui/cloud/Cloud_0.png"),
+            ImageRead.read("/ui/cloud/Cloud_1.png"),
+            ImageRead.read("/ui/cloud/Cloud_2.png"),
+            ImageRead.read("/ui/cloud/Cloud_3.png"),
+            ImageRead.read("/ui/cloud/Cloud_4.png"),
+            ImageRead.read("/ui/cloud/Cloud_5.png"),
+            ImageRead.read("/ui/cloud/Cloud_6.png"),
+            ImageRead.read("/ui/cloud/Cloud_7.png"),
+            ImageRead.read("/ui/cloud/Cloud_8.png"),
+            ImageRead.read("/ui/cloud/Cloud_9.png"),
+            ImageRead.read("/ui/cloud/Cloud_10.png"),
+            ImageRead.read("/ui/cloud/Cloud_11.png"),
+            ImageRead.read("/ui/cloud/Cloud_12.png"),
+            ImageRead.read("/ui/cloud/Cloud_13.png"),
+            ImageRead.read("/ui/cloud/Cloud_14.png"),
+            ImageRead.read("/ui/cloud/Cloud_15.png"),
+            ImageRead.read("/ui/cloud/Cloud_16.png"),
+            ImageRead.read("/ui/cloud/Cloud_17.png"),
+            ImageRead.read("/ui/cloud/Cloud_18.png"),
+            ImageRead.read("/ui/cloud/Cloud_19.png"),
+            ImageRead.read("/ui/cloud/Cloud_20.png"),
+            ImageRead.read("/ui/cloud/Cloud_21.png")
+    );
+
+    /**
+     * 素材工具箱
+     */
+    class ToolBox
+    {
+
+        private static Random random = new Random();
+
+        /**
+         * @return 从 {@link #terraria_clouds} 集合中随机获取一片云
+         */
+        static Image randomCloud()
+        {
+            int index = random.nextInt(terraria_clouds.size());
+            return terraria_clouds.get(index);
+        }
+
+    }
 
     class ImageRead
     {
