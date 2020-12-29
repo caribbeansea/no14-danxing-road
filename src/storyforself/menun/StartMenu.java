@@ -44,40 +44,17 @@ public class StartMenu extends RoadPanel
 
     private int width;
 
+    private int height;
+
     private int curr_x_group1, curr_y_group1;
 
     private int curr_x_group2, curr_y_group2;
 
     /**
-     * 云彩需要跟随着场景而移动，所以这边为5个云彩定义个X和Y轴坐标
+     * 一次性画6朵云，当一朵云移动到屏幕外侧时重新初始化一个Cloud对象。
+     * 并从屏幕右侧缓缓出现在屏幕中。<------- Cloud
      */
-    private int cloud_x_1 = 0, cloud_y_1 = 0,
-            cloud_x_2     = 0, cloud_y_2 = 0,
-            cloud_x_3     = 0, cloud_y_3 = 0,
-            cloud_x_4     = 0, cloud_y_4 = 0,
-            cloud_x_5     = 0, cloud_y_5 = 0,
-            cloud_x_6     = 0, cloud_y_6 = 0;
-
-    private Image cloud_1 =
-            null;
-
-    private Image cloud_2 =
-            null;
-
-    private Image cloud_3 =
-            null;
-
-    private Image cloud_4 =
-            null;
-
-    private Image cloud_5 =
-            null;
-
-    private Image cloud_6 =
-            null;
-
-    // 是否初始化了过云图片了
-    private boolean initCloud = false;
+    private Cloud cloud_1, cloud_2, cloud_3;
 
     /**
      * 太阳和月亮位置
@@ -95,6 +72,11 @@ public class StartMenu extends RoadPanel
     private boolean isDrawGroup2 = false;
 
     /**
+     * 是否初始化了云朵
+     */
+    private boolean isInitCloud = false;
+
+    /**
      * 窗口左边边缘的位置
      */
     private int negativeWidth;
@@ -102,6 +84,7 @@ public class StartMenu extends RoadPanel
     public StartMenu(int width, int height)
     {
         this.width = width;
+        this.height = height;
         initGroup1();
         initGroup2();
         this.negativeWidth = -width;
@@ -155,9 +138,24 @@ public class StartMenu extends RoadPanel
     public void paint(Graphics g)
     {
         super.paint(g);
+
+        // 初始化六朵云
+        if (!isInitCloud)
+        {
+            cloud_1 = new Cloud(300, width, height, 30);
+            cloud_2 = new Cloud(600, width, height, 30);
+            cloud_3 = new Cloud(930, width, height, 30);
+            isInitCloud = true;
+        }
+
+        // 设置图片的绘制速度，每隔20毫秒绘制一次
         Utils.sleep(speed);
-        // 图片背景缓慢移动
-        drawBackground(g);
+
+        // 绘制图片
+        drawImage(g);
+
+        // 重新绘制所有图片，否则如果不清空面板再重新绘制的话会出现之前绘制的图片
+        // 会停留在屏幕中，导致屏幕中出现非常多的图片。同时会导致内存的递增从而抛出OOM异常。
         repaint();
     }
 
@@ -166,9 +164,8 @@ public class StartMenu extends RoadPanel
      *
      * @param g 画笔
      */
-    private void drawBackground(Graphics g)
+    private void drawImage(Graphics g)
     {
-        drawCloud(g);
         drawSunOrMoon(g);
 
         if (isDrawGroup1)
@@ -214,7 +211,9 @@ public class StartMenu extends RoadPanel
     void drawBackground(Graphics g, int x, int y)
     {
         // 绘制高山背景
-        g.drawImage(ResourcesCollects.terraria_background_25, x, y, null);
+         g.drawImage(ResourcesCollects.terraria_background_25, x, y, null);
+        // 绘制云层
+        drawClouds(g);
         // 绘制树木背景
         g.drawImage(ResourcesCollects.terraria_background_61, x, y, null);
     }
@@ -223,7 +222,7 @@ public class StartMenu extends RoadPanel
      * 绘制太阳和月亮
      * <p>
      * FIXME: 目前只设置了月亮，如果你愿意你可以根据时间来设置，如果当前是晚上就使用月亮。
-     *        也可以让太阳和月亮有个类似抛物线的动作，来实现日月交替的功能。
+     * FIXME: 也可以让太阳和月亮有个类似抛物线的动作，来实现日月交替的功能。
      *
      * @param g 画笔
      */
@@ -234,68 +233,13 @@ public class StartMenu extends RoadPanel
     }
 
     /**
-     * 随机画出几朵云彩
-     *
-     * @param g 画笔
+     * 绘制云层
      */
-    void drawCloud(Graphics g)
+    void drawClouds(Graphics g)
     {
-        // 随机取出几朵云彩
-        cloud_1 = ResourcesCollects.ToolBox.randomCloud();
-        cloud_2 = ResourcesCollects.ToolBox.randomCloud();
-        cloud_3 = ResourcesCollects.ToolBox.randomCloud();
-        cloud_4 = ResourcesCollects.ToolBox.randomCloud();
-        cloud_5 = ResourcesCollects.ToolBox.randomCloud();
-        cloud_6 = ResourcesCollects.ToolBox.randomCloud();
-        g.drawImage(cloud_1, cloud_x_1, cloud_y_1, null);
-    }
-
-    /**
-     * 随机云彩位置
-     *
-     * @param specify 自定云彩索引，1 - 6
-     */
-    void randomCloudXYLocation(int specify)
-    {
-        switch (specify)
-        {
-            case 1:
-            {
-                this.cloud_x_1 = 0;
-                this.cloud_y_1 = 0;
-                break;
-            }
-            case 2:
-            {
-                this.cloud_x_2 = 0;
-                this.cloud_y_2 = 0;
-                break;
-            }
-            case 3:
-            {
-                this.cloud_x_3 = 0;
-                this.cloud_y_3 = 0;
-                break;
-            }
-            case 4:
-            {
-                this.cloud_x_4 = 0;
-                this.cloud_y_4 = 0;
-                break;
-            }
-            case 5:
-            {
-                this.cloud_x_5 = 0;
-                this.cloud_y_5 = 0;
-                break;
-            }
-            case 6:
-            {
-                this.cloud_x_6 = 0;
-                this.cloud_y_6 = 0;
-                break;
-            }
-        }
+        if (cloud_1 != null) cloud_1.paintSelf(g);
+        if (cloud_2 != null) cloud_2.paintSelf(g);
+        if (cloud_3 != null) cloud_3.paintSelf(g);
     }
 
     /**

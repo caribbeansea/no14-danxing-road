@@ -47,10 +47,6 @@ public interface ResourcesCollects
      * 泰拉瑞亚中的云彩
      */
     List<Image> terraria_clouds = Lists.newArrayList(
-            ImageRead.read("/ui/cloud/Cloud_0.png"),
-            ImageRead.read("/ui/cloud/Cloud_1.png"),
-            ImageRead.read("/ui/cloud/Cloud_2.png"),
-            ImageRead.read("/ui/cloud/Cloud_3.png"),
             ImageRead.read("/ui/cloud/Cloud_4.png"),
             ImageRead.read("/ui/cloud/Cloud_5.png"),
             ImageRead.read("/ui/cloud/Cloud_6.png"),
@@ -60,15 +56,7 @@ public interface ResourcesCollects
             ImageRead.read("/ui/cloud/Cloud_10.png"),
             ImageRead.read("/ui/cloud/Cloud_11.png"),
             ImageRead.read("/ui/cloud/Cloud_12.png"),
-            ImageRead.read("/ui/cloud/Cloud_13.png"),
-            ImageRead.read("/ui/cloud/Cloud_14.png"),
-            ImageRead.read("/ui/cloud/Cloud_15.png"),
-            ImageRead.read("/ui/cloud/Cloud_16.png"),
-            ImageRead.read("/ui/cloud/Cloud_17.png"),
-            ImageRead.read("/ui/cloud/Cloud_18.png"),
-            ImageRead.read("/ui/cloud/Cloud_19.png"),
-            ImageRead.read("/ui/cloud/Cloud_20.png"),
-            ImageRead.read("/ui/cloud/Cloud_21.png")
+            ImageRead.read("/ui/cloud/Cloud_13.png")
     );
 
     Image terraria_star_1 = ImageRead.read("/ui/moon&sun&star/Star_1.png");
@@ -103,14 +91,12 @@ public interface ResourcesCollects
     class ToolBox
     {
 
-        private static Random random = new Random();
-
         /**
          * @return 从 {@link #terraria_clouds} 集合中随机获取一片云
          */
         public static Image randomCloud()
         {
-            int index = random.nextInt(terraria_clouds.size());
+            int index = Utils.RANDOM.nextInt(terraria_clouds.size());
             return terraria_clouds.get(index);
         }
 

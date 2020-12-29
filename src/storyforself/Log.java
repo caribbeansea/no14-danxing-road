@@ -38,6 +38,11 @@ public class Log
 
     private static final String ERROR = "[ERROR] - ";
 
+    public static void printCoords(String name, int x, int y)
+    {
+        info("%s X：【%s】，Y：【%s】", name, x, y);
+    }
+
     public static void info(String msg)
     {
         info(msg, (Object) null);

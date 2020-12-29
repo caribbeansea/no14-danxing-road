@@ -22,11 +22,15 @@ package storyforself;
  * Creates on 2020/12/29.
  */
 
+import java.util.Random;
+
 /**
  * @author tiansheng
  */
 public class Utils
 {
+
+    public static Random RANDOM = new Random();
 
     public static void sleep(long ms) {
         try
