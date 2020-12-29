@@ -33,10 +33,9 @@ import java.io.IOException;
 public interface ResourcesCollects
 {
 
-    /**
-     * 泰拉瑞亚中的树木背景图
-     */
-    Image TerrariaTreeBackground = ImageRead.read("/ui/Background_61.png");
+    Image TerrariaBcakgroup_61 = ImageRead.read("/ui/Background_61.png");
+
+    Image TerrariaBcakgroup_25 = ImageRead.read("/ui/Background_25.png");
 
     class ImageRead
     {

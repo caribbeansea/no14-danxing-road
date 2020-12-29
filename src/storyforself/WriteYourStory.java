@@ -22,6 +22,8 @@ package storyforself;
  * Creates on 2020/12/25.
  */
 
+import storyforself.menun.StartMenu;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
@@ -52,7 +54,7 @@ public class WriteYourStory extends JFrame
 
         // --------------------------------------------
         // 加载地图
-        panels.add(new StartMenu());
+        panels.add(new StartMenu(width, height));
         // --------------------------------------------
 
         setVisible(true);
@@ -69,7 +71,7 @@ public class WriteYourStory extends JFrame
      */
     public void confEventListener()
     {
-        addComponentListener(new ComponentAdapter()
+        this.addComponentListener(new ComponentAdapter()
         {
             @Override
             public void componentResized(ComponentEvent e)
