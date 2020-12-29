@@ -29,7 +29,6 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Random;
 
 /**
  * 资源管理接口
@@ -42,6 +41,8 @@ public interface ResourcesCollects
     Image terraria_background_61 = ImageRead.read("/ui/Background_61.png");
 
     Image terraria_background_25 = ImageRead.read("/ui/Background_25.png");
+
+    Image terraria_background_178 = ImageRead.read("/ui/Background_178.png");
 
     /**
      * 泰拉瑞亚中的云彩

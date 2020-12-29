@@ -215,7 +215,7 @@ public class StartMenu extends RoadPanel
         // 绘制云层
         drawClouds(g);
         // 绘制树木背景
-        g.drawImage(ResourcesCollects.terraria_background_61, x, y, null);
+        g.drawImage(ResourcesCollects.terraria_background_178, x, y, null);
     }
 
     /**
