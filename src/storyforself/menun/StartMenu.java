@@ -211,7 +211,7 @@ public class StartMenu extends RoadPanel
     void drawBackground(Graphics g, int x, int y)
     {
         // 绘制高山背景
-         g.drawImage(ResourcesCollects.terraria_background_25, x, y, null);
+        g.drawImage(ResourcesCollects.terraria_background_25, x, y, null);
         // 绘制云层
         drawClouds(g);
         // 绘制树木背景
