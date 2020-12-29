@@ -139,7 +139,7 @@ public class StartMenu extends RoadPanel
     {
         super.paint(g);
 
-        // 初始化六朵云
+        // 初始化3朵云
         if (!isInitCloud)
         {
             cloud_1 = new Cloud(300, width, height, 30);
