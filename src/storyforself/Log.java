@@ -19,41 +19,40 @@ package storyforself;
  * ************************************************************************/
 
 /*
- * Creates on 2020/12/25.
+ * Creates on 2020/12/29.
  */
 
-import javax.swing.*;
-import java.awt.*;
+import java.io.PrintStream;
 
 /**
- * 开始编写你的故事
- *
  * @author tiansheng
  */
-public class WriteYourStory extends JFrame
+public class Log
 {
 
-    public static int width = 868;
-    public static int height = 772;
+    private static final PrintStream out = System.out;
 
-    public WriteYourStory() {
-        super("单行路22号");
-        setSize(width,height);
+    private static final PrintStream err = System.err;
 
-        Container panels = getContentPane();
+    private static final String ERROR = "[ERROR] - ";
 
-        // --------------------------------------------
-        // 加载地图
-        panels.add(new StartMenu());
-        // --------------------------------------------
+    public static void info(String msg)
+    {
 
-        setVisible(true);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    public static void main(String[] args)
+    public static void error(String msg)
     {
-        new WriteYourStory();
+        error(msg, null, null);
+    }
+
+    public static void error(String msg, Throwable e, Object... args)
+    {
+        err.printf(ERROR.concat(msg).concat("\n"), args);
+        if (e != null)
+        {
+            e.printStackTrace();
+        }
     }
 
 }

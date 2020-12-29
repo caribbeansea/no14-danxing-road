@@ -22,23 +22,42 @@ package storyforself;
  * Creates on 2020/12/28.
  */
 
-import storyforself.component.RoadPanel;
-
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * 开始菜单
- *
  * @author tiansheng
  */
-public class StartMenu extends RoadPanel
+public interface ResourcesCollects
 {
 
-    @Override
-    public void paint(Graphics g)
+    /**
+     * 泰拉瑞亚中的树木背景图
+     */
+    Image TerrariaTreeBackground = ImageRead.read("/ui/Background_61.png");
+
+    class ImageRead
     {
-        super.paint(g);
-        g.drawImage(ResourcesCollects.TerrariaTreeBackground, 0, 0, null);
+        static Image read(String path)
+        {
+            String resourceDirector = System.getProperty("user.dir");
+            Image image =
+                    null;
+            File imageFile = new File(resourceDirector.concat("/resources").concat(path));
+            try
+            {
+                image = ImageIO.read(imageFile);
+            } catch (IOException e)
+            {
+                Log.error("image file path %s", e, imageFile.getPath());
+            }
+            return image;
+        }
     }
 
 }
