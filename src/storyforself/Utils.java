@@ -1,4 +1,4 @@
-package storyforself.component;
+package storyforself;
 
 /* ************************************************************************
  *
@@ -19,15 +19,23 @@ package storyforself.component;
  * ************************************************************************/
 
 /*
- * Creates on 2020/12/28.
+ * Creates on 2020/12/29.
  */
-
-import javax.swing.*;
 
 /**
  * @author tiansheng
  */
-public class RoadPanel extends JPanel
+public class Utils
 {
+
+    public static void sleep(long ms) {
+        try
+        {
+            Thread.sleep(ms);
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
 }

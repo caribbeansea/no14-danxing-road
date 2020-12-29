@@ -24,6 +24,7 @@ package storyforself;
 
 import storyforself.component.RoadPanel;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -34,11 +35,17 @@ import java.awt.*;
 public class StartMenu extends RoadPanel
 {
 
+    private int curr_x = 0;
+
+    private int curr_y = 0;
+
     @Override
     public void paint(Graphics g)
     {
-        super.paint(g);
-        g.drawImage(ResourcesCollects.TerrariaTreeBackground, 0, 0, null);
+        Utils.sleep(20);
+        // 图片背景缓慢移动
+        g.drawImage(ResourcesCollects.TerrariaTreeBackground, curr_x--, curr_y, null);
+        repaint();
     }
 
 }

@@ -24,6 +24,8 @@ package storyforself;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 /**
  * 开始编写你的故事
@@ -33,14 +35,20 @@ import java.awt.*;
 public class WriteYourStory extends JFrame
 {
 
-    public static int width = 868;
-    public static int height = 772;
+    public static int width = 1023;
+    public static int height = 559;
 
-    public WriteYourStory() {
+    public WriteYourStory()
+    {
         super("单行路22号");
-        setSize(width,height);
+        setSize(width, height);
 
         Container panels = getContentPane();
+
+        // --------------------------------------------
+        // 配置监听事件
+        confEventListener();
+        // --------------------------------------------
 
         // --------------------------------------------
         // 加载地图
@@ -54,6 +62,21 @@ public class WriteYourStory extends JFrame
     public static void main(String[] args)
     {
         new WriteYourStory();
+    }
+
+    /**
+     * 配置事件监听器
+     */
+    public void confEventListener()
+    {
+        addComponentListener(new ComponentAdapter()
+        {
+            @Override
+            public void componentResized(ComponentEvent e)
+            {
+                Log.info("当前宽度：【%s】，当前高度：【%s】", e.getComponent().getWidth(), e.getComponent().getHeight());
+            }
+        });
     }
 
 }

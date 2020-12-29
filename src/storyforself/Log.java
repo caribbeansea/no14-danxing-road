@@ -34,16 +34,23 @@ public class Log
 
     private static final PrintStream err = System.err;
 
+    private static final String INFO = "[INFO] - ";
+
     private static final String ERROR = "[ERROR] - ";
 
     public static void info(String msg)
     {
+        info(msg, (Object) null);
+    }
 
+    public static void info(String msg, Object... args)
+    {
+        out.printf(INFO.concat(msg).concat("\n"), args);
     }
 
     public static void error(String msg)
     {
-        error(msg, null, null);
+        error(msg, null, (Object) null);
     }
 
     public static void error(String msg, Throwable e, Object... args)
