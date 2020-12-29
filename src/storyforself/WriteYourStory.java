@@ -28,6 +28,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * 开始编写你的故事
@@ -71,6 +73,7 @@ public class WriteYourStory extends JFrame
      */
     public void confEventListener()
     {
+        // 如果当前位置发生改变则输出当前位置
         this.addComponentListener(new ComponentAdapter()
         {
             @Override
@@ -79,6 +82,16 @@ public class WriteYourStory extends JFrame
                 Log.info("当前宽度：【%s】，当前高度：【%s】", e.getComponent().getWidth(), e.getComponent().getHeight());
             }
         });
+
+        this.addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mousePressed(MouseEvent e)
+            {
+                Log.info("当前X轴：【%s】，当前Y轴：【%s】", e.getX(), e.getY());
+            }
+        });
+
     }
 
 }

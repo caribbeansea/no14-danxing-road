@@ -32,6 +32,8 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * 资源管理接口
+ *
  * @author tiansheng
  */
 public interface ResourcesCollects
@@ -69,6 +71,32 @@ public interface ResourcesCollects
             ImageRead.read("/ui/cloud/Cloud_21.png")
     );
 
+    Image terraria_star_1 = ImageRead.read("/ui/moon&sun&star/Star_1.png");
+
+    Image terraria_star_0 = ImageRead.read("/ui/moon&sun&star/Star_0.png");
+
+    Image terraria_star_2 = ImageRead.read("/ui/moon&sun&star/Star_2.png");
+
+    Image terraria_star_3 = ImageRead.read("/ui/moon&sun&star/Star_3.png");
+
+    Image terraria_star_4 = ImageRead.read("/ui/moon&sun&star/Star_4.png");
+
+    Image terraria_sun3 = ImageRead.read("/ui/moon&sun&star/Sun3.png");
+
+    Image terraria_sun2 = ImageRead.read("/ui/moon&sun&star/Sun2.png");
+
+    Image terraria_moon_snow = ImageRead.read("/ui/moon&sun&star/Moon_Snow.png");
+
+    Image terraria_moon_pumpkin = ImageRead.read("/ui/moon&sun&star/Moon_Pumpkin.png");
+
+    Image terraria_sun = ImageRead.read("/ui/moon&sun&star/Sun.png");
+
+    Image terraria_moon_2 = ImageRead.read("/ui/moon&sun&star/Moon_2.png");
+
+    Image terraria_moon_1 = ImageRead.read("/ui/moon&sun&star/Moon_1.png");
+
+    Image terraria_moon_0 = ImageRead.read("/ui/moon&sun&star/Moon_0.png");
+
     /**
      * 素材工具箱
      */
@@ -80,7 +108,7 @@ public interface ResourcesCollects
         /**
          * @return 从 {@link #terraria_clouds} 集合中随机获取一片云
          */
-        static Image randomCloud()
+        public static Image randomCloud()
         {
             int index = random.nextInt(terraria_clouds.size());
             return terraria_clouds.get(index);

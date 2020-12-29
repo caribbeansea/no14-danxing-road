@@ -49,37 +49,6 @@ public final class Lists {
 //  }
 
     /**
-     * 创建一个可变的 {@code ArrayList}
-     *
-     * @return 空的 {@code ArrayList} 实例
-     * @param read
-     * @param image
-     * @param read1
-     * @param image1
-     * @param read2
-     * @param image2
-     * @param read3
-     * @param image3
-     * @param read4
-     * @param image4
-     * @param read5
-     * @param image5
-     * @param read6
-     * @param image6
-     * @param read7
-     * @param image7
-     * @param read8
-     * @param image8
-     * @param read9
-     * @param image9
-     * @param read10
-     * @param image10
-     */
-    public static <E> ArrayList<E> newArrayList(Image read, Image image, Image read1, Image image1, Image read2, Image image2, Image read3, Image image3, Image read4, Image image4, Image read5, Image image5, Image read6, Image image6, Image read7, Image image7, Image read8, Image image8, Image read9, Image image9, Image read10, Image image10) {
-        return new ArrayList<>();
-    }
-
-    /**
      * 创建一个可变的 {@code ArrayList} 并初始化容量
      *
      * @return 空的 {@code ArrayList} 实例
