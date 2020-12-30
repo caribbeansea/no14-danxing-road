@@ -22,7 +22,6 @@ package storyforself.menun;
  * Creates on 2020/12/29.
  */
 
-import storyforself.Log;
 import storyforself.ResourcesCollects;
 import storyforself.Utils;
 
@@ -69,11 +68,6 @@ public class Cloud
      * 内任何一个地方随机画出，形成不同高度的云。
      */
     private int interval;
-
-    public Cloud(int width, int height, int interval)
-    {
-        this(0, width, height, interval);
-    }
 
     /**
      * Cloud构造器
