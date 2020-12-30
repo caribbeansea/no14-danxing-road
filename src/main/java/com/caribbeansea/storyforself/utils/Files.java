@@ -1,4 +1,4 @@
-package com.caribbeansea.storyforself.audio;
+package com.caribbeansea.storyforself.utils;
 
 /* ************************************************************************
  *
@@ -22,11 +22,28 @@ package com.caribbeansea.storyforself.audio;
  * Creates on 2020/12/30.
  */
 
+import java.io.File;
+
 /**
- * 支持所有格式的Audio对象
- *
  * @author tiansheng
  */
-public class FullAudio
+public class Files
 {
+
+    public static String getExtension(File file)
+    {
+        return getExtension(file.getName());
+    }
+
+    /**
+     * 获取文件后缀名
+     *
+     * @param filename 文件名
+     * @return 后缀
+     */
+    public static String getExtension(String filename)
+    {
+        return filename.substring((filename.indexOf(".") + 1));
+    }
+
 }

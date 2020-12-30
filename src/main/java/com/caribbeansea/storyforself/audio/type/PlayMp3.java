@@ -1,4 +1,4 @@
-package com.caribbeansea.storyforself;
+package com.caribbeansea.storyforself.audio.type;
 
 /* ************************************************************************
  *
@@ -22,7 +22,7 @@ package com.caribbeansea.storyforself;
  * Creates on 2020/12/30.
  */
 
-import javazoom.spi.mpeg.sampled.file.MpegAudioFileReader;
+import com.caribbeansea.storyforself.audio.AbstractAudioPlay;
 
 import javax.sound.sampled.*;
 import java.io.File;
@@ -31,27 +31,28 @@ import java.io.IOException;
 /**
  * @author tiansheng
  */
-public class AudioPlayTest
+@SuppressWarnings("FieldCanBeLocal")
+public class PlayMp3 extends AbstractAudioPlay
 {
 
-    public static void main(String[] args) throws IOException, UnsupportedAudioFileException
+    private DataLine.Info dinfo;
+
+    private SourceDataLine line;
+
+    private AudioFormat target;
+
+    private int len = -1;
+
+    public PlayMp3(File file) throws IOException, UnsupportedAudioFileException
     {
-        AudioInputStream ais
-                = AudioSystem.getAudioInputStream(new File("resources/audio/home/OveMelaa-HeavenSings.mp3"));
+        super(file);
+    }
 
-        AudioFormat af = ais.getFormat();
-        System.out.println(af.toString());
-        System.out.println("音频总帧数：" + ais.getFrameLength());
-        System.out.println("每秒播放帧数：" + af.getSampleRate());
-        float len0 = ais.getFrameLength() / af.getSampleRate();
-        System.out.println("音频时长（秒）：" + len0);
-        System.out.println("音频时长：" + (int) len0 / 60 + "分" + (int) len0 % 60 + "秒");
-
-        //使用 mp3spi 解码 mp3 音频文件
-        MpegAudioFileReader mp = new MpegAudioFileReader();
-        AudioFormat baseFormat = ais.getFormat();
-
+    @Override
+    protected void reload()
+    {
         //设定输出格式为pcm格式的音频文件
+        AudioFormat baseFormat = stream.getFormat();
         AudioFormat format = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED,
                 baseFormat.getSampleRate(),
                 16,
@@ -61,18 +62,23 @@ public class AudioPlayTest
                 false);
 
         // 输出到音频
-        ais = AudioSystem.getAudioInputStream(format, ais);
-        AudioFormat target = ais.getFormat();
-        DataLine.Info dinfo = new DataLine.Info(SourceDataLine.class, target, AudioSystem.NOT_SPECIFIED);
-        SourceDataLine line = null;
-        int len = -1;
+        stream = AudioSystem.getAudioInputStream(format, stream);
+        this.target = stream.getFormat();
+
+        this.dinfo = new DataLine.Info(SourceDataLine.class, this.target, AudioSystem.NOT_SPECIFIED);
+    }
+
+    /**
+     * 播放一次后结束
+     */
+    private void startPlayAudioOnce() {
         try
         {
             line = (SourceDataLine) AudioSystem.getLine(dinfo);
             line.open(target);
             line.start();
             byte[] buffer = new byte[1024];
-            while ((len = ais.read(buffer)) > 0)
+            while ((len = stream.read(buffer)) > 0)
             {
                 line.write(buffer, 0, len);
             }
@@ -81,12 +87,46 @@ public class AudioPlayTest
             line.close();
         } catch (Exception e)
         {
-            throw new RuntimeException(e.getMessage());
-        } finally
-        {
-            ais.close();
+            e.printStackTrace();
         }
+    }
 
+    /**
+     * 循环播放
+     */
+    private void startPlayAudioLoop() {
+        try
+        {
+            while (true) {
+                startPlayAudioOnce();
+                reload0();
+            }
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * look for #run()
+     */
+    @Override
+    public void play(Play play)
+    {
+        start();
+    }
+
+
+
+    @Override
+    public void run()
+    {
+        if(play == Play.ONCE)
+        {
+            startPlayAudioOnce();
+        } else {
+            startPlayAudioLoop();
+        }
     }
 
 }

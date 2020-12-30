@@ -22,11 +22,16 @@ package com.caribbeansea.storyforself.menun;
  * Creates on 2020/12/28.
  */
 
+import com.caribbeansea.storyforself.Log;
 import com.caribbeansea.storyforself.ResourcesCollects;
 import com.caribbeansea.storyforself.Utils;
+import com.caribbeansea.storyforself.audio.AudioPlay;
+import com.caribbeansea.storyforself.audio.AudioPlays;
 import com.caribbeansea.storyforself.component.RoadPanel;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * 开始菜单
@@ -92,6 +97,28 @@ public class StartMenu extends RoadPanel
         initGroup1();
         initGroup2();
         this.negativeWidth = -width;
+
+        AudioPlay audioPlayInstance
+                = AudioPlays.getAudioPlayInstance("/home/OveMelaa-HeavenSings.mp3");
+        audioPlayInstance.play(AudioPlay.Play.LOOP);
+
+        addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mousePressed(MouseEvent e)
+            {
+                if(e.getButton() == MouseEvent.BUTTON1)
+                {
+                    Log.info("播放");
+                }
+
+                if(e.getButton() == MouseEvent.BUTTON3)
+                {
+                    Log.info("暂停");
+                }
+            }
+        });
+
     }
 
     void initGroup1()
