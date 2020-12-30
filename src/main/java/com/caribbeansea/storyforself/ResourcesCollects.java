@@ -106,12 +106,14 @@ public interface ResourcesCollects
 
     class ImageRead
     {
+        final static String RESOURCES = "resources";
+
         static Image read(String path)
         {
             String resourceDirector = System.getProperty("user.dir");
             Image image =
                     null;
-            File imageFile = new File(resourceDirector.concat("/resources").concat(path));
+            File imageFile = new File(RESOURCES.concat(path));
             try
             {
                 image = ImageIO.read(imageFile);
