@@ -1,4 +1,4 @@
-package storyforself;
+package com.caribbeansea.storyforself;
 
 /* ************************************************************************
  *
@@ -22,7 +22,7 @@ package storyforself;
  * Creates on 2020/12/25.
  */
 
-import storyforself.menun.StartMenu;
+import com.caribbeansea.storyforself.menun.StartMenu;
 
 import javax.swing.*;
 import java.awt.*;

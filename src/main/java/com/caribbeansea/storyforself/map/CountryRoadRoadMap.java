@@ -1,4 +1,4 @@
-package storyforself.map;
+package com.caribbeansea.storyforself.map;
 
 /* ************************************************************************
  *

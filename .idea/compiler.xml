@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="no14-danxing-road" target="1.5" />
+      <module name="no14-danxing-road" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

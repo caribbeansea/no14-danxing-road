@@ -1,4 +1,4 @@
-package storyforself.map;
+package com.caribbeansea.storyforself.map;
 
 /* ************************************************************************
  *
@@ -22,8 +22,8 @@ package storyforself.map;
  * Creates on 2020/12/28.
  */
 
-import storyforself.Resources;
-import storyforself.component.RoadPanel;
+import com.caribbeansea.storyforself.Resources;
+import com.caribbeansea.storyforself.component.RoadPanel;
 
 /**
  * 地图超类，负责配置加载

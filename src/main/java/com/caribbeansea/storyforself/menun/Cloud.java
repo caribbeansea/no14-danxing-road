@@ -1,4 +1,4 @@
-package storyforself.menun;
+package com.caribbeansea.storyforself.menun;
 
 /* ************************************************************************
  *
@@ -22,8 +22,8 @@ package storyforself.menun;
  * Creates on 2020/12/29.
  */
 
-import storyforself.ResourcesCollects;
-import storyforself.Utils;
+import com.caribbeansea.storyforself.ResourcesCollects;
+import com.caribbeansea.storyforself.Utils;
 
 import java.awt.*;
 

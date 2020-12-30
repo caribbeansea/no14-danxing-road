@@ -1,4 +1,4 @@
-package storyforself.utils;
+package com.caribbeansea.storyforself.utils;
 
 import java.awt.*;
 import java.util.*;

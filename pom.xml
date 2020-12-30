@@ -5,6 +5,18 @@
     <groupId>com.caribbean.sea</groupId>
     <artifactId>no14-danxing-road</artifactId>
     <version>NDR.2020</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>6</source>
+                    <target>6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <packaging>jar</packaging>
     <name>no14-danxing-road</name>

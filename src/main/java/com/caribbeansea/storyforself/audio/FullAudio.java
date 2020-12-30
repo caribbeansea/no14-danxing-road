@@ -1,4 +1,4 @@
-package storyforself.audio;
+package com.caribbeansea.storyforself.audio;
 
 /* ************************************************************************
  *

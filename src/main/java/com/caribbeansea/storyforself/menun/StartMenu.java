@@ -1,4 +1,4 @@
-package storyforself.menun;
+package com.caribbeansea.storyforself.menun;
 
 /* ************************************************************************
  *
@@ -22,9 +22,9 @@ package storyforself.menun;
  * Creates on 2020/12/28.
  */
 
-import storyforself.ResourcesCollects;
-import storyforself.Utils;
-import storyforself.component.RoadPanel;
+import com.caribbeansea.storyforself.ResourcesCollects;
+import com.caribbeansea.storyforself.Utils;
+import com.caribbeansea.storyforself.component.RoadPanel;
 
 import java.awt.*;
 
@@ -33,7 +33,11 @@ import java.awt.*;
  *
  * @author tiansheng
  */
-@SuppressWarnings("SameParameterValue")
+@SuppressWarnings({
+        "FieldCanBeLocal",
+        "FieldMayBeFinal",
+        "SameParameterValue",
+})
 public class StartMenu extends RoadPanel
 {
 
@@ -79,7 +83,7 @@ public class StartMenu extends RoadPanel
     /**
      * 窗口左边边缘的位置
      */
-    private int negativeWidth;
+    private final int negativeWidth;
 
     public StartMenu(int width, int height)
     {

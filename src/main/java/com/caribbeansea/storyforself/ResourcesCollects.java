@@ -1,4 +1,4 @@
-package storyforself;
+package com.caribbeansea.storyforself;
 
 /* ************************************************************************
  *
@@ -22,7 +22,8 @@ package storyforself;
  * Creates on 2020/12/28.
  */
 
-import storyforself.utils.Lists;
+
+import com.caribbeansea.storyforself.utils.Lists;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

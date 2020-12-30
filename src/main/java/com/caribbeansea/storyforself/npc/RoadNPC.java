@@ -1,4 +1,4 @@
-package storyforself.npc;
+package com.caribbeansea.storyforself.npc;
 
 /* ************************************************************************
  *
@@ -22,7 +22,7 @@ package storyforself.npc;
  * Creates on 2020/12/28.
  */
 
-import storyforself.Resources;
+import com.caribbeansea.storyforself.Resources;
 
 /**
  * NPC超类

@@ -1,4 +1,4 @@
-package storyforself.component;
+package com.caribbeansea.storyforself.component;
 
 /* ************************************************************************
  *

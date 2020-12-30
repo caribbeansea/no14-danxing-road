@@ -1,4 +1,4 @@
-package storyforself.utils;
+package com.caribbeansea.storyforself.utils;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
