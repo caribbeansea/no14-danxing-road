@@ -5,20 +5,57 @@
     <groupId>com.caribbean.sea</groupId>
     <artifactId>no14-danxing-road</artifactId>
     <version>NDR.2020</version>
+
+    <packaging>jar</packaging>
+    <name>no14-danxing-road</name>
+
+    <properties>
+        <jflac.version>1.5.2</jflac.version>
+        <googlecode.version>1.9.5.4</googlecode.version>
+        <project.jdk.version>1.8</project.jdk.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.googlecode.soundlibs</groupId>
+            <artifactId>mp3spi</artifactId>
+            <version>${googlecode.version}</version>
+        </dependency>
+
+        <!-- 如果需要解码播放flac文件则引入这个jar包 -->
+        <dependency>
+            <groupId>org.jflac</groupId>
+            <artifactId>jflac-codec</artifactId>
+            <version>${jflac.version}</version>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>development</id>
+            <activation>
+                <jdk>${project.jdk.version}</jdk>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <maven.compiler.source>${project.jdk.version}</maven.compiler.source>
+                <maven.compiler.target>${project.jdk.version}</maven.compiler.target>
+                <maven.compiler.compilerVersion>${project.jdk.version}</maven.compiler.compilerVersion>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>6</source>
-                    <target>6</target>
+                    <source>${project.jdk.version}</source>
+                    <target>${project.jdk.version}</target>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <packaging>jar</packaging>
-    <name>no14-danxing-road</name>
 
 </project>
