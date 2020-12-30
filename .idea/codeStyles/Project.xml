@@ -17,6 +17,7 @@
       <option name="CLASS_BRACE_STYLE" value="2" />
       <option name="METHOD_BRACE_STYLE" value="2" />
       <option name="LAMBDA_BRACE_STYLE" value="2" />
+      <option name="ALIGN_GROUP_FIELD_DECLARATIONS" value="true" />
     </codeStyleSettings>
   </code_scheme>
 </component>
