@@ -38,9 +38,9 @@ public class StartMenu extends RoadPanel
 {
 
     /**
-     * 移动速度
+     * 绘制速度
      */
-    private final int speed = 20;
+    private final int speed = 10;
 
     private int width;
 
