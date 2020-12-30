@@ -27,6 +27,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.locks.LockSupport;
 
 /**
  * @author tiansheng
@@ -42,10 +43,13 @@ public abstract class AbstractAudioPlay extends Thread implements AudioPlay
 
     protected Play play;
 
-    public AbstractAudioPlay(File file) throws IOException, UnsupportedAudioFileException
+    private final Thread thread;
+
+    public AbstractAudioPlay(String name, File file) throws IOException, UnsupportedAudioFileException
     {
         getAudioInputStream(file);
-        AudioPlayManager.putAudioTask(this);
+        this.thread = new Thread(this, name);
+        // AudioPlayManager.putAudioTask(this);
     }
 
     protected void getAudioInputStream(File file) throws IOException, UnsupportedAudioFileException
@@ -73,10 +77,7 @@ public abstract class AbstractAudioPlay extends Thread implements AudioPlay
      */
     protected void wake()
     {
-        synchronized (this)
-        {
-            this.notify();
-        }
+
     }
 
     /**
@@ -86,9 +87,8 @@ public abstract class AbstractAudioPlay extends Thread implements AudioPlay
     {
         try
         {
-            synchronized (this)
-            {
-                this.wait();
+            synchronized (thread) {
+                thread.wait();
             }
         } catch (InterruptedException e)
         {
@@ -106,7 +106,6 @@ public abstract class AbstractAudioPlay extends Thread implements AudioPlay
     @Override
     public void once()
     {
-
     }
 
     @Override
@@ -122,7 +121,7 @@ public abstract class AbstractAudioPlay extends Thread implements AudioPlay
     @Override
     public void pause()
     {
-        this.AUDIO_PAUSE = true;
+        block();
     }
 
     @Override

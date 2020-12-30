@@ -110,11 +110,13 @@ public class StartMenu extends RoadPanel
                 if(e.getButton() == MouseEvent.BUTTON1)
                 {
                     Log.info("播放");
+                    audioPlayInstance.continuePlay();
                 }
 
                 if(e.getButton() == MouseEvent.BUTTON3)
                 {
                     Log.info("暂停");
+                    audioPlayInstance.pause();
                 }
             }
         });
