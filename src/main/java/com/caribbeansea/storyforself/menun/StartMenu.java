@@ -66,8 +66,10 @@ public class StartMenu extends CaribbeanPanel
 
     /**
      * 太阳和月亮位置
+     *
+     * sun_moon_x的赋值操作在构造器中
      */
-    private int sun_moon_x = 900, sun_moon_y = -20;
+    private int sun_moon_x, sun_moon_y = -20;
 
     /**
      * 当第一组的图片完全跑到窗口外的时候停止绘制，并重制X，Y轴
@@ -90,6 +92,11 @@ public class StartMenu extends CaribbeanPanel
     private final int negativeWidth;
 
     /**
+     * 两张图片绘制拼接的间距
+     */
+    private final int spacing = 1;
+
+    /**
      * 背景音乐集合
      */
     private List<AudioPlay> backgroundAudios = Lists.newArrayList(
@@ -107,6 +114,7 @@ public class StartMenu extends CaribbeanPanel
         initGroup1();
         initGroup2();
         this.negativeWidth = -width;
+        this.sun_moon_x = width - 130;
 
         this.curr_play_bgm = ToolBox.randomValue(backgroundAudios);
         this.curr_play_bgm.play(AudioPlay.Play.LOOP);
@@ -202,7 +210,7 @@ public class StartMenu extends CaribbeanPanel
         {
             currXGroup2Speed();
             // # GROUP 2
-            drawBackground(g, curr_x_group2, curr_y_group2);
+            drawBackground(g, curr_x_group2 - spacing, curr_y_group2);
             // # END
         }
 
@@ -233,11 +241,11 @@ public class StartMenu extends CaribbeanPanel
     void drawBackground(Graphics g, int x, int y)
     {
         // 绘制高山背景
-        g.drawImage(Resources.terraria_background_25, x, y, null);
+        drawImage(g, Resources.terraria_background_25, x, y, true);
         // 绘制云层
         drawClouds(g);
         // 绘制树木背景
-        g.drawImage(Resources.terraria_background_178, x, y, null);
+        drawImage(g, Resources.terraria_background_178, x, y, true);
     }
 
     /**

@@ -43,9 +43,9 @@ import java.awt.event.MouseEvent;
 public class WriteYourStory extends CaribbeanFrame
 {
 
-    public static int width = 1023;
+    public static int width = 1245;
 
-    public static int height = 626;
+    public static int height = 813;
 
     public WriteYourStory()
     {
