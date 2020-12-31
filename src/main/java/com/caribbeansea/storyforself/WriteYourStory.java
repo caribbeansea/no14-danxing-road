@@ -22,6 +22,10 @@ package com.caribbeansea.storyforself;
  * Creates on 2020/12/25.
  */
 
+import com.caribbeansea.storyforself.component.CaribbeanFrame;
+import com.caribbeansea.storyforself.component.CaribbeanPanel;
+import com.caribbeansea.storyforself.instruction.InstPanel;
+import com.caribbeansea.storyforself.key.GlobalKeyEvent;
 import com.caribbeansea.storyforself.menun.StartMenu;
 
 import javax.swing.*;
@@ -36,10 +40,11 @@ import java.awt.event.MouseEvent;
  *
  * @author tiansheng
  */
-public class WriteYourStory extends JFrame
+public class WriteYourStory extends CaribbeanFrame
 {
 
     public static int width = 1023;
+
     public static int height = 626;
 
     public WriteYourStory()
@@ -55,9 +60,17 @@ public class WriteYourStory extends JFrame
         // --------------------------------------------
 
         // --------------------------------------------
-        // 加载地图
-        panels.add(new StartMenu(width, height));
+        // 开始菜单
+        StartMenu startMenu = new StartMenu(width, height);
+        panels.add(startMenu);
         // --------------------------------------------
+
+        InstPanel instPanel = new InstPanel(startMenu);
+        startMenu.setInstPanel(instPanel);
+
+        GlobalKeyEvent globalKeyEvent = new GlobalKeyEvent();
+        globalKeyEvent.setInstPanel(instPanel);
+        addKeyListener(globalKeyEvent);
 
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -73,6 +86,7 @@ public class WriteYourStory extends JFrame
      */
     public void confEventListener(JFrame frame)
     {
+
 //        // 如果当前位置发生改变则输出当前位置
 //        this.addComponentListener(new ComponentAdapter()
 //        {

@@ -178,7 +178,7 @@ public class StartMenu extends CaribbeanPanel
 
         // 重新绘制所有图片，否则如果不清空面板再重新绘制的话会出现之前绘制的图片
         // 会停留在屏幕中，导致屏幕中出现非常多的图片。同时会导致内存的递增从而抛出OOM异常。
-        repaint();
+        repaint(g);
     }
 
     /**
