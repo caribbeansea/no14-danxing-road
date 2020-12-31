@@ -70,7 +70,7 @@ public abstract class AbstractAudioPlay extends Thread implements AudioPlay
      * <p>
      * 子类不需要去关心{@link #stream}的初始化操作，只需关心自己支持的音频媒体格式的
      * 初始化操作即可。
-     *
+     * <p>
      * 当真正需要调用reload重新加载流的时候请调用{@link #reload()}
      */
     protected abstract void reloadVal();
@@ -121,6 +121,7 @@ public abstract class AbstractAudioPlay extends Thread implements AudioPlay
     @Override
     public void continuePlay()
     {
+        wake();
     }
 
     @Override
