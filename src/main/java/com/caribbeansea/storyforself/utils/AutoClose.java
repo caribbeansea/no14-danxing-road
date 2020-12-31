@@ -1,4 +1,4 @@
-package com.caribbeansea.storyforself.ToolBox;
+package com.caribbeansea.storyforself.utils;
 
 /*
  * Creates on 2020/5/14.

@@ -23,7 +23,7 @@ package com.caribbeansea.storyforself;
  */
 
 
-import com.caribbeansea.storyforself.ToolBox.Lists;
+import com.caribbeansea.storyforself.utils.Lists;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

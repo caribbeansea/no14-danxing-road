@@ -82,7 +82,7 @@ public class PlayMp3 extends AbstractAudioPlay
             while ((len = stream.read(buffer)) > 0)
             {
                 if(park) {
-                     ToolBox.THE_UNSAFE.park(false, 0L);
+                     ToolBox.UNSAFE.park(false, 0L);
                 }
                 line.write(buffer, 0, len);
             }

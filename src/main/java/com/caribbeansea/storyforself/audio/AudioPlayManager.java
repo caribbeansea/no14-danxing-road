@@ -22,7 +22,7 @@ package com.caribbeansea.storyforself.audio;
  * Creates on 2020/12/30.
  */
 
-import com.caribbeansea.storyforself.ToolBox.Lists;
+import com.caribbeansea.storyforself.utils.Lists;
 
 import java.util.List;
 

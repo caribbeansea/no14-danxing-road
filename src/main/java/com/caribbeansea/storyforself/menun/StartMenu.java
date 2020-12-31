@@ -22,16 +22,15 @@ package com.caribbeansea.storyforself.menun;
  * Creates on 2020/12/28.
  */
 
-import com.caribbeansea.storyforself.Log;
 import com.caribbeansea.storyforself.ResourcesCollects;
 import com.caribbeansea.storyforself.audio.AudioPlay;
 import com.caribbeansea.storyforself.audio.AudioPlays;
 import com.caribbeansea.storyforself.component.RoadPanel;
+import com.caribbeansea.storyforself.utils.Lists;
+import com.caribbeansea.storyforself.utils.ToolBox;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import com.caribbeansea.storyforself.utils.ToolBox;
+import java.util.List;
 
 /**
  * 开始菜单
@@ -90,6 +89,15 @@ public class StartMenu extends RoadPanel
      */
     private final int negativeWidth;
 
+    /**
+     * 背景音乐集合
+     */
+    private List<AudioPlay> backgroundAudios = Lists.newArrayList(
+            AudioPlays.getAudioPlayInstance("/home/OveMelaa-HeavenSings.mp3")
+    );
+
+    private AudioPlay curr_play_bgm;
+
     public StartMenu(int width, int height)
     {
         this.width = width;
@@ -98,29 +106,8 @@ public class StartMenu extends RoadPanel
         initGroup2();
         this.negativeWidth = -width;
 
-        AudioPlay audioPlayInstance
-                = AudioPlays.getAudioPlayInstance("/home/OveMelaa-HeavenSings.mp3");
-        audioPlayInstance.play(AudioPlay.Play.LOOP);
-
-        addMouseListener(new MouseAdapter()
-        {
-            @Override
-            public void mousePressed(MouseEvent e)
-            {
-                if(e.getButton() == MouseEvent.BUTTON1)
-                {
-                    Log.info("播放");
-                    audioPlayInstance.continuePlay();
-                }
-
-                if(e.getButton() == MouseEvent.BUTTON3)
-                {
-                    Log.info("暂停");
-                    audioPlayInstance.pause();
-                }
-            }
-        });
-
+        this.curr_play_bgm = ToolBox.randomValue(backgroundAudios);
+        this.curr_play_bgm.play(AudioPlay.Play.LOOP);
     }
 
     void initGroup1()

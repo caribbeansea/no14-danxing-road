@@ -29,6 +29,7 @@ import java.awt.*;
 import java.lang.reflect.Field;
 import java.security.AccessController;
 import java.security.PrivilegedExceptionAction;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -39,7 +40,7 @@ public class ToolBox
 
     public static Random RANDOM = new Random();
 
-    public static Unsafe THE_UNSAFE;
+    public static Unsafe UNSAFE;
 
     static
     {
@@ -51,13 +52,18 @@ public class ToolBox
                 theUnsafe.setAccessible(true);
                 return (Unsafe) theUnsafe.get(null);
             };
-            THE_UNSAFE = AccessController.doPrivileged(action);
+            UNSAFE = AccessController.doPrivileged(action);
         } catch (Exception e)
         {
             throw new RuntimeException("Unable to load unsafe", e);
         }
     }
 
+    /**
+     * 线程休眠
+     *
+     * @param ms 毫秒
+     */
     public static void sleep(long ms)
     {
         try
@@ -74,8 +80,19 @@ public class ToolBox
      */
     public static Image randomCloud()
     {
-        int index = ToolBox.RANDOM.nextInt(ResourcesCollects.terraria_clouds.size());
-        return ResourcesCollects.terraria_clouds.get(index);
+        return randomValue(ResourcesCollects.terraria_clouds);
+    }
+
+    /**
+     * 从List中随机取出一个数据。取值范围为 0 - #size()
+     *
+     * @param a 集合
+     * @return 随机取出的值
+     */
+    public static <T> T randomValue(List<T> a)
+    {
+        int index = RANDOM.nextInt(a.size());
+        return a.get(index);
     }
 
 }

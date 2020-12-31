@@ -85,7 +85,7 @@ public abstract class AbstractAudioPlay extends Thread implements AudioPlay
     protected void wake()
     {
         this.park = false;
-        ToolBox.THE_UNSAFE.unpark(this);
+        ToolBox.UNSAFE.unpark(this);
     }
 
     /**
@@ -93,7 +93,7 @@ public abstract class AbstractAudioPlay extends Thread implements AudioPlay
      */
     protected void block()
     {
-        ToolBox.THE_UNSAFE.park(false, 0L);
+        ToolBox.UNSAFE.park(false, 0L);
     }
 
     @Override

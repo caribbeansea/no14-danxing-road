@@ -41,7 +41,7 @@ public class ThreadTest
 
     public static boolean block = false;
 
-    public static Unsafe THE_UNSAFE;
+    public static Unsafe UNSAFE;
 
     static
     {
@@ -53,7 +53,7 @@ public class ThreadTest
                 theUnsafe.setAccessible(true);
                 return (Unsafe) theUnsafe.get(null);
             };
-            THE_UNSAFE = AccessController.doPrivileged(action);
+            UNSAFE = AccessController.doPrivileged(action);
         } catch (Exception e)
         {
             throw new RuntimeException("Unable to load unsafe", e);
@@ -71,7 +71,7 @@ public class ThreadTest
                 System.out.println("-------------thread0");
                 if (block)
                 {
-                    THE_UNSAFE.park(false, 0L);
+                    UNSAFE.park(false, 0L);
                 }
             }
         });
@@ -104,7 +104,7 @@ public class ThreadTest
             } else
             {
                 Log.info("唤醒thread0");
-                THE_UNSAFE.unpark(thread0);
+                UNSAFE.unpark(thread0);
                 block = false;
             }
 
