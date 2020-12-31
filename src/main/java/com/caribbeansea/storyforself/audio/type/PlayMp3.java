@@ -49,7 +49,7 @@ public class PlayMp3 extends AbstractAudioPlay
     }
 
     @Override
-    protected void reload()
+    protected void reloadVal()
     {
         //设定输出格式为pcm格式的音频文件
         AudioFormat baseFormat = stream.getFormat();
@@ -99,7 +99,7 @@ public class PlayMp3 extends AbstractAudioPlay
         {
             while (true) {
                 startPlayAudioOnce();
-                reload0();
+                reload();
             }
         } catch (Exception e)
         {
