@@ -97,7 +97,11 @@ public interface Resources
     // -----------------------------  音频资源 --------------------------------
     // #######################################################################
 
-    File HOME_OVEMELAA_HEAVENSINGS_MP3 = AudioRead.read("/home/OveMelaa-HeavenSings.mp3");
+    File HOME_OVE_MELAA_TIMES_MP3 = AudioRead.read("/home/Ove_Melaa_Times.mp3");
+
+    File HOME_OVEMELAA_THEMECRYSTALIZED_MP3 = AudioRead.read("/home/OveMelaa_HeavenSings.mp3");
+
+    File HOME_OVEMELAA_HEAVENSINGS_MP3 = AudioRead.read("/home/OveMelaa_ThemeCrystalized .mp3");
 
     class ImageRead
     {

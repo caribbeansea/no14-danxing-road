@@ -93,7 +93,9 @@ public class StartMenu extends CaribbeanPanel
      * 背景音乐集合
      */
     private List<AudioPlay> backgroundAudios = Lists.newArrayList(
-            AudioPlays.getAudioPlayInstance(Resources.HOME_OVEMELAA_HEAVENSINGS_MP3)
+            AudioPlays.getAudioPlayInstance(Resources.HOME_OVE_MELAA_TIMES_MP3),
+            AudioPlays.getAudioPlayInstance(Resources.HOME_OVEMELAA_HEAVENSINGS_MP3),
+            AudioPlays.getAudioPlayInstance(Resources.HOME_OVEMELAA_THEMECRYSTALIZED_MP3)
     );
 
     private AudioPlay curr_play_bgm;

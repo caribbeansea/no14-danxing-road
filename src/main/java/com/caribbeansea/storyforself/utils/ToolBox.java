@@ -91,8 +91,7 @@ public class ToolBox
      */
     public static <T> T randomValue(List<T> a)
     {
-        int index = RANDOM.nextInt(a.size());
-        return a.get(index);
+        return a.get(RANDOM.nextInt(a.size()));
     }
 
 }

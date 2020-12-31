@@ -37,7 +37,7 @@ public class AudioPlayTest
     public static void main(String[] args) throws IOException, UnsupportedAudioFileException
     {
         AudioInputStream ais
-                = AudioSystem.getAudioInputStream(new File("resources/audio/home/OveMelaa-HeavenSings.mp3"));
+                = AudioSystem.getAudioInputStream(new File("resources/audio/home/OveMelaa_HeavenSings.mp3"));
 
         AudioFormat af = ais.getFormat();
         System.out.println(af.toString());

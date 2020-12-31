@@ -36,7 +36,7 @@ public class SimpleAudioPlay
         Clip clip = AudioSystem.getClip();
         AudioInputStream audioInputStream
                 // FIXME: 这个好像是只支持WAV格式。目前暂时没有这个格式的音频，有了可以加上
-                = AudioSystem.getAudioInputStream(new File("resources/audio/home/OveMelaa-HeavenSings.mp3"));
+                = AudioSystem.getAudioInputStream(new File("resources/audio/home/OveMelaa_HeavenSings.mp3"));
 
         clip.open(audioInputStream);
 
