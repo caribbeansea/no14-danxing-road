@@ -22,7 +22,6 @@ package com.caribbeansea.storyforself.menun;
  * Creates on 2020/12/29.
  */
 
-import com.caribbeansea.storyforself.Utils;
 import com.caribbeansea.storyforself.utils.ToolBox;
 
 import java.awt.*;
@@ -90,7 +89,7 @@ public class Cloud
     private void initCoords(int x)
     {
         this.x = x;
-        this.y = (Utils.RANDOM.nextInt(interval));
+        this.y = (ToolBox.RANDOM.nextInt(interval));
     }
 
     /**

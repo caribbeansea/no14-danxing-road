@@ -23,6 +23,7 @@ package com.caribbeansea.storyforself.audio.type;
  */
 
 import com.caribbeansea.storyforself.audio.AbstractAudioPlay;
+import com.caribbeansea.storyforself.utils.ToolBox;
 
 import javax.sound.sampled.*;
 import java.io.File;
@@ -80,6 +81,9 @@ public class PlayMp3 extends AbstractAudioPlay
             byte[] buffer = new byte[1024];
             while ((len = stream.read(buffer)) > 0)
             {
+                if(park) {
+                     ToolBox.THE_UNSAFE.park(false, 0L);
+                }
                 line.write(buffer, 0, len);
             }
             line.drain();

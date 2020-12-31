@@ -23,34 +23,59 @@ package com.caribbeansea.storyforself.utils;
  */
 
 import com.caribbeansea.storyforself.ResourcesCollects;
-import com.caribbeansea.storyforself.Utils;
+import sun.misc.Unsafe;
 
 import java.awt.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
+import java.lang.reflect.Field;
+import java.security.AccessController;
+import java.security.PrivilegedExceptionAction;
+import java.util.Random;
 
 /**
- * 素材工具箱
+ * 工具箱
  */
 public class ToolBox
 {
 
-    public static final ExecutorService EXEC_INSTANCE = Executors.newCachedThreadPool();
+    public static Random RANDOM = new Random();
+
+    public static Unsafe THE_UNSAFE;
+
+    static
+    {
+        try
+        {
+            final PrivilegedExceptionAction<Unsafe> action = () ->
+            {
+                Field theUnsafe = Unsafe.class.getDeclaredField("theUnsafe");
+                theUnsafe.setAccessible(true);
+                return (Unsafe) theUnsafe.get(null);
+            };
+            THE_UNSAFE = AccessController.doPrivileged(action);
+        } catch (Exception e)
+        {
+            throw new RuntimeException("Unable to load unsafe", e);
+        }
+    }
+
+    public static void sleep(long ms)
+    {
+        try
+        {
+            Thread.sleep(ms);
+        } catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * @return 从 {@link ResourcesCollects#terraria_clouds} 集合中随机获取一片云
      */
     public static Image randomCloud()
     {
-        int index = Utils.RANDOM.nextInt(ResourcesCollects.terraria_clouds.size());
+        int index = ToolBox.RANDOM.nextInt(ResourcesCollects.terraria_clouds.size());
         return ResourcesCollects.terraria_clouds.get(index);
-    }
-
-    public static void exec(Runnable runnable)
-    {
-
     }
 
 }

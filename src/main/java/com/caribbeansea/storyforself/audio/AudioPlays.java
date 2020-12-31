@@ -24,7 +24,7 @@ package com.caribbeansea.storyforself.audio;
 
 import com.caribbeansea.storyforself.audio.type.PlayMp3;
 import com.caribbeansea.storyforself.exception.UnknownTypeException;
-import com.caribbeansea.storyforself.utils.Files;
+import com.caribbeansea.storyforself.ToolBox.Files;
 
 import java.io.File;
 import java.util.Locale;

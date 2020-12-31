@@ -24,7 +24,6 @@ package com.caribbeansea.storyforself.menun;
 
 import com.caribbeansea.storyforself.Log;
 import com.caribbeansea.storyforself.ResourcesCollects;
-import com.caribbeansea.storyforself.Utils;
 import com.caribbeansea.storyforself.audio.AudioPlay;
 import com.caribbeansea.storyforself.audio.AudioPlays;
 import com.caribbeansea.storyforself.component.RoadPanel;
@@ -32,6 +31,7 @@ import com.caribbeansea.storyforself.component.RoadPanel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import com.caribbeansea.storyforself.utils.ToolBox;
 
 /**
  * 开始菜单
@@ -182,7 +182,7 @@ public class StartMenu extends RoadPanel
         }
 
         // 设置图片的绘制速度，每隔20毫秒绘制一次
-        Utils.sleep(speed);
+        ToolBox.sleep(speed);
 
         // 绘制图片
         drawImage(g);

@@ -23,13 +23,13 @@ package thread;
  */
 
 import com.caribbeansea.storyforself.Log;
-import com.caribbeansea.storyforself.Utils;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
 import java.security.AccessController;
 import java.security.PrivilegedExceptionAction;
 import java.util.Scanner;
+import com.caribbeansea.storyforself.utils.ToolBox;
 
 /**
  * @author tiansheng
@@ -67,7 +67,7 @@ public class ThreadTest
         {
             while (true)
             {
-                Utils.sleep(1000);
+                ToolBox.sleep(1000);
                 System.out.println("-------------thread0");
                 if (block)
                 {
@@ -81,7 +81,7 @@ public class ThreadTest
         {
             while (true)
             {
-                Utils.sleep(1000);
+                ToolBox.sleep(1000);
                 System.out.println("thread1-------------");
             }
         });

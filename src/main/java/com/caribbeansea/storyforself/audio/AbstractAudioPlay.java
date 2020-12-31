@@ -22,6 +22,8 @@ package com.caribbeansea.storyforself.audio;
  * Creates on 2020/12/30.
  */
 
+import com.caribbeansea.storyforself.utils.ToolBox;
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -43,6 +45,8 @@ public abstract class AbstractAudioPlay extends Thread implements AudioPlay
     protected Play play;
 
     private final Thread thread;
+
+    protected boolean park = false;
 
     private static final String THREAD_NAME_PRE = "NDP-AUDIO-PLAY-";
 
@@ -80,7 +84,8 @@ public abstract class AbstractAudioPlay extends Thread implements AudioPlay
      */
     protected void wake()
     {
-
+        this.park = false;
+        ToolBox.THE_UNSAFE.unpark(this);
     }
 
     /**
@@ -88,6 +93,7 @@ public abstract class AbstractAudioPlay extends Thread implements AudioPlay
      */
     protected void block()
     {
+        ToolBox.THE_UNSAFE.park(false, 0L);
     }
 
     @Override
@@ -115,7 +121,7 @@ public abstract class AbstractAudioPlay extends Thread implements AudioPlay
     @Override
     public void pause()
     {
-        block();
+        this.park = true;
     }
 
     @Override
