@@ -93,7 +93,7 @@ public class StartMenu extends RoadPanel
      * 背景音乐集合
      */
     private List<AudioPlay> backgroundAudios = Lists.newArrayList(
-            AudioPlays.getAudioPlayInstance("/home/OveMelaa-HeavenSings.mp3")
+            AudioPlays.getAudioPlayInstance(ResourcesCollects.HOME_OVEMELAA_HEAVENSINGS_MP3)
     );
 
     private AudioPlay curr_play_bgm;

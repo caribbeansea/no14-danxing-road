@@ -52,11 +52,10 @@ public class AudioPlays
      *
      * @return AudioPlay实例
      */
-    public static AudioPlay getAudioPlayInstance(String path)
+    public static AudioPlay getAudioPlayInstance(File audiof)
     {
-        File file = new File(AUDIO_DIR.concat(path));
 
-        String extension = Files.getExtension(file);
+        String extension = Files.getExtension(audiof);
         AudioType audioType = AudioType.valueOf(extension.toUpperCase(Locale.ROOT));
 
         try
@@ -64,13 +63,13 @@ public class AudioPlays
             switch (audioType)
             {
                 case MP3:
-                    return new PlayMp3(file);
+                    return new PlayMp3(audiof);
                 default: {
                     throw new UnknownTypeException(String.format("不支持音频格式: [%s]", extension));
                 }
             }
         }catch (Exception e) {
-            throw new UnknownTypeException(String.format("音频加载失败: [%s]", path), e);
+            throw new UnknownTypeException(String.format("音频加载失败: [%s]", audiof.getAbsolutePath()), e);
         }
 
     }

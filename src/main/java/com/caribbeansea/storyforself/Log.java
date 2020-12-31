@@ -70,6 +70,11 @@ public class Log
         error(msg, null, (Object) null);
     }
 
+    public static void error(String msg, Object... args)
+    {
+        error(msg, null, args);
+    }
+
     public static void error(String msg, Throwable e, Object... args)
     {
         err.printf(ERROR.concat(msg).concat("\n"), args);

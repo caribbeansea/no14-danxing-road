@@ -38,6 +38,7 @@ import java.util.List;
  */
 public interface ResourcesCollects
 {
+    String RESOURCES = "resources";
 
     Image terraria_background_61 = ImageRead.read("/ui/Background_61.png");
 
@@ -60,6 +61,10 @@ public interface ResourcesCollects
             ImageRead.read("/ui/cloud/Cloud_12.png"),
             ImageRead.read("/ui/cloud/Cloud_13.png")
     );
+
+    // #############################################################################################
+    // ----------------------------- 泰拉瑞亚中的太阳和月亮以及星星 ------------------------------------
+    // #############################################################################################
 
     Image terraria_star_1 = ImageRead.read("/ui/moon&sun&star/Star_1.png");
 
@@ -87,9 +92,14 @@ public interface ResourcesCollects
 
     Image terraria_moon_0 = ImageRead.read("/ui/moon&sun&star/Moon_0.png");
 
+    // #############################################################################################
+    // -----------------------------  AUDIO --------------------------------
+    // #############################################################################################
+
+    File HOME_OVEMELAA_HEAVENSINGS_MP3 = AudioRead.read("/home/OveMelaa-HeavenSings.mp3");
+
     class ImageRead
     {
-        final static String RESOURCES = "resources";
 
         static Image read(String path)
         {
@@ -104,6 +114,21 @@ public interface ResourcesCollects
                 Log.error("image file path %s", e, imageFile.getPath());
             }
             return image;
+        }
+    }
+
+    class AudioRead
+    {
+
+        static final String AUDIO_RESOURCES = RESOURCES.concat("/audio");
+
+        static File read(String path)
+        {
+            File audiof = new File(AUDIO_RESOURCES.concat(path));
+            if(!audiof.exists()) {
+                Log.error("image file path %s", audiof.getPath());
+            }
+            return audiof;
         }
     }
 
