@@ -25,7 +25,7 @@ package com.caribbeansea.storyforself.menun;
 import com.caribbeansea.storyforself.Resources;
 import com.caribbeansea.storyforself.audio.AudioPlay;
 import com.caribbeansea.storyforself.audio.AudioPlays;
-import com.caribbeansea.storyforself.component.RoadPanel;
+import com.caribbeansea.storyforself.component.CaribbeanPanel;
 import com.caribbeansea.storyforself.utils.Lists;
 import com.caribbeansea.storyforself.utils.ToolBox;
 
@@ -42,7 +42,7 @@ import java.util.List;
         "FieldMayBeFinal",
         "SameParameterValue",
 })
-public class StartMenu extends RoadPanel
+public class StartMenu extends CaribbeanPanel
 {
 
     /**
