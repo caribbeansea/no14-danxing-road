@@ -40,7 +40,7 @@ public class WriteYourStory extends JFrame
 {
 
     public static int width = 1023;
-    public static int height = 559;
+    public static int height = 626;
 
     public WriteYourStory()
     {
@@ -51,7 +51,7 @@ public class WriteYourStory extends JFrame
 
         // --------------------------------------------
         // 配置监听事件
-        confEventListener();
+        confEventListener(this);
         // --------------------------------------------
 
         // --------------------------------------------
@@ -71,7 +71,7 @@ public class WriteYourStory extends JFrame
     /**
      * 配置事件监听器
      */
-    public void confEventListener()
+    public void confEventListener(JFrame frame)
     {
 //        // 如果当前位置发生改变则输出当前位置
 //        this.addComponentListener(new ComponentAdapter()
@@ -83,13 +83,14 @@ public class WriteYourStory extends JFrame
 //            }
 //        });
 //
-//        // 鼠标被点击
+        // 鼠标被点击
 //        this.addMouseListener(new MouseAdapter()
 //        {
 //            @Override
 //            public void mousePressed(MouseEvent e)
 //            {
-//                Log.info("当前X轴：【%s】，当前Y轴：【%s】", e.getX(), e.getY());
+//                Log.printCoords("鼠标", e.getX(), e.getY());
+//                Log.info("窗口宽度：【%s】，窗口高度：【%s】", frame.getWidth(), frame.getHeight());
 //            }
 //        });
 
