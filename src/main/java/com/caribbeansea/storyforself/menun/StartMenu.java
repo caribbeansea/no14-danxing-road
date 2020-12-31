@@ -22,7 +22,7 @@ package com.caribbeansea.storyforself.menun;
  * Creates on 2020/12/28.
  */
 
-import com.caribbeansea.storyforself.ResourcesCollects;
+import com.caribbeansea.storyforself.Resources;
 import com.caribbeansea.storyforself.audio.AudioPlay;
 import com.caribbeansea.storyforself.audio.AudioPlays;
 import com.caribbeansea.storyforself.component.RoadPanel;
@@ -93,7 +93,7 @@ public class StartMenu extends RoadPanel
      * 背景音乐集合
      */
     private List<AudioPlay> backgroundAudios = Lists.newArrayList(
-            AudioPlays.getAudioPlayInstance(ResourcesCollects.HOME_OVEMELAA_HEAVENSINGS_MP3)
+            AudioPlays.getAudioPlayInstance(Resources.HOME_OVEMELAA_HEAVENSINGS_MP3)
     );
 
     private AudioPlay curr_play_bgm;
@@ -231,11 +231,11 @@ public class StartMenu extends RoadPanel
     void drawBackground(Graphics g, int x, int y)
     {
         // 绘制高山背景
-        g.drawImage(ResourcesCollects.terraria_background_25, x, y, null);
+        g.drawImage(Resources.terraria_background_25, x, y, null);
         // 绘制云层
         drawClouds(g);
         // 绘制树木背景
-        g.drawImage(ResourcesCollects.terraria_background_178, x, y, null);
+        g.drawImage(Resources.terraria_background_178, x, y, null);
     }
 
     /**
@@ -249,7 +249,7 @@ public class StartMenu extends RoadPanel
     void drawSunOrMoon(Graphics g)
     {
         // 太阳和月亮的位置
-        g.drawImage(ResourcesCollects.terraria_sun, sun_moon_x, sun_moon_y, null);
+        g.drawImage(Resources.terraria_sun, sun_moon_x, sun_moon_y, null);
     }
 
     /**

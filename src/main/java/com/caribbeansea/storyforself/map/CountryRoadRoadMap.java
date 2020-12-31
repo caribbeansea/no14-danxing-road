@@ -22,18 +22,14 @@ package com.caribbeansea.storyforself.map;
  * Creates on 2020/12/28.
  */
 
+import com.caribbeansea.storyforself.component.RoadPanel;
+
 /**
  * 102乡道
  *
  * @author tiansheng
  */
-public class CountryRoadRoadMap extends RoadMap
+public class CountryRoadRoadMap extends RoadPanel
 {
-
-    @Override
-    public String loadResources()
-    {
-        return null;
-    }
 
 }
