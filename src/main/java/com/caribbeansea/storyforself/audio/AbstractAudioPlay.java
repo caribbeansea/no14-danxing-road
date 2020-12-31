@@ -44,10 +44,12 @@ public abstract class AbstractAudioPlay extends Thread implements AudioPlay
 
     private final Thread thread;
 
+    private static final String THREAD_NAME_PRE = "NDP-AUDIO-PLAY-";
+
     public AbstractAudioPlay(String name, File file) throws IOException, UnsupportedAudioFileException
     {
         getAudioInputStream(file);
-        this.thread = new Thread(this, name);
+        this.thread = new Thread(this, THREAD_NAME_PRE.concat(name));
         // AudioPlayManager.putAudioTask(this);
     }
 

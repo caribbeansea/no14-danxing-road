@@ -45,7 +45,7 @@ public class PlayMp3 extends AbstractAudioPlay
 
     public PlayMp3(File file) throws IOException, UnsupportedAudioFileException
     {
-        super("NDP-PLAY-MP3", file);
+        super("MP3", file);
     }
 
     @Override
