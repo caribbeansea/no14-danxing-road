@@ -22,8 +22,8 @@ no14-danxing-road中文叫做**单行路14号**，英文全称叫**danxing road 
 
 # Build no14-danxing-road
 
-- Jdk8
-- Maven 3.6.3
+- `Jdk8`以上`JDK11`以下
+- `Maven3.6.0`或以上
 
 # 提交规范
 
