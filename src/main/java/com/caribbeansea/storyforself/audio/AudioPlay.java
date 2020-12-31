@@ -25,6 +25,13 @@ package com.caribbeansea.storyforself.audio;
 /**
  * 支持所有格式的Audio对象
  *
+ * AudioPlay有一个概念"与程序并行"。由于音频的播放是将文件解码后
+ * 一帧一帧的进行播放，而这个播放的过程是阻塞性的，所以会导致整个程序被阻塞在
+ * 音频播放上面。
+ *
+ * 对此我写了个类叫做{@link AbstractAudioPlay}，通过这个类去实现它的 {@link AbstractAudioPlay#run()}
+ * 方法。实现并行运行。
+ *
  * @author tiansheng
  */
 public interface AudioPlay

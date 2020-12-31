@@ -36,6 +36,8 @@ public class Log
 
     private static final String INFO = "[INFO] - ";
 
+    private static final String DEBUG = "[DEBUG] - ";
+
     private static final String ERROR = "[ERROR] - ";
 
     public static void printCoords(String name, int x, int y)
@@ -53,6 +55,16 @@ public class Log
         out.printf(INFO.concat(msg).concat("\n"), args);
     }
 
+    public static void debug(String msg)
+    {
+        info(msg, (Object) null);
+    }
+
+    public static void debug(String msg, Object... args)
+    {
+        out.printf(DEBUG.concat(msg).concat("\n"), args);
+    }
+
     public static void error(String msg)
     {
         error(msg, null, (Object) null);
@@ -65,6 +77,11 @@ public class Log
         {
             e.printStackTrace();
         }
+    }
+
+    public static void note(String msg)
+    {
+        info(msg);
     }
 
 }

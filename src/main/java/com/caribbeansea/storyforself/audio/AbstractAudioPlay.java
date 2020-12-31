@@ -27,7 +27,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.locks.LockSupport;
 
 /**
  * @author tiansheng
@@ -85,15 +84,6 @@ public abstract class AbstractAudioPlay extends Thread implements AudioPlay
      */
     protected void block()
     {
-        try
-        {
-            synchronized (thread) {
-                thread.wait();
-            }
-        } catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        }
     }
 
     @Override

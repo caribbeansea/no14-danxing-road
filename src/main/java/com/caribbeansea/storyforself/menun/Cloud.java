@@ -22,8 +22,8 @@ package com.caribbeansea.storyforself.menun;
  * Creates on 2020/12/29.
  */
 
-import com.caribbeansea.storyforself.ResourcesCollects;
 import com.caribbeansea.storyforself.Utils;
+import com.caribbeansea.storyforself.utils.ToolBox;
 
 import java.awt.*;
 
@@ -98,7 +98,7 @@ public class Cloud
      */
     private void initImage()
     {
-        this.cloudImage = ResourcesCollects.ToolBox.randomCloud();
+        this.cloudImage = ToolBox.randomCloud();
         this.imageWidth = this.cloudImage.getWidth(null);
     }
 

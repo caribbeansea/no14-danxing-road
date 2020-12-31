@@ -22,4 +22,28 @@ no14-danxing-road中文叫做**单行路14号**，英文全称叫**danxing road 
 
 # Build no14-danxing-road
 
-- Jdk8 or Jdk11+Fx lib
+- Jdk8
+- Maven 3.6.3
+
+# 提交规范
+
+    <type>(<scope>): <subject> #header
+
+- `fix`修补BUG
+- `conf`配置文件
+- `docs`文档
+- `feat`新功能或者文件等
+- `refactor`重构代码
+- `del`删除
+- `release`发布版本
+- `build`构建工具或过程等辅助类的变动
+- `issue`议题
+- `test`测试
+
+例如：
+    
+    1. feat(Audio): 新增音频MP3音频播放
+    2. fix(Audio): 修复音频播放阻塞问题
+
+以上两个案例为什么需要加模块呢？即时这个模块不存在。原因是音频是概括了很多种格式的。mp3只是其中的
+一种而已。所以它属于模块

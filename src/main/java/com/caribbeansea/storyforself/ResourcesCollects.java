@@ -87,23 +87,6 @@ public interface ResourcesCollects
 
     Image terraria_moon_0 = ImageRead.read("/ui/moon&sun&star/Moon_0.png");
 
-    /**
-     * 素材工具箱
-     */
-    class ToolBox
-    {
-
-        /**
-         * @return 从 {@link #terraria_clouds} 集合中随机获取一片云
-         */
-        public static Image randomCloud()
-        {
-            int index = Utils.RANDOM.nextInt(terraria_clouds.size());
-            return terraria_clouds.get(index);
-        }
-
-    }
-
     class ImageRead
     {
         final static String RESOURCES = "resources";
