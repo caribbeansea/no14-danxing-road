@@ -22,8 +22,8 @@ package com.caribbeansea.storyforself.component;
  * Creates on 2020/12/28.
  */
 
-import com.caribbeansea.storyforself.Resources;
 import com.caribbeansea.storyforself.instruction.InstPanel;
+import com.caribbeansea.storyforself.resources.ImageResources;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,11 +38,11 @@ public class CaribbeanPanel extends JPanel
 
     private InstPanel instPanel;
 
-    public void repaint(Graphics g)
+    public void repaint()
     {
         if (visibleInst)
         {
-            instPanel.drawInst(g);
+            instPanel.drawInst(getGraphics());
         }
 
         super.repaint();
@@ -68,18 +68,29 @@ public class CaribbeanPanel extends JPanel
         this.instPanel = instPanel;
     }
 
-    public void drawImage(Graphics g, Image image, int x, int y)
+    public void drawImage(Graphics graphics, ImageResources resources, int x, int y)
     {
-        drawImage(g, image, x, y, false);
+        drawImage(graphics, resources.getBufferedImage(), x, y, false);
     }
 
-    public void drawImage(Graphics g, Image image, int x, int y, boolean variety)
+    public void drawImage(Graphics graphics, ImageResources resources, int x, int y, boolean variety)
     {
-        if(variety)
+        drawImage(graphics, resources.getBufferedImage(), x, y, variety);
+    }
+
+    public void drawImage(Graphics graphics, Image image, int x, int y)
+    {
+        drawImage(graphics, image, x, y, false);
+    }
+
+    public void drawImage(Graphics graphics, Image image, int x, int y, boolean variety)
+    {
+        if (variety)
         {
-            g.drawImage(image, x, y, getWidth(), getHeight(), null);
-        }else {
-            g.drawImage(image, x, y, null);
+            graphics.drawImage(image, x, y, getWidth(), getHeight(), null);
+        } else
+        {
+            graphics.drawImage(image, x, y, null);
         }
     }
 

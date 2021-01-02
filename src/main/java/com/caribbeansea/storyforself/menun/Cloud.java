@@ -22,6 +22,7 @@ package com.caribbeansea.storyforself.menun;
  * Creates on 2020/12/29.
  */
 
+import com.caribbeansea.storyforself.resources.ImageResources;
 import com.caribbeansea.storyforself.utils.ToolBox;
 
 import java.awt.*;
@@ -97,7 +98,7 @@ public class Cloud
      */
     private void initImage()
     {
-        this.cloudImage = ToolBox.randomCloud();
+        this.cloudImage = ImageResources.TERRARIA_CLOUDS.getRandomBufferedImage();
         this.imageWidth = this.cloudImage.getWidth(null);
     }
 

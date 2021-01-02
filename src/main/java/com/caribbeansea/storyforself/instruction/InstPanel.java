@@ -22,8 +22,8 @@ package com.caribbeansea.storyforself.instruction;
  * Creates on 2020/12/31.
  */
 
-import com.caribbeansea.storyforself.Resources;
 import com.caribbeansea.storyforself.component.CaribbeanPanel;
+import com.caribbeansea.storyforself.resources.ImageResources;
 
 import java.awt.*;
 
@@ -50,6 +50,6 @@ public class InstPanel
     public void drawInst(Graphics g)
     {
         // TODO: 测试显示
-        g.drawImage(Resources.terraria_moon_0,0,0, null);
+        g.drawImage(ImageResources.TERRARIA_MOON_0.getBufferedImage(),0,0, null);
     }
 }

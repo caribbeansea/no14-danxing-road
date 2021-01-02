@@ -47,6 +47,10 @@ public class WriteYourStory extends CaribbeanFrame
 
     public static int height = 813;
 
+    public static final String RESOURCES = "resources";
+
+    public static final String AUDIO_RESOURCES = RESOURCES.concat("/audio");
+
     public WriteYourStory()
     {
         super("单行路22号");

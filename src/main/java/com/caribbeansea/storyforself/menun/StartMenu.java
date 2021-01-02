@@ -22,10 +22,11 @@ package com.caribbeansea.storyforself.menun;
  * Creates on 2020/12/28.
  */
 
-import com.caribbeansea.storyforself.Resources;
 import com.caribbeansea.storyforself.audio.AudioPlay;
 import com.caribbeansea.storyforself.audio.AudioPlays;
 import com.caribbeansea.storyforself.component.CaribbeanPanel;
+import com.caribbeansea.storyforself.resources.AudioResrouces;
+import com.caribbeansea.storyforself.resources.ImageResources;
 import com.caribbeansea.storyforself.utils.Lists;
 import com.caribbeansea.storyforself.utils.ToolBox;
 
@@ -66,7 +67,7 @@ public class StartMenu extends CaribbeanPanel
 
     /**
      * 太阳和月亮位置
-     *
+     * <p>
      * sun_moon_x的赋值操作在构造器中
      */
     private int sun_moon_x, sun_moon_y = -20;
@@ -100,9 +101,9 @@ public class StartMenu extends CaribbeanPanel
      * 背景音乐集合
      */
     private List<AudioPlay> backgroundAudios = Lists.newArrayList(
-            AudioPlays.getAudioPlayInstance(Resources.HOME_OVE_MELAA_TIMES_MP3),
-            AudioPlays.getAudioPlayInstance(Resources.HOME_OVEMELAA_HEAVENSINGS_MP3),
-            AudioPlays.getAudioPlayInstance(Resources.HOME_OVEMELAA_THEMECRYSTALIZED_MP3)
+            AudioPlays.getAudioPlayInstance(AudioResrouces.HOME_OVE_MELAA_TIMES_MP3),
+            AudioPlays.getAudioPlayInstance(AudioResrouces.HOME_OVEMELAA_HEAVENSINGS_MP3),
+            AudioPlays.getAudioPlayInstance(AudioResrouces.HOME_OVEMELAA_THEMECRYSTALIZED_MP3)
     );
 
     private AudioPlay curr_play_bgm;
@@ -186,7 +187,7 @@ public class StartMenu extends CaribbeanPanel
 
         // 重新绘制所有图片，否则如果不清空面板再重新绘制的话会出现之前绘制的图片
         // 会停留在屏幕中，导致屏幕中出现非常多的图片。同时会导致内存的递增从而抛出OOM异常。
-        repaint(g);
+        repaint();
     }
 
     /**
@@ -241,11 +242,11 @@ public class StartMenu extends CaribbeanPanel
     void drawBackground(Graphics g, int x, int y)
     {
         // 绘制高山背景
-        drawImage(g, Resources.terraria_background_25, x, y, true);
+        drawImage(g, ImageResources.TERRARIA_BACKGROUND_25, x, y, true);
         // 绘制云层
         drawClouds(g);
         // 绘制树木背景
-        drawImage(g, Resources.terraria_background_178, x, y, true);
+        drawImage(g, ImageResources.TERRARIA_BACKGROUND_178, x, y, true);
     }
 
     /**
@@ -253,13 +254,11 @@ public class StartMenu extends CaribbeanPanel
      * <p>
      * FIXME: 目前只设置了月亮，如果你愿意你可以根据时间来设置，如果当前是晚上就使用月亮。
      * FIXME: 也可以让太阳和月亮有个类似抛物线的动作，来实现日月交替的功能。
-     *
-     * @param g 画笔
      */
-    void drawSunOrMoon(Graphics g)
+    void drawSunOrMoon(Graphics graphics)
     {
         // 太阳和月亮的位置
-        g.drawImage(Resources.terraria_sun, sun_moon_x, sun_moon_y, null);
+        drawImage(graphics, ImageResources.TERRARIA_SUN, sun_moon_x, sun_moon_y);
     }
 
     /**

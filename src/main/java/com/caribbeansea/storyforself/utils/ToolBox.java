@@ -22,7 +22,7 @@ package com.caribbeansea.storyforself.utils;
  * Creates on 2020/12/31.
  */
 
-import com.caribbeansea.storyforself.Resources;
+import com.caribbeansea.storyforself.resources.ImageResources;
 import sun.misc.Unsafe;
 
 import java.awt.*;
@@ -73,14 +73,6 @@ public class ToolBox
         {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * @return 从 {@link Resources#terraria_clouds} 集合中随机获取一片云
-     */
-    public static Image randomCloud()
-    {
-        return randomValue(Resources.terraria_clouds);
     }
 
     /**
