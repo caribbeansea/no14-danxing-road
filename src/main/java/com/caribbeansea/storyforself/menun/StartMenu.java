@@ -24,12 +24,12 @@ package com.caribbeansea.storyforself.menun;
 
 import com.caribbeansea.storyforself.audio.AudioPlay;
 import com.caribbeansea.storyforself.audio.AudioPlays;
-import com.caribbeansea.storyforself.component.CaribbeanPanel;
 import com.caribbeansea.storyforself.resources.AudioResrouces;
 import com.caribbeansea.storyforself.resources.ImageResources;
 import com.caribbeansea.storyforself.utils.Lists;
 import com.caribbeansea.storyforself.utils.ToolBox;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
@@ -43,7 +43,7 @@ import java.util.List;
         "FieldMayBeFinal",
         "SameParameterValue",
 })
-public class StartMenu extends CaribbeanPanel
+public class StartMenu extends JPanel
 {
 
     /**
