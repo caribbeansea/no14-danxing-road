@@ -1,4 +1,4 @@
-package com.caribbeansea.storyforself.key;
+package com.caribbeansea.storyforself.exception;
 
 /* ************************************************************************
  *
@@ -19,15 +19,38 @@ package com.caribbeansea.storyforself.key;
  * ************************************************************************/
 
 /*
- * Creates on 2020/12/31.
+ * Creates on 2021/1/2.
  */
-
-import java.awt.event.KeyAdapter;
 
 /**
+ * 未实现异常
+ *
  * @author tiansheng
  */
-public class GlobalKeyEvent extends KeyAdapter
+public class UnImplException extends GameException
 {
 
+    public UnImplException()
+    {
+    }
+
+    public UnImplException(String message)
+    {
+        super(message);
+    }
+
+    public UnImplException(String message, Throwable cause)
+    {
+        super(message, cause);
+    }
+
+    public UnImplException(Throwable cause)
+    {
+        super(cause);
+    }
+
+    public UnImplException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace)
+    {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 }

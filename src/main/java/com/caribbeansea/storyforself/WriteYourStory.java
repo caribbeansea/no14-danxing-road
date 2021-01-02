@@ -22,7 +22,7 @@ package com.caribbeansea.storyforself;
  * Creates on 2020/12/25.
  */
 
-import com.caribbeansea.storyforself.key.GlobalKeyEvent;
+import com.caribbeansea.storyforself.handler.GlobalKeyEvent;
 import com.caribbeansea.storyforself.menun.StartMenu;
 
 import javax.swing.*;
