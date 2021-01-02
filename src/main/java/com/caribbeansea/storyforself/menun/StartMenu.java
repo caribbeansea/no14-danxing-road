@@ -242,11 +242,11 @@ public class StartMenu extends CaribbeanPanel
     void drawBackground(Graphics g, int x, int y)
     {
         // 绘制高山背景
-        drawImage(g, ImageResources.TERRARIA_BACKGROUND_25, x, y, true);
+        g.drawImage(ImageResources.TERRARIA_BACKGROUND_25.getBufferedImage(), x, y, null);
         // 绘制云层
         drawClouds(g);
         // 绘制树木背景
-        drawImage(g, ImageResources.TERRARIA_BACKGROUND_178, x, y, true);
+        g.drawImage(ImageResources.TERRARIA_BACKGROUND_178.getBufferedImage(), x, y, null);
     }
 
     /**
@@ -258,7 +258,7 @@ public class StartMenu extends CaribbeanPanel
     void drawSunOrMoon(Graphics graphics)
     {
         // 太阳和月亮的位置
-        drawImage(graphics, ImageResources.TERRARIA_SUN, sun_moon_x, sun_moon_y);
+        graphics.drawImage(ImageResources.TERRARIA_SUN.getBufferedImage(), sun_moon_x, sun_moon_y, null);
     }
 
     /**

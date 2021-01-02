@@ -22,10 +22,7 @@ package com.caribbeansea.storyforself.key;
  * Creates on 2020/12/31.
  */
 
-import com.caribbeansea.storyforself.instruction.InstPanel;
-
 import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 /**
  * @author tiansheng
@@ -33,30 +30,4 @@ import java.awt.event.KeyEvent;
 public class GlobalKeyEvent extends KeyAdapter
 {
 
-    private InstPanel instPanel;
-
-    @Override
-    public void keyPressed(KeyEvent e)
-    {
-        showInstPanel(e);
-    }
-
-    /**
-     * 展开指令面板
-     */
-    private void showInstPanel(KeyEvent e) {
-        if(e.getKeyChar() == '`') {
-            this.instPanel.visible();
-        }
-    }
-
-    public InstPanel getInstPanel()
-    {
-        return instPanel;
-    }
-
-    public void setInstPanel(InstPanel instPanel)
-    {
-        this.instPanel = instPanel;
-    }
 }

@@ -23,17 +23,11 @@ package com.caribbeansea.storyforself;
  */
 
 import com.caribbeansea.storyforself.component.CaribbeanFrame;
-import com.caribbeansea.storyforself.component.CaribbeanPanel;
-import com.caribbeansea.storyforself.instruction.InstPanel;
 import com.caribbeansea.storyforself.key.GlobalKeyEvent;
 import com.caribbeansea.storyforself.menun.StartMenu;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 /**
  * 开始编写你的故事
@@ -69,11 +63,7 @@ public class WriteYourStory extends CaribbeanFrame
         panels.add(startMenu);
         // --------------------------------------------
 
-        InstPanel instPanel = new InstPanel(startMenu);
-        startMenu.setInstPanel(instPanel);
-
         GlobalKeyEvent globalKeyEvent = new GlobalKeyEvent();
-        globalKeyEvent.setInstPanel(instPanel);
         addKeyListener(globalKeyEvent);
 
         setVisible(true);
