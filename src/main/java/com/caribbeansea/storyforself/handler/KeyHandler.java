@@ -47,11 +47,9 @@ public class KeyHandler implements KeyListener
     public Key VK_ESCAPE = new Key();
     public Key VK_MAP    = new Key();
 
-    private GamePanel gamePanel;
-
     public KeyHandler(GamePanel gamePanel)
     {
-        this.gamePanel = gamePanel;
+        gamePanel.addKeyListener(this);
     }
 
     public void releaseAll()

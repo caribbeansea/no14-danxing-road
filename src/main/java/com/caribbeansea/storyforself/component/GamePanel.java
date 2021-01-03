@@ -88,8 +88,6 @@ public class GamePanel extends JPanel implements Runnable, GameHandler
         key = new KeyHandler(this);
 
         stateManager = new GameStateManager();
-
-        addKeyListener(key);
     }
 
     @Override
