@@ -94,6 +94,8 @@ public enum ImageResources
             read("/ui/cloud/Cloud_13.png")
     )),
 
+    LINK_FORMATTED(read("/ui/game/linkformatted.png"))
+
     ;
 
     private BufferedImage value;

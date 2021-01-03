@@ -42,7 +42,7 @@ public class Vector2f
 
     public Vector2f(Vector2f vec2f)
     {
-        new Vector2f(vec2f.x, vec2f.y);
+        this(vec2f.x, vec2f.y);
     }
 
     public Vector2f(float x, float y)

@@ -73,19 +73,49 @@ public abstract class GameEntity implements Render
         setAnimation(RIGHT, sprite.getSpriteArray(RIGHT), 10);
     }
 
-   public void setAnimation(int const_i, BufferedImage[] frames, int delay) {
+    public void setAnimation(int const_i, BufferedImage[] frames, int delay)
+    {
         current_animation = const_i;
         animation.setFrames(frames);
         animation.setDelay(delay);
-   }
+    }
 
-   public void animate() {
-        if(up) {
-            if(current_animation != UP || animation.getDelay() == -1) {
+    public int getSize()
+    {
+        return size;
+    }
+
+    public void animate()
+    {
+        if (up)
+        {
+            if (current_animation != UP || animation.getDelay() == -1)
+            {
                 setAnimation(UP, sprite.getSpriteArray(UP), 5);
             }
+        } else if (down)
+        {
+            if (current_animation != DOWN || animation.getDelay() == -1)
+            {
+                setAnimation(DOWN, sprite.getSpriteArray(DOWN), 5);
+            }
+        } else if (left)
+        {
+            if (current_animation != LEFT || animation.getDelay() == -1)
+            {
+                setAnimation(LEFT, sprite.getSpriteArray(LEFT), 5);
+            }
+        } else if (right)
+        {
+            if (current_animation != RIGHT || animation.getDelay() == -1)
+            {
+                setAnimation(RIGHT, sprite.getSpriteArray(RIGHT), 5);
+            }
+        } else
+        {
+            setAnimation(current_animation, sprite.getSpriteArray(current_animation), -1);
         }
-   }
+    }
 
     @Override
     public void update()
@@ -93,4 +123,5 @@ public abstract class GameEntity implements Render
         animate();
         animation.update();
     }
+
 }
