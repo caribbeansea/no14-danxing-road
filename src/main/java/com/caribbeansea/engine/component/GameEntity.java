@@ -79,4 +79,18 @@ public abstract class GameEntity implements Render
         animation.setDelay(delay);
    }
 
+   public void animate() {
+        if(up) {
+            if(current_animation != UP || animation.getDelay() == -1) {
+                setAnimation(UP, sprite.getSpriteArray(UP), 5);
+            }
+        }
+   }
+
+    @Override
+    public void update()
+    {
+        animate();
+        animation.update();
+    }
 }
