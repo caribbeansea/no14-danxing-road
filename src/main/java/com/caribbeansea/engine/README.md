@@ -15,6 +15,7 @@
 - 设备监听器`KeyListener, MouseListener`
 - 日志系统`Log`
 - 资源管理`Resources`
+- 游戏字体`GameFont`
 
 # English
 
@@ -22,7 +23,18 @@ This game engine can for production of new game, when it completes
 
 I will continue to maintain it if I still keep the interest, or more people using and community relatively active I be continued to maintain it too.
 
-** way I will maintain? **
+**way I will maintain?**
 
 - first cause: my interest
 - second cause: have more people using, everyone need technology support.
+
+# List of completed features
+
+- game state
+- game map
+- animation
+- audio format support
+- device listener
+- log system
+- resources manager
+- game font for image
