@@ -54,7 +54,9 @@ public class PlayState extends GameState
     @Override
     public void input(MouseHandler mouse, KeyHandler key)
     {
-
+        if(key.VK_DOWN.isDown()) {
+            System.out.println("down");
+        }
     }
 
 }

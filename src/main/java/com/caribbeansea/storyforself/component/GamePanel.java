@@ -85,9 +85,11 @@ public class GamePanel extends JPanel implements Runnable, GameHandler
         this.graphics = (Graphics2D) image.getGraphics();
 
         mouse = new MouseHandler();
-        key = new KeyHandler();
+        key = new KeyHandler(this);
 
         stateManager = new GameStateManager();
+
+        addKeyListener(key);
     }
 
     @Override
