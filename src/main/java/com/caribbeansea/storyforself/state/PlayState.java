@@ -24,7 +24,7 @@ package com.caribbeansea.storyforself.state;
 
 import com.caribbeansea.storyforself.component.GameFont;
 import com.caribbeansea.storyforself.component.Vector2f;
-import com.caribbeansea.storyforself.game.Sprite;
+import com.caribbeansea.storyforself.component.Sprite;
 import com.caribbeansea.storyforself.handler.KeyHandler;
 import com.caribbeansea.storyforself.handler.MouseHandler;
 import com.caribbeansea.storyforself.resources.ImageResources;
