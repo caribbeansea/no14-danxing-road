@@ -49,11 +49,13 @@ public abstract class GameEntity implements Render
     protected boolean down;
     protected boolean left;
     protected boolean right;
+    protected boolean attack;
     protected boolean attackSpeed;
     protected boolean attackDuration;
 
-    protected boolean dx;
-    protected boolean dy;
+    // 用于移动盒子等物体
+    protected float dx;
+    protected float dy;
 
     protected float max_speed;
 
@@ -63,17 +65,24 @@ public abstract class GameEntity implements Render
 
     protected int current_animation;
 
+    protected AABB hit_bounds;
+
+    protected AABB bounds;
+
     public GameEntity(Sprite sprite, Vector2f origin, int size)
     {
         this.sprite = sprite;
         this.origin = origin;
         this.size = size;
 
+        this.bounds = new AABB(origin, size, size);
+        this.hit_bounds = new AABB(new Vector2f(origin.getX() + ((float) (size / 2)), origin.getY()), size, size);
+
         this.animation = new Animation();
-        setAnimation(RIGHT, sprite.getSpriteArray(RIGHT), 10);
+        set_animation(RIGHT, sprite.getSpriteArray(RIGHT), 10);
     }
 
-    public void setAnimation(int const_i, BufferedImage[] frames, int delay)
+    public void set_animation(int const_i, BufferedImage[] frames, int delay)
     {
         current_animation = const_i;
         animation.setFrames(frames);
@@ -91,29 +100,29 @@ public abstract class GameEntity implements Render
         {
             if (current_animation != UP || animation.getDelay() == -1)
             {
-                setAnimation(UP, sprite.getSpriteArray(UP), 5);
+                set_animation(UP, sprite.getSpriteArray(UP), 5);
             }
         } else if (down)
         {
             if (current_animation != DOWN || animation.getDelay() == -1)
             {
-                setAnimation(DOWN, sprite.getSpriteArray(DOWN), 5);
+                set_animation(DOWN, sprite.getSpriteArray(DOWN), 5);
             }
         } else if (left)
         {
             if (current_animation != LEFT || animation.getDelay() == -1)
             {
-                setAnimation(LEFT, sprite.getSpriteArray(LEFT), 5);
+                set_animation(LEFT, sprite.getSpriteArray(LEFT), 5);
             }
         } else if (right)
         {
             if (current_animation != RIGHT || animation.getDelay() == -1)
             {
-                setAnimation(RIGHT, sprite.getSpriteArray(RIGHT), 5);
+                set_animation(RIGHT, sprite.getSpriteArray(RIGHT), 5);
             }
         } else
         {
-            setAnimation(current_animation, sprite.getSpriteArray(current_animation), -1);
+            set_animation(current_animation, sprite.getSpriteArray(current_animation), -1);
         }
     }
 
@@ -121,7 +130,224 @@ public abstract class GameEntity implements Render
     public void update()
     {
         animate();
+        set_hit_box_direction();
         animation.update();
     }
 
+    public void set_hit_box_direction()
+    {
+        if (up)
+        {
+            this.hit_bounds.setXOffset((float) -size / 2);
+            this.hit_bounds.setYOffset((float) -size / 2);
+        } else if (down)
+        {
+            this.hit_bounds.setXOffset((float) -size / 2);
+            this.hit_bounds.setYOffset((float) size / 2);
+        } else if (left)
+        {
+            this.hit_bounds.setXOffset((float) -size);
+            this.hit_bounds.setYOffset(0);
+        } else if (right)
+        {
+            this.hit_bounds.setXOffset(0);
+            this.hit_bounds.setYOffset(0);
+        }
+
+    }
+
+    public Sprite getSprite()
+    {
+        return sprite;
+    }
+
+    public Vector2f getOrigin()
+    {
+        return origin;
+    }
+
+    public void setSize(int size)
+    {
+        this.size = size;
+    }
+
+    public Animation getAnimation()
+    {
+        return animation;
+    }
+
+    public void setAnimation(Animation animation)
+    {
+        this.animation = animation;
+    }
+
+    public int getUP()
+    {
+        return UP;
+    }
+
+    public int getDOWN()
+    {
+        return DOWN;
+    }
+
+    public int getLEFT()
+    {
+        return LEFT;
+    }
+
+    public int getRIGHT()
+    {
+        return RIGHT;
+    }
+
+    public boolean isUp()
+    {
+        return up;
+    }
+
+    public void setUp(boolean up)
+    {
+        this.up = up;
+    }
+
+    public boolean isDown()
+    {
+        return down;
+    }
+
+    public void setDown(boolean down)
+    {
+        this.down = down;
+    }
+
+    public boolean isLeft()
+    {
+        return left;
+    }
+
+    public void setLeft(boolean left)
+    {
+        this.left = left;
+    }
+
+    public boolean isRight()
+    {
+        return right;
+    }
+
+    public void setRight(boolean right)
+    {
+        this.right = right;
+    }
+
+    public boolean isAttack()
+    {
+        return attack;
+    }
+
+    public void setAttack(boolean attack)
+    {
+        this.attack = attack;
+    }
+
+    public boolean isAttackSpeed()
+    {
+        return attackSpeed;
+    }
+
+    public void setAttackSpeed(boolean attackSpeed)
+    {
+        this.attackSpeed = attackSpeed;
+    }
+
+    public boolean isAttackDuration()
+    {
+        return attackDuration;
+    }
+
+    public void setAttackDuration(boolean attackDuration)
+    {
+        this.attackDuration = attackDuration;
+    }
+
+    public float getDx()
+    {
+        return dx;
+    }
+
+    public void setDx(float dx)
+    {
+        this.dx = dx;
+    }
+
+    public float getDy()
+    {
+        return dy;
+    }
+
+    public void setDy(float dy)
+    {
+        this.dy = dy;
+    }
+
+    public float getMax_speed()
+    {
+        return max_speed;
+    }
+
+    public void setMax_speed(float max_speed)
+    {
+        this.max_speed = max_speed;
+    }
+
+    public float getAcc()
+    {
+        return acc;
+    }
+
+    public void setAcc(float acc)
+    {
+        this.acc = acc;
+    }
+
+    public float getDeacc()
+    {
+        return deacc;
+    }
+
+    public void setDeacc(float deacc)
+    {
+        this.deacc = deacc;
+    }
+
+    public int getCurrent_animation()
+    {
+        return current_animation;
+    }
+
+    public void setCurrent_animation(int current_animation)
+    {
+        this.current_animation = current_animation;
+    }
+
+    public AABB getHit_bounds()
+    {
+        return hit_bounds;
+    }
+
+    public void setHit_bounds(AABB hit_bounds)
+    {
+        this.hit_bounds = hit_bounds;
+    }
+
+    public AABB getBounds()
+    {
+        return bounds;
+    }
+
+    public void setBounds(AABB bounds)
+    {
+        this.bounds = bounds;
+    }
 }

@@ -83,7 +83,7 @@ public class Vector2f
         this.y = y;
     }
 
-    public Vector2f getWorld()
+    public Vector2f get_world()
     {
         return new Vector2f(x - WORLD_X, y - WORLD_Y);
     }

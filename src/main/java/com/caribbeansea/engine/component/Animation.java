@@ -145,9 +145,9 @@ public class Animation implements Render
         this.number_frames = frames;
     }
 
-    public BufferedImage[] getFrames()
+    public BufferedImage getFrames()
     {
-        return frames;
+        return frames[curr_frames];
     }
 
     public int getCurrFrames()

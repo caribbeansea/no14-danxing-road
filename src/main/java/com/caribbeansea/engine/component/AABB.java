@@ -76,11 +76,11 @@ public class AABB
      */
     public boolean collides(AABB box)
     {
-        float a_x = ((vec2f.getWorld().getX() + x_offset) + (width / 2));
-        float a_y = ((vec2f.getWorld().getY() + y_offset) + (height / 2));
+        float a_x = ((vec2f.get_world().getX() + x_offset) + (width / 2));
+        float a_y = ((vec2f.get_world().getY() + y_offset) + (height / 2));
 
-        float b_x = ((vec2f.getWorld().getX() + box.x_offset) + (width / 2));
-        float b_y = ((vec2f.getWorld().getY() + box.y_offset) + (height / 2));
+        float b_x = ((vec2f.get_world().getX() + box.x_offset) + (width / 2));
+        float b_y = ((vec2f.get_world().getY() + box.y_offset) + (height / 2));
 
         return Math.abs(a_x - b_x) < ((this.width / 2) + box.width / 2) &&
                 Math.abs(a_y - b_y) < ((this.height / 2) + box.height / 2);
@@ -89,13 +89,13 @@ public class AABB
     /**
      * 园框
      */
-    public boolean colCircleBox(AABB box)
+    public boolean colCircle_box(AABB box)
     {
-        float c_x = (float) (vec2f.getWorld().getX() + radius / Math.sqrt(2) - entity.getSize() / Math.sqrt(2));
-        float c_y = (float) (vec2f.getWorld().getY() + radius / Math.sqrt(2) - entity.getSize() / Math.sqrt(2));
+        float c_x = (float) (vec2f.get_world().getX() + radius / Math.sqrt(2) - entity.getSize() / Math.sqrt(2));
+        float c_y = (float) (vec2f.get_world().getY() + radius / Math.sqrt(2) - entity.getSize() / Math.sqrt(2));
 
-        float x_delta = c_x - Math.max(box.vec2f.getWorld().getX() + (box.width/2), Math.min(c_x, box.getVector2f().getX()));
-        float y_delta = c_x - Math.max(box.vec2f.getWorld().getY() + (box.width/2), Math.min(c_y, box.getVector2f().getY()));
+        float x_delta = c_x - Math.max(box.vec2f.get_world().getX() + (box.width/2), Math.min(c_x, box.getVector2f().getX()));
+        float y_delta = c_x - Math.max(box.vec2f.get_world().getY() + (box.width/2), Math.min(c_y, box.getVector2f().getY()));
 
         return (x_delta * x_delta + y_delta * y_delta) < ((this.radius / Math.sqrt(2)) * (this.radius / Math.sqrt(2)));
     }
