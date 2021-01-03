@@ -76,6 +76,11 @@ public enum ImageResources
 
     TERRARIA_MOON_0(read("/ui/moon&sun&star/Moon_0.png")),
 
+    // #######################################################################
+    // ---------------------------- 字体图标 ------------------------
+    // #######################################################################
+    FONT_0(read("/ui/font/font_0.png")),
+
     TERRARIA_CLOUDS(Lists.newArrayList(
             read("/ui/cloud/Cloud_4.png"),
             read("/ui/cloud/Cloud_5.png"),

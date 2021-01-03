@@ -23,9 +23,6 @@ package com.caribbeansea.storyforself.state;
  */
 
 import com.caribbeansea.storyforself.game.GameHandler;
-import com.caribbeansea.storyforself.utils.Lists;
-
-import java.util.List;
 
 /**
  * @author tiansheng

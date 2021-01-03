@@ -22,10 +22,13 @@ package com.caribbeansea.storyforself.state;
  * Creates on 2021/1/2.
  */
 
+import com.caribbeansea.storyforself.component.GameFont;
+import com.caribbeansea.storyforself.component.Vector2f;
+import com.caribbeansea.storyforself.game.Sprite;
 import com.caribbeansea.storyforself.handler.KeyHandler;
 import com.caribbeansea.storyforself.handler.MouseHandler;
+import com.caribbeansea.storyforself.resources.ImageResources;
 
-import javax.print.DocFlavor;
 import java.awt.*;
 
 /**
@@ -33,28 +36,31 @@ import java.awt.*;
  */
 public class PlayState extends GameState
 {
+
+    private GameFont font;
+
     public PlayState(GameStateManager stateManager)
     {
         super(stateManager);
+        this.font = new GameFont(ImageResources.FONT_0, 16, 16);
     }
 
     @Override
     public void update()
     {
-
     }
 
     @Override
     public void render(Graphics2D graphics)
     {
-        graphics.setColor(Color.RED);
-        graphics.drawRect(100,100,200,200);
+        Sprite.drawArray(graphics, font, "A I love you", new Vector2f(100, 100), 32, 32, 16, 0);
     }
 
     @Override
     public void input(MouseHandler mouse, KeyHandler key)
     {
-        if(key.VK_DOWN.isDown()) {
+        if (key.VK_DOWN.isDown())
+        {
             System.out.println("down");
         }
     }

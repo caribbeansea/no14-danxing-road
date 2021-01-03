@@ -23,11 +23,10 @@ package com.caribbeansea.storyforself.state;
  */
 
 import com.caribbeansea.storyforself.component.GameFrame;
-import com.caribbeansea.storyforself.component.GamePanel;
 import com.caribbeansea.storyforself.component.Vector2f;
+import com.caribbeansea.storyforself.game.GameHandler;
 import com.caribbeansea.storyforself.handler.KeyHandler;
 import com.caribbeansea.storyforself.handler.MouseHandler;
-import com.caribbeansea.storyforself.game.GameHandler;
 import com.caribbeansea.storyforself.utils.Lists;
 
 import java.awt.*;

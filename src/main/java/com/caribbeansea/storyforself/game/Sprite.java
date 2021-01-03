@@ -22,6 +22,8 @@ package com.caribbeansea.storyforself.game;
  * Creates on 2021/1/2.
  */
 
+import com.caribbeansea.storyforself.component.GameFont;
+import com.caribbeansea.storyforself.component.Vector2f;
 import com.caribbeansea.storyforself.resources.ImageResources;
 
 import java.awt.*;
@@ -36,19 +38,19 @@ import java.util.List;
 public class Sprite
 {
 
-    private final BufferedImage SPRITESHEET;
+    protected final BufferedImage SPRITESHEET;
 
-    private BufferedImage[][] spriteArray;
+    protected BufferedImage[][] spriteArray;
 
-    private int width;
+    protected int width;
 
-    private int height;
+    protected int height;
 
-    private int spriteWidth;
+    protected int spriteWidth;
 
-    private int spriteHeight;
+    protected int spriteHeight;
 
-    private static final int TILE_SIZE = 32;
+    protected static final int TILE_SIZE = 32;
 
     public Sprite(ImageResources resources)
     {
@@ -78,14 +80,17 @@ public class Sprite
     {
         this.spriteArray = new BufferedImage[spriteWidth][spriteHeight];
 
-        for(int x=0; x<spriteWidth; x++) {
-            for(int y=0; y<spriteHeight; y++) {
+        for (int x = 0; x < spriteWidth; x++)
+        {
+            for (int y = 0; y < spriteHeight; y++)
+            {
                 spriteArray[x][y] = getSprite(x, y);
             }
         }
     }
 
-    public BufferedImage getSprite(int x, int y) {
+    public BufferedImage getSprite(int x, int y)
+    {
         return SPRITESHEET.getSubimage(x * width, y * height, width, height);
     }
 
@@ -101,11 +106,13 @@ public class Sprite
         this.spriteHeight = SPRITESHEET.getHeight();
     }
 
-    public BufferedImage[] getSpriteArray(int i) {
+    public BufferedImage[] getSpriteArray(int i)
+    {
         return this.spriteArray[i];
     }
 
-    public BufferedImage[][] getSpriteArray2(int i) {
+    public BufferedImage[][] getSpriteArray2(int i)
+    {
         return this.spriteArray;
     }
 
@@ -134,8 +141,44 @@ public class Sprite
         return spriteHeight;
     }
 
-    public static void drawArray(Graphics2D graphics, List<BufferedImage> iamges) {
+    public static void drawArray(Graphics2D graphics, List<BufferedImage> images, Vector2f vec2f,
+                                 int width,
+                                 int height,
+                                 int xOffset,
+                                 int yOffset)
+    {
+        float x = vec2f.getX();
+        float y = vec2f.getY();
 
+        for (BufferedImage image : images)
+        {
+            if (image != null)
+                graphics.drawImage(image, (int) x, (int) y, width, height, null);
+
+            x += xOffset;
+            y += yOffset;
+        }
+    }
+
+    public static void drawArray(Graphics2D graphics, GameFont font, String word, Vector2f vec2f,
+                                 int width,
+                                 int height,
+                                 int xOffset,
+                                 int yOffset)
+    {
+        float x = vec2f.getX();
+        float y = vec2f.getY();
+
+        char[] charArray = word.toCharArray();
+        for (char ch : charArray)
+        {
+            // 32 ' '
+            if (ch != 32)
+                graphics.drawImage(font.getFont(ch), (int) x, (int) y, width, height, null);
+
+            x += xOffset;
+            y += yOffset;
+        }
     }
 
 }
