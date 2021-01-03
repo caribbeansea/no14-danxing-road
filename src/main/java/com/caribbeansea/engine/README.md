@@ -21,3 +21,8 @@
 This game engine can for production of new game, when it completes
 
 I will continue to maintain it if I still keep the interest, or more people using and community relatively active I be continued to maintain it too.
+
+** way I will maintain? **
+
+- first cause: my interest
+- second cause: have more people using, everyone need technology support.
