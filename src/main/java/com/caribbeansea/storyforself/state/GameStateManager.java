@@ -22,6 +22,9 @@ package com.caribbeansea.storyforself.state;
  * Creates on 2021/1/2.
  */
 
+import com.caribbeansea.storyforself.component.GameFrame;
+import com.caribbeansea.storyforself.component.GamePanel;
+import com.caribbeansea.storyforself.component.Vector2f;
 import com.caribbeansea.storyforself.handler.KeyHandler;
 import com.caribbeansea.storyforself.handler.MouseHandler;
 import com.caribbeansea.storyforself.game.GameHandler;
@@ -39,13 +42,54 @@ public class GameStateManager implements GameHandler
     private final List<GameState> states
             = Lists.newArrayList(64);
 
+   public static Vector2f map;
+
+   public static final int PLAY = 0;
+
+   public static final int MENU = 1;
+
+   public static final int PAUSE = 2;
+
+   public static final int GAME_OVER = 3;
+
     public GameStateManager() {
+        map = new Vector2f(GameFrame.WIDTH, GameFrame.HEIGHT);
+        Vector2f.setWorld(map.getX(), map.getY());
         states.add(new PlayState(this));
+    }
+
+    public void pop(int state) {
+        states.remove(state);
+    }
+
+    public void add(int state) {
+        if(state == PLAY) {
+            states.add(new PlayState(this));
+        }
+        if(state == MENU) {
+            states.add(new MenuState(this));
+        }
+        if(state == PAUSE) {
+            states.add(new PauseState(this));
+        }
+        if(state == GAME_OVER) {
+            states.add(new GameOverState(this));
+        }
+    }
+
+    /**
+     * 添加并删除状态
+     * @param state 状态常量值
+     */
+    public void addAndpop(int state) {
+        states.remove(0);
+        add(state);
     }
 
     @Override
     public void update()
     {
+        Vector2f.setWorld(map.getX(), map.getY());
         for (GameState state : states)
         {
             state.update();
