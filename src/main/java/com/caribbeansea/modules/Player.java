@@ -56,6 +56,10 @@ public class Player extends GameEntity
     protected boolean attackSpeed;
     protected boolean attackDuration;
 
+    protected float max_speed = 2F;
+    protected float acc = 1F;
+    protected float deacc = 0.1F;
+
     private int direction; // 当前人物方向
 
     public Player(Sprite sprite, Vector2f origin, int size)
@@ -70,8 +74,8 @@ public class Player extends GameEntity
     {
         super.update();
         move();
-        origin.setX(origin.x + dx);
-        origin.setY(origin.y + dy);
+        origin.x += dx;
+        origin.y += dy;
         animation.update();
     }
 
@@ -99,7 +103,7 @@ public class Player extends GameEntity
         if (down)
         {
             dy += acc;
-            if (dy < max_speed)
+            if (dy > max_speed)
             {
                 dy = max_speed;
             }
@@ -201,26 +205,18 @@ public class Player extends GameEntity
         {
             this.hit_bounds.setXOffset((float) -size / 2);
             this.hit_bounds.setYOffset((float) -size / 2);
-
-            origin.y--;
         } else if (down)
         {
             this.hit_bounds.setXOffset((float) -size / 2);
             this.hit_bounds.setYOffset((float) size / 2);
-
-            origin.y++;
         } else if (left)
         {
             this.hit_bounds.setXOffset((float) -size);
             this.hit_bounds.setYOffset(0);
-
-            origin.x--;
         } else if (right)
         {
             this.hit_bounds.setXOffset(0);
             this.hit_bounds.setYOffset(0);
-
-            origin.x++;
         }
     }
 

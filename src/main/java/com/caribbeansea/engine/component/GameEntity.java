@@ -44,12 +44,6 @@ public abstract class GameEntity implements Render
     protected float dx;
     protected float dy;
 
-    protected float max_speed;
-
-    protected float acc;
-
-    protected float deacc;
-
     protected int current_animation;
 
     protected AABB hit_bounds;
@@ -151,36 +145,6 @@ public abstract class GameEntity implements Render
     public void setDy(float dy)
     {
         this.dy = dy;
-    }
-
-    public float getMax_speed()
-    {
-        return max_speed;
-    }
-
-    public void setMax_speed(float max_speed)
-    {
-        this.max_speed = max_speed;
-    }
-
-    public float getAcc()
-    {
-        return acc;
-    }
-
-    public void setAcc(float acc)
-    {
-        this.acc = acc;
-    }
-
-    public float getDeacc()
-    {
-        return deacc;
-    }
-
-    public void setDeacc(float deacc)
-    {
-        this.deacc = deacc;
     }
 
     public int getCurrent_animation()
