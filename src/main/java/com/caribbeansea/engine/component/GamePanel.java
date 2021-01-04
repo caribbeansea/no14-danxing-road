@@ -22,11 +22,11 @@ package com.caribbeansea.engine.component;
  * Creates on 2021/1/2.
  */
 
-import com.caribbeansea.modules.exception.UnImplException;
 import com.caribbeansea.engine.handler.KeyHandler;
 import com.caribbeansea.engine.handler.MouseHandler;
 import com.caribbeansea.engine.game.GameRender;
 import com.caribbeansea.engine.state.GameStateManager;
+import com.caribbeansea.engine.utils.ToolBox;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,6 +55,21 @@ public abstract class GamePanel extends JPanel implements Runnable, GameRender
     protected KeyHandler key;
 
     protected GameStateManager stateManager;
+
+    /**
+     * 上一秒
+     */
+    protected long lastTime = ToolBox.getTimeSeconds();
+
+    /**
+     * 调用次数
+     */
+    protected int count = 0;
+
+    /**
+     * 游戏当前帧数
+     */
+    public static int GAME_CURRENT_FPS = 0;
 
     public GamePanel(int width, int height)
     {
@@ -89,6 +104,15 @@ public abstract class GamePanel extends JPanel implements Runnable, GameRender
 
         while (running)
         {
+            long currentTime = ToolBox.getTimeSeconds();
+            if((currentTime - lastTime) > 1) {
+                GAME_CURRENT_FPS = count;
+                count = 0;
+                lastTime = currentTime;
+            }
+
+            count++;
+
             update();
             input(mouse, key);
             render(graphics);

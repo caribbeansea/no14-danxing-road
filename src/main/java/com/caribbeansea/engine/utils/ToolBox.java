@@ -84,4 +84,8 @@ public class ToolBox
         return a.get(RANDOM.nextInt(a.size()));
     }
 
+    public static long getTimeSeconds()
+    {
+        return System.currentTimeMillis() / 1000;
+    }
 }

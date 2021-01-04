@@ -80,6 +80,7 @@ public enum ImageResources
     // ---------------------------- 字体图标 ------------------------
     // #######################################################################
     FONT_0(read("/ui/font/font_0.png")),
+    FONT_1(read("/ui/font/font_1.png")),
 
     TERRARIA_CLOUDS(Lists.newArrayList(
             read("/ui/cloud/Cloud_4.png"),

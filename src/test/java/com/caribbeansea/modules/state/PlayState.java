@@ -23,8 +23,9 @@ package com.caribbeansea.modules.state;
  */
 
 import com.caribbeansea.engine.component.GameFont;
-import com.caribbeansea.engine.component.Vector2f;
+import com.caribbeansea.engine.component.GamePanel;
 import com.caribbeansea.engine.component.Sprites;
+import com.caribbeansea.engine.component.Vector2f;
 import com.caribbeansea.engine.handler.KeyHandler;
 import com.caribbeansea.engine.handler.MouseHandler;
 import com.caribbeansea.engine.state.GameState;
@@ -62,6 +63,9 @@ public class PlayState extends GameState
     {
         player.render(graphics);
         Sprites.drawArray(graphics, font, "A I love you", new Vector2f(100, 100), 32, 32, 16, 0);
+
+        String fps = GamePanel.GAME_CURRENT_FPS + "FPS";
+        Sprites.drawArray(graphics, font, fps, new Vector2f(100, 100), 32, 32, 16, 0);
     }
 
     @Override
