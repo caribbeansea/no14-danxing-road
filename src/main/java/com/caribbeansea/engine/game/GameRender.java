@@ -30,7 +30,7 @@ import java.awt.*;
 /**
  * @author tiansheng
  */
-public interface Render
+public interface GameRender
 {
 
     /**

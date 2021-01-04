@@ -22,7 +22,7 @@ package com.caribbeansea.engine.component;
  * Creates on 2021/1/3.
  */
 
-import com.caribbeansea.engine.game.Render;
+import com.caribbeansea.engine.game.GameRender;
 import com.caribbeansea.engine.handler.KeyHandler;
 import com.caribbeansea.engine.handler.MouseHandler;
 
@@ -34,7 +34,7 @@ import java.awt.image.BufferedImage;
  *
  * @author tiansheng
  */
-public class Animation implements Render
+public class Animation implements GameRender
 {
 
     /**

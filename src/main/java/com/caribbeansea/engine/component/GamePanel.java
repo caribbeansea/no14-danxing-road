@@ -25,7 +25,7 @@ package com.caribbeansea.engine.component;
 import com.caribbeansea.modules.exception.UnImplException;
 import com.caribbeansea.engine.handler.KeyHandler;
 import com.caribbeansea.engine.handler.MouseHandler;
-import com.caribbeansea.engine.game.Render;
+import com.caribbeansea.engine.game.GameRender;
 import com.caribbeansea.engine.state.GameStateManager;
 
 import javax.swing.*;
@@ -37,7 +37,7 @@ import java.awt.image.BufferedImage;
  *
  * @author tiansheng
  */
-public class GamePanel extends JPanel implements Runnable, Render
+public class GamePanel extends JPanel implements Runnable, GameRender
 {
 
     private Thread thread;

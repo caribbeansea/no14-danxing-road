@@ -32,7 +32,7 @@ import java.awt.image.BufferedImage;
  *
  * @author tiansheng
  */
-public class GameFont extends Sprite
+public class GameFont extends Sprites
 {
 
     public GameFont(ImageResources resources)

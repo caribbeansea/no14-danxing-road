@@ -29,11 +29,17 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 
 /**
- * 游戏精灵
+ * Sprites是个用于角色、道具、炮弹以及其他2D游戏元素的二维图形对象。2D游戏的图像部分主要是图片的处理，
+ * 图片通常称为Sprite精灵。
+ * <p>
+ * 为了提高2d游戏的效率，会将图片资源拼接成一张大图，在游戏运行的时候在将这张图的莫一部分读取出来作为Sprite显示在屏幕上
+ * 该图形是基于Texture2D得到的图像。Sprite类主要识别图像的一部分用于特定的精灵。
+ * <p>
+ * 此类通过游戏对象上的{@link com.caribbeansea.engine.game.GameRender}的组件应用并实际显示该图像。
  *
  * @author tiansheng
  */
-public class Sprite
+public class Sprites
 {
 
     protected final BufferedImage SPRITESHEET;
@@ -50,12 +56,12 @@ public class Sprite
 
     protected static final int TILE_SIZE = 32;
 
-    public Sprite(ImageResources resources)
+    public Sprites(ImageResources resources)
     {
         this(resources, TILE_SIZE, TILE_SIZE);
     }
 
-    public Sprite(ImageResources resources, int width, int height)
+    public Sprites(ImageResources resources, int width, int height)
     {
         this.width = width;
         this.height = height;

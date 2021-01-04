@@ -22,17 +22,19 @@ package com.caribbeansea.engine.component;
  * Creates on 2021/1/3.
  */
 
-import com.caribbeansea.engine.game.Render;
+import com.caribbeansea.engine.game.GameRender;
 
 import java.awt.image.BufferedImage;
 
 /**
+ * 游戏内的实体对象，它可以是NPC也可以是物品人物等东西。
+ *
  * @author tiansheng
  */
-public abstract class GameEntity implements Render
+public abstract class GameEntity implements GameRender
 {
 
-    protected final Sprite sprite;
+    protected final Sprites sprites;
 
     protected final Vector2f origin;
 
@@ -52,9 +54,9 @@ public abstract class GameEntity implements Render
 
     protected int setting_delay = 20;
 
-    public GameEntity(Sprite sprite, Vector2f origin, int size)
+    public GameEntity(Sprites sprites, Vector2f origin, int size)
     {
-        this.sprite = sprite;
+        this.sprites = sprites;
         this.origin = origin;
         this.size = size;
 
@@ -102,9 +104,9 @@ public abstract class GameEntity implements Render
         this.setting_delay = setting_delay;
     }
 
-    public Sprite getSprite()
+    public Sprites getSprite()
     {
-        return sprite;
+        return sprites;
     }
 
     public Vector2f getOrigin()

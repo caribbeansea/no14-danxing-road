@@ -24,7 +24,7 @@ package com.caribbeansea.modules.state;
 
 import com.caribbeansea.engine.component.GameFont;
 import com.caribbeansea.engine.component.Vector2f;
-import com.caribbeansea.engine.component.Sprite;
+import com.caribbeansea.engine.component.Sprites;
 import com.caribbeansea.engine.handler.KeyHandler;
 import com.caribbeansea.engine.handler.MouseHandler;
 import com.caribbeansea.engine.state.GameState;
@@ -48,7 +48,7 @@ public class PlayState extends GameState
     {
         super(stateManager);
         this.font = new GameFont(ImageResources.FONT_0, 16, 16);
-        this.player = new Player(new Sprite(ImageResources.LINK_FORMATTED), new Vector2f(300, 300), 128);
+        this.player = new Player(new Sprites(ImageResources.LINK_FORMATTED), new Vector2f(300, 300), 128);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class PlayState extends GameState
     public void render(Graphics2D graphics)
     {
         player.render(graphics);
-        Sprite.drawArray(graphics, font, "A I love you", new Vector2f(100, 100), 32, 32, 16, 0);
+        Sprites.drawArray(graphics, font, "A I love you", new Vector2f(100, 100), 32, 32, 16, 0);
     }
 
     @Override

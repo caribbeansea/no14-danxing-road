@@ -22,12 +22,17 @@ package com.caribbeansea.engine.state;
  * Creates on 2021/1/2.
  */
 
-import com.caribbeansea.engine.game.Render;
+import com.caribbeansea.engine.game.GameRender;
 
 /**
+ * 游戏状态，它的用处比如当人物死亡的时候可以调用一个GameOver类似
+ * 的状态去画出一个人物死亡的效果。
+ *
+ * 它主要的内容需要子类去实现{@link GameRender}接口，在里面进行渲染、更新以及设备的监听。
+ *
  * @author tiansheng
  */
-public abstract class GameState implements Render
+public abstract class GameState implements GameRender
 {
 
     private GameStateManager stateManager;

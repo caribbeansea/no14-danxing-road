@@ -24,7 +24,7 @@ package com.caribbeansea.engine.state;
 
 import com.caribbeansea.engine.component.GameFrame;
 import com.caribbeansea.engine.component.Vector2f;
-import com.caribbeansea.engine.game.Render;
+import com.caribbeansea.engine.game.GameRender;
 import com.caribbeansea.engine.handler.KeyHandler;
 import com.caribbeansea.engine.handler.MouseHandler;
 import com.caribbeansea.modules.state.GameOverState;
@@ -37,9 +37,11 @@ import java.awt.*;
 import java.util.List;
 
 /**
+ * 游戏状态管理
+ *
  * @author tiansheng
  */
-public class GameStateManager implements Render
+public class GameStateManager implements GameRender
 {
 
     private final List<GameState> states
