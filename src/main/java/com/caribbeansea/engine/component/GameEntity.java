@@ -40,19 +40,6 @@ public abstract class GameEntity implements Render
 
     protected Animation animation;
 
-    protected final int UP    = 3;
-    protected final int DOWN  = 2;
-    protected final int LEFT  = 1;
-    protected final int RIGHT = 0;
-
-    protected boolean up;
-    protected boolean down;
-    protected boolean left;
-    protected boolean right;
-    protected boolean attack;
-    protected boolean attackSpeed;
-    protected boolean attackDuration;
-
     // 用于移动盒子等物体
     protected float dx;
     protected float dy;
@@ -69,7 +56,7 @@ public abstract class GameEntity implements Render
 
     protected AABB bounds;
 
-    private int setting_delay = 20;
+    protected int setting_delay = 20;
 
     public GameEntity(Sprite sprite, Vector2f origin, int size)
     {
@@ -78,10 +65,9 @@ public abstract class GameEntity implements Render
         this.size = size;
 
         this.bounds = new AABB(origin, size, size);
-        this.hit_bounds = new AABB(new Vector2f(origin.getX() + ((float) (size / 2)), origin.getY()), size, size);
+        this.hit_bounds = new AABB(new Vector2f(origin.x + ((float) (size / 2)), origin.y), size, size);
 
         this.animation = new Animation();
-        set_animation(RIGHT, sprite.getSpriteArray(RIGHT), 10);
     }
 
     public void set_animation(int const_i, BufferedImage[] frames, int delay)
@@ -96,37 +82,11 @@ public abstract class GameEntity implements Render
         return size;
     }
 
-    public void animate()
-    {
-        if (up)
-        {
-            if (current_animation != UP || animation.getDelay() == -1)
-            {
-                set_animation(UP, sprite.getSpriteArray(UP), setting_delay);
-            }
-        } else if (down)
-        {
-            if (current_animation != DOWN || animation.getDelay() == -1)
-            {
-                set_animation(DOWN, sprite.getSpriteArray(DOWN), setting_delay);
-            }
-        } else if (left)
-        {
-            if (current_animation != LEFT || animation.getDelay() == -1)
-            {
-                set_animation(LEFT, sprite.getSpriteArray(LEFT), setting_delay);
-            }
-        } else if (right)
-        {
-            if (current_animation != RIGHT || animation.getDelay() == -1)
-            {
-                set_animation(RIGHT, sprite.getSpriteArray(RIGHT), setting_delay);
-            }
-        } else
-        {
-            set_animation(current_animation, sprite.getSpriteArray(current_animation), -1);
-        }
-    }
+    /**
+     * 播放动画的帧数切换，比如人物向上、向下、向左、向右的时候应该
+     * 选取哪个阶段的播放动画。
+     */
+    public abstract void animate();
 
     @Override
     public void update()
@@ -136,26 +96,16 @@ public abstract class GameEntity implements Render
         animation.update();
     }
 
-    public void set_hit_box_direction()
-    {
-        if (up)
-        {
-            this.hit_bounds.setXOffset((float) -size / 2);
-            this.hit_bounds.setYOffset((float) -size / 2);
-        } else if (down)
-        {
-            this.hit_bounds.setXOffset((float) -size / 2);
-            this.hit_bounds.setYOffset((float) size / 2);
-        } else if (left)
-        {
-            this.hit_bounds.setXOffset((float) -size);
-            this.hit_bounds.setYOffset(0);
-        } else if (right)
-        {
-            this.hit_bounds.setXOffset(0);
-            this.hit_bounds.setYOffset(0);
-        }
+    public abstract void set_hit_box_direction();
 
+    public int getSetting_delay()
+    {
+        return setting_delay;
+    }
+
+    public void setSetting_delay(int setting_delay)
+    {
+        this.setting_delay = setting_delay;
     }
 
     public Sprite getSprite()
@@ -181,96 +131,6 @@ public abstract class GameEntity implements Render
     public void setAnimation(Animation animation)
     {
         this.animation = animation;
-    }
-
-    public int getUP()
-    {
-        return UP;
-    }
-
-    public int getDOWN()
-    {
-        return DOWN;
-    }
-
-    public int getLEFT()
-    {
-        return LEFT;
-    }
-
-    public int getRIGHT()
-    {
-        return RIGHT;
-    }
-
-    public boolean isUp()
-    {
-        return up;
-    }
-
-    public void setUp(boolean up)
-    {
-        this.up = up;
-    }
-
-    public boolean isDown()
-    {
-        return down;
-    }
-
-    public void setDown(boolean down)
-    {
-        this.down = down;
-    }
-
-    public boolean isLeft()
-    {
-        return left;
-    }
-
-    public void setLeft(boolean left)
-    {
-        this.left = left;
-    }
-
-    public boolean isRight()
-    {
-        return right;
-    }
-
-    public void setRight(boolean right)
-    {
-        this.right = right;
-    }
-
-    public boolean isAttack()
-    {
-        return attack;
-    }
-
-    public void setAttack(boolean attack)
-    {
-        this.attack = attack;
-    }
-
-    public boolean isAttackSpeed()
-    {
-        return attackSpeed;
-    }
-
-    public void setAttackSpeed(boolean attackSpeed)
-    {
-        this.attackSpeed = attackSpeed;
-    }
-
-    public boolean isAttackDuration()
-    {
-        return attackDuration;
-    }
-
-    public void setAttackDuration(boolean attackDuration)
-    {
-        this.attackDuration = attackDuration;
     }
 
     public float getDx()

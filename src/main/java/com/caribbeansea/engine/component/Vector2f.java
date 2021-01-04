@@ -28,9 +28,9 @@ package com.caribbeansea.engine.component;
 public class Vector2f
 {
 
-    private float x;
+    public float x;
 
-    private float y;
+    public float y;
 
     public static float WORLD_X;
 
@@ -86,16 +86,6 @@ public class Vector2f
     public Vector2f get_world()
     {
         return new Vector2f(x - WORLD_X, y - WORLD_Y);
-    }
-
-    public float getX()
-    {
-        return x;
-    }
-
-    public float getY()
-    {
-        return y;
     }
 
     public static void setWorld(float x, float y)

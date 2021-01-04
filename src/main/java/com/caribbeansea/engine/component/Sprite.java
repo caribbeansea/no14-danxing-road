@@ -145,8 +145,8 @@ public class Sprite
                                  int xOffset,
                                  int yOffset)
     {
-        float x = vec2f.getX();
-        float y = vec2f.getY();
+        float x = vec2f.x;
+        float y = vec2f.y;
 
         for (BufferedImage image : images)
         {
@@ -164,8 +164,8 @@ public class Sprite
                                  int xOffset,
                                  int yOffset)
     {
-        float x = vec2f.getX();
-        float y = vec2f.getY();
+        float x = vec2f.x;
+        float y = vec2f.y;
 
         char[] charArray = word.toCharArray();
         for (char ch : charArray)

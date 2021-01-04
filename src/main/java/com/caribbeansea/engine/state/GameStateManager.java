@@ -45,46 +45,55 @@ public class GameStateManager implements Render
     private final List<GameState> states
             = Lists.newArrayList(64);
 
-   public static Vector2f map;
+    public static Vector2f map;
 
-   public static final int PLAY = 0;
+    public static final int PLAY = 0;
 
-   public static final int MENU = 1;
+    public static final int MENU = 1;
 
-   public static final int PAUSE = 2;
+    public static final int PAUSE = 2;
 
-   public static final int GAME_OVER = 3;
+    public static final int GAME_OVER = 3;
 
-    public GameStateManager() {
+    public GameStateManager()
+    {
         map = new Vector2f(GameFrame.WIDTH, GameFrame.HEIGHT);
-        Vector2f.setWorld(map.getX(), map.getY());
+        Vector2f.setWorld(map.x, map.y);
         states.add(new PlayState(this));
     }
 
-    public void pop(int state) {
+    public void pop(int state)
+    {
         states.remove(state);
     }
 
-    public void add(int state) {
-        if(state == PLAY) {
+    public void add(int state)
+    {
+        if (state == PLAY)
+        {
             states.add(new PlayState(this));
         }
-        if(state == MENU) {
+        if (state == MENU)
+        {
             states.add(new MenuState(this));
         }
-        if(state == PAUSE) {
+        if (state == PAUSE)
+        {
             states.add(new PauseState(this));
         }
-        if(state == GAME_OVER) {
+        if (state == GAME_OVER)
+        {
             states.add(new GameOverState(this));
         }
     }
 
     /**
      * 添加并删除状态
+     *
      * @param state 状态常量值
      */
-    public void addAndpop(int state) {
+    public void addAndpop(int state)
+    {
         states.remove(0);
         add(state);
     }
@@ -92,7 +101,7 @@ public class GameStateManager implements Render
     @Override
     public void update()
     {
-        Vector2f.setWorld(map.getX(), map.getY());
+        Vector2f.setWorld(map.x, map.y);
         for (GameState state : states)
         {
             state.update();

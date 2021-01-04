@@ -36,9 +36,24 @@ import java.awt.*;
 public class Player extends GameEntity
 {
 
+    protected final int UP    = 3;
+    protected final int DOWN  = 2;
+    protected final int LEFT  = 1;
+    protected final int RIGHT = 0;
+
+    protected boolean up;
+    protected boolean down;
+    protected boolean left;
+    protected boolean right;
+    protected boolean attack;
+    protected boolean attackSpeed;
+    protected boolean attackDuration;
+
     public Player(Sprite sprite, Vector2f origin, int size)
     {
         super(sprite, origin, size);
+        this.setting_delay = 30;
+        set_animation(RIGHT, sprite.getSpriteArray(RIGHT), setting_delay);
     }
 
     @Override
@@ -46,8 +61,8 @@ public class Player extends GameEntity
     {
         super.update();
         move();
-        origin.setX(origin.getX() + dx);
-        origin.setY(origin.getY() + dy);
+        origin.setX(origin.x + dx);
+        origin.setY(origin.y + dy);
         animation.update();
     }
 
@@ -132,9 +147,72 @@ public class Player extends GameEntity
     }
 
     @Override
+    public void animate()
+    {
+        if (up)
+        {
+            if (current_animation != UP || animation.getDelay() == -1)
+            {
+                set_animation(UP, sprite.getSpriteArray(UP), setting_delay);
+            }
+        } else if (down)
+        {
+            if (current_animation != DOWN || animation.getDelay() == -1)
+            {
+                set_animation(DOWN, sprite.getSpriteArray(DOWN), setting_delay);
+            }
+        } else if (left)
+        {
+            if (current_animation != LEFT || animation.getDelay() == -1)
+            {
+                set_animation(LEFT, sprite.getSpriteArray(LEFT), setting_delay);
+            }
+        } else if (right)
+        {
+            if (current_animation != RIGHT || animation.getDelay() == -1)
+            {
+                set_animation(RIGHT, sprite.getSpriteArray(RIGHT), setting_delay);
+            }
+        } else
+        {
+            set_animation(current_animation, sprite.getSpriteArray(current_animation), -1);
+        }
+    }
+
+    @Override
+    public void set_hit_box_direction()
+    {
+        if (up)
+        {
+            this.hit_bounds.setXOffset((float) -size / 2);
+            this.hit_bounds.setYOffset((float) -size / 2);
+
+            origin.y--;
+        } else if (down)
+        {
+            this.hit_bounds.setXOffset((float) -size / 2);
+            this.hit_bounds.setYOffset((float) size / 2);
+
+            origin.y++;
+        } else if (left)
+        {
+            this.hit_bounds.setXOffset((float) -size);
+            this.hit_bounds.setYOffset(0);
+
+            origin.x--;
+        } else if (right)
+        {
+            this.hit_bounds.setXOffset(0);
+            this.hit_bounds.setYOffset(0);
+
+            origin.x++;
+        }
+    }
+
+    @Override
     public void render(Graphics2D graphics)
     {
-        graphics.drawImage(animation.getFrames(), (int) origin.getX(), (int) origin.getY(), size, size, null);
+        graphics.drawImage(animation.getFrames(), (int) origin.x, (int) origin.y, size, size, null);
     }
 
     @Override
