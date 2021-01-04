@@ -61,6 +61,7 @@ public class PlayState extends GameState
     public void render(Graphics2D graphics)
     {
         player.render(graphics);
+        Sprite.drawArray(graphics, font, "A I love you", new Vector2f(100, 100), 32, 32, 16, 0);
     }
 
     @Override
