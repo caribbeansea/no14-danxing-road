@@ -41,6 +41,13 @@ public class Player extends GameEntity
     protected final int LEFT  = 1;
     protected final int RIGHT = 0;
 
+    protected final int DEATH = 4;
+
+    protected final int UP_ATTACK    = 8;
+    protected final int DOWN_ATTACK  = 7;
+    protected final int LEFT_ATTACK  = 6;
+    protected final int RIGHT_ATTACK = 5;
+
     protected boolean up;
     protected boolean down;
     protected boolean left;
@@ -48,6 +55,8 @@ public class Player extends GameEntity
     protected boolean attack;
     protected boolean attackSpeed;
     protected boolean attackDuration;
+
+    private int direction; // 当前人物方向
 
     public Player(Sprite sprite, Vector2f origin, int size)
     {
@@ -155,28 +164,34 @@ public class Player extends GameEntity
             {
                 set_animation(UP, sprite.getSpriteArray(UP), setting_delay);
             }
+            direction = UP;
         } else if (down)
         {
             if (current_animation != DOWN || animation.getDelay() == -1)
             {
                 set_animation(DOWN, sprite.getSpriteArray(DOWN), setting_delay);
             }
+            direction = DOWN;
         } else if (left)
         {
             if (current_animation != LEFT || animation.getDelay() == -1)
             {
                 set_animation(LEFT, sprite.getSpriteArray(LEFT), setting_delay);
             }
+            direction = LEFT;
         } else if (right)
         {
             if (current_animation != RIGHT || animation.getDelay() == -1)
             {
                 set_animation(RIGHT, sprite.getSpriteArray(RIGHT), setting_delay);
             }
+            direction = RIGHT;
         } else
         {
             set_animation(current_animation, sprite.getSpriteArray(current_animation), -1);
         }
+
+
     }
 
     @Override
