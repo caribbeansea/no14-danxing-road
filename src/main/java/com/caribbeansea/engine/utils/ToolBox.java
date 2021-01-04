@@ -22,8 +22,15 @@ package com.caribbeansea.engine.utils;
  * Creates on 2020/12/31.
  */
 
+import com.caribbeansea.engine.Log;
+import com.caribbeansea.modules.WriteYourStory;
+import com.caribbeansea.modules.resources.ImageResources;
 import sun.misc.Unsafe;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.security.AccessController;
 import java.security.PrivilegedExceptionAction;
@@ -87,5 +94,31 @@ public class ToolBox
     public static long getTimeSeconds()
     {
         return System.currentTimeMillis() / 1000;
+    }
+
+    /**
+     * 读取图片
+     *
+     * @param path 图片路径
+     * @return Image对象
+     */
+    public static BufferedImage read_buffimg_in_resources(String path)
+    {
+        BufferedImage image =
+                null;
+        File imageFile = read_file_in_resources(path);
+        try
+        {
+            image = ImageIO.read(imageFile);
+        } catch (IOException e)
+        {
+            Log.error("cloud not load image for %s", e, imageFile.getPath());
+        }
+        return image;
+    }
+
+    public static File read_file_in_resources(String path)
+    {
+        return new File(WriteYourStory.RESOURCES.concat(path));
     }
 }

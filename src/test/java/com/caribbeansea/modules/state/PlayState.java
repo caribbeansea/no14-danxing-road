@@ -30,9 +30,11 @@ import com.caribbeansea.engine.handler.KeyHandler;
 import com.caribbeansea.engine.handler.MouseHandler;
 import com.caribbeansea.engine.state.GameState;
 import com.caribbeansea.engine.state.GameStateManager;
+import com.caribbeansea.engine.utils.ToolBox;
 import com.caribbeansea.modules.entity.PlayerUnit;
 import com.caribbeansea.modules.font.Font1;
 import com.caribbeansea.modules.resources.ImageResources;
+import com.caribbeansea.engine.extranl.tile.TileManager;
 
 import java.awt.*;
 
@@ -46,10 +48,13 @@ public class PlayState extends GameState
 
     private PlayerUnit player;
 
+    private TileManager tileManager;
+
     public PlayState(GameStateManager stateManager)
     {
         super(stateManager);
         this.font = new Font1();
+        this.tileManager = new TileManager(ToolBox.read_file_in_resources("/tile/tilemap.xml").getAbsolutePath());
         this.player = new PlayerUnit(new Sprites(ImageResources.LINK_FORMATTED), new Vector2f(300, 300), 128);
     }
 
@@ -67,6 +72,8 @@ public class PlayState extends GameState
 
         String fps = GamePanel.GAME_CURRENT_FPS + " FPS";
         Sprites.drawArray(graphics, font, fps, new Vector2f(100, 150), 32, 32, 20, 0);
+
+        tileManager.render(graphics);
     }
 
     @Override

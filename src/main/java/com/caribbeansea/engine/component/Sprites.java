@@ -67,10 +67,15 @@ public class Sprites
 
     public Sprites(ImageResources resources, int width, int height)
     {
+        this(resources.getBufferedImage(), width, height);
+    }
+
+    public Sprites(BufferedImage resources, int width, int height)
+    {
         this.width = width;
         this.height = height;
 
-        this.SPRITESHEET = resources.getBufferedImage();
+        this.SPRITESHEET = resources;
 
         this.spriteWidth = this.SPRITESHEET.getWidth() / width;
         this.spriteHeight = this.SPRITESHEET.getHeight() / height;
