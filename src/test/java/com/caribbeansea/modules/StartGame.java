@@ -22,8 +22,6 @@ package com.caribbeansea.modules;
  * Creates on 2021/1/2.
  */
 
-import com.caribbeansea.engine.component.GameFrame;
-
 /**
  * @author tiansheng
  */
@@ -32,7 +30,7 @@ public class StartGame
 
     public static void main(String[] args)
     {
-        new GameFrame();
+        new UnitFrame(1245, 813);
     }
 
 }

@@ -27,10 +27,6 @@ import com.caribbeansea.engine.component.Vector2f;
 import com.caribbeansea.engine.game.GameRender;
 import com.caribbeansea.engine.handler.KeyHandler;
 import com.caribbeansea.engine.handler.MouseHandler;
-import com.caribbeansea.modules.state.GameOverState;
-import com.caribbeansea.modules.state.MenuState;
-import com.caribbeansea.modules.state.PauseState;
-import com.caribbeansea.modules.state.PlayState;
 import com.caribbeansea.engine.utils.Lists;
 
 import java.awt.*;
@@ -41,53 +37,37 @@ import java.util.List;
  *
  * @author tiansheng
  */
-public class GameStateManager implements GameRender
+public abstract class GameStateManager implements GameRender
 {
 
-    private final List<GameState> states
+    protected final List<GameState> states
             = Lists.newArrayList(64);
 
     public static Vector2f map;
-
-    public static final int PLAY = 0;
-
-    public static final int MENU = 1;
-
-    public static final int PAUSE = 2;
-
-    public static final int GAME_OVER = 3;
 
     public GameStateManager()
     {
         map = new Vector2f(GameFrame.WIDTH, GameFrame.HEIGHT);
         Vector2f.setWorld(map.x, map.y);
-        states.add(new PlayState(this));
+
+       init_state();
     }
+
+    /**
+     * 初始化状态列表
+     */
+    public abstract void init_state();
 
     public void pop(int state)
     {
         states.remove(state);
     }
 
-    public void add(int state)
-    {
-        if (state == PLAY)
-        {
-            states.add(new PlayState(this));
-        }
-        if (state == MENU)
-        {
-            states.add(new MenuState(this));
-        }
-        if (state == PAUSE)
-        {
-            states.add(new PauseState(this));
-        }
-        if (state == GAME_OVER)
-        {
-            states.add(new GameOverState(this));
-        }
-    }
+    /**
+     * 添加状态
+     * @param state 状态值，子类自己去定义
+     */
+    public abstract void add_state(int state);
 
     /**
      * 添加并删除状态
@@ -97,7 +77,7 @@ public class GameStateManager implements GameRender
     public void addAndpop(int state)
     {
         states.remove(0);
-        add(state);
+        add_state(state);
     }
 
     @Override

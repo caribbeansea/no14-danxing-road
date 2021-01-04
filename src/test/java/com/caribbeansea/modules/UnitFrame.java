@@ -1,8 +1,8 @@
-package com.caribbeansea.engine.component;
+package com.caribbeansea.modules;
 
 /* ************************************************************************
  *
- * Copyright (C) 2020 dahan All rights reserved.
+ * Copyright (C) 2020 caribbeansea All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,37 +19,40 @@ package com.caribbeansea.engine.component;
  * ************************************************************************/
 
 /*
- * Creates on 2020/12/28.
+ * Creates on 2021/1/4.
  */
+
+import com.caribbeansea.engine.component.GameFrame;
+import com.caribbeansea.engine.component.GamePanel;
 
 import javax.swing.*;
 
 /**
- * 窗口
- *
  * @author tiansheng
  */
-public abstract class GameFrame extends JFrame
+public class UnitFrame extends GameFrame
 {
 
-    public GameFrame(int width, int height)
+    public UnitFrame(int width, int height)
     {
-        setContentPane(setting_panel(width, height));
-        init_frame();
+        super(width, height);
     }
 
-    /**
-     * 初始化窗体，以及窗体的各项配置
-     */
-    public abstract void init_frame();
+    @Override
+    public void init_frame()
+    {
+        setTitle("game name");
+        // 当窗口关闭时即退出整个程序
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        pack();
+        // 窗口居中显示
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
 
-    /**
-     * 返回游戏面板对象实例
-     *
-     * @param width  窗体初始化宽度
-     * @param height 窗体初始化高度
-     * @return 面板实例对象
-     */
-    public abstract GamePanel setting_panel(int width, int height);
-
+    @Override
+    public GamePanel setting_panel(int width, int height)
+    {
+        return new UnitPanel(width, height);
+    }
 }

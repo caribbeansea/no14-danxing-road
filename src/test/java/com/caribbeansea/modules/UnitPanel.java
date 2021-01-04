@@ -1,4 +1,4 @@
-package com.caribbeansea.modules.state;
+package com.caribbeansea.modules;
 
 /* ************************************************************************
  *
@@ -19,55 +19,81 @@ package com.caribbeansea.modules.state;
  * ************************************************************************/
 
 /*
- * Creates on 2021/1/2.
+ * Creates on 2021/1/4.
  */
 
-import com.caribbeansea.engine.component.GameFont;
-import com.caribbeansea.engine.component.Vector2f;
-import com.caribbeansea.engine.component.Sprites;
+import com.caribbeansea.engine.component.GamePanel;
 import com.caribbeansea.engine.handler.KeyHandler;
 import com.caribbeansea.engine.handler.MouseHandler;
-import com.caribbeansea.engine.state.GameState;
-import com.caribbeansea.engine.state.GameStateManager;
-import com.caribbeansea.modules.Player;
-import com.caribbeansea.modules.resources.ImageResources;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * @author tiansheng
  */
-public class PlayState extends GameState
+public class UnitPanel extends GamePanel
 {
 
-    private GameFont font;
-
-    private Player player;
-
-    public PlayState(GameStateManager stateManager)
+    public UnitPanel(int width, int height)
     {
-        super(stateManager);
-        this.font = new GameFont(ImageResources.FONT_0, 16, 16);
-        this.player = new Player(new Sprites(ImageResources.LINK_FORMATTED), new Vector2f(300, 300), 128);
+        super(width, height);
     }
 
     @Override
+    public void init_panel()
+    {
+        running = true;
+
+        image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+        this.graphics = (Graphics2D) image.getGraphics();
+
+        stateManager = new StateManager();
+    }
+
+    /**
+     * 更新
+     */
+    @Override
     public void update()
     {
-        player.update();
+        stateManager.update();
+    }
+
+    /**
+     * 渲染
+     */
+    public void render()
+    {
+
     }
 
     @Override
     public void render(Graphics2D graphics)
     {
-        player.render(graphics);
-        Sprites.drawArray(graphics, font, "A I love you", new Vector2f(100, 100), 32, 32, 16, 0);
+        if (graphics != null)
+        {
+            graphics.setColor(new Color(66, 134, 244));
+            graphics.fillRect(0, 0, getWidth(), getHeight());
+            stateManager.render(graphics);
+        }
+    }
+
+    /**
+     * 画图
+     */
+    @Override
+    public void draw()
+    {
+        Graphics graphics = this.getGraphics();
+        graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+        graphics.dispose();
     }
 
     @Override
     public void input(MouseHandler mouse, KeyHandler key)
     {
-       player.input(mouse, key);
+        stateManager.input(mouse, key);
     }
 
 }

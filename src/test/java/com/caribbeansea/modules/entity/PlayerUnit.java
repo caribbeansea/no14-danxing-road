@@ -1,4 +1,4 @@
-package com.caribbeansea.modules;
+package com.caribbeansea.modules.entity;
 
 /* ************************************************************************
  *
@@ -29,11 +29,12 @@ import com.caribbeansea.engine.handler.KeyHandler;
 import com.caribbeansea.engine.handler.MouseHandler;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 /**
  * @author tiansheng
  */
-public class Player extends GameEntity
+public class PlayerUnit extends GameEntity
 {
 
     protected final int UP    = 3;
@@ -57,12 +58,12 @@ public class Player extends GameEntity
     protected boolean attackDuration;
 
     protected float max_speed = 2F;
-    protected float acc = 1F;
-    protected float deacc = 0.1F;
+    protected float acc       = 1F;
+    protected float deacc     = 0.1F;
 
     private int direction; // 当前人物方向
 
-    public Player(Sprites sprites, Vector2f origin, int size)
+    public PlayerUnit(Sprites sprites, Vector2f origin, int size)
     {
         super(sprites, origin, size);
         this.setting_delay = 30;
@@ -229,11 +230,11 @@ public class Player extends GameEntity
     @Override
     public void input(MouseHandler mouse, KeyHandler key)
     {
-        this.up = key.VK_UP.isDown();
-        this.down = key.VK_DOWN.isDown();
-        this.left = key.VK_LEFT.isDown();
-        this.right = key.VK_RIGHT.isDown();
-        this.attack = key.VK_ATTACK.isDown();
+        this.up = key.isDown(KeyEvent.VK_UP);
+        this.down = key.isDown(KeyEvent.VK_DOWN);
+        this.left = key.isDown(KeyEvent.VK_LEFT);
+        this.right = key.isDown(KeyEvent.VK_RIGHT);
+        this.attack = key.isDown(KeyEvent.VK_A);
     }
 
 }

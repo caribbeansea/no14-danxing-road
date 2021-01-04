@@ -37,30 +37,33 @@ import java.awt.image.BufferedImage;
  *
  * @author tiansheng
  */
-public class GamePanel extends JPanel implements Runnable, GameRender
+public abstract class GamePanel extends JPanel implements Runnable, GameRender
 {
 
-    private Thread thread;
+    protected Thread thread;
 
-    private BufferedImage image;
+    protected BufferedImage image;
 
-    private Graphics2D graphics;
+    protected Graphics2D graphics;
 
-    private volatile boolean running = false;
+    protected volatile boolean running = false;
 
-    private int x = 0;
+    protected int x = 0;
 
-    private MouseHandler mouse;
+    protected MouseHandler mouse;
 
-    private KeyHandler key;
+    protected KeyHandler key;
 
-    private GameStateManager stateManager;
+    protected GameStateManager stateManager;
 
     public GamePanel(int width, int height)
     {
         setPreferredSize(new Dimension(width, height));
         setFocusable(true);
         requestFocus();
+
+        mouse = new MouseHandler(this);
+        key = new KeyHandler(this);
     }
 
     @Override
@@ -77,76 +80,25 @@ public class GamePanel extends JPanel implements Runnable, GameRender
     /**
      * 初始化
      */
-    public void init()
-    {
-        running = true;
-
-        image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
-        this.graphics = (Graphics2D) image.getGraphics();
-
-        mouse = new MouseHandler(this);
-        key = new KeyHandler(this);
-
-        stateManager = new GameStateManager();
-    }
+    public abstract void init_panel();
 
     @Override
     public void run()
     {
-        init();
+        init_panel();
 
         while (running)
         {
             update();
             input(mouse, key);
-            render();
+            render(graphics);
             draw();
         }
-
-    }
-
-    /**
-     * 更新
-     */
-    @Override
-    public void update()
-    {
-        stateManager.update();
-    }
-
-    /**
-     * 渲染
-     */
-    public void render()
-    {
-        if (graphics != null)
-        {
-            graphics.setColor(new Color(66, 134, 244));
-            graphics.fillRect(0, 0, getWidth(), getHeight());
-            stateManager.render(graphics);
-        }
-    }
-
-    @Override
-    public void render(Graphics2D graphics)
-    {
-        throw new UnImplException("The game panel unimpl render(Graphics2D) method.");
     }
 
     /**
      * 画图
      */
-    public void draw()
-    {
-        Graphics graphics = this.getGraphics();
-        graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-        graphics.dispose();
-    }
-
-    @Override
-    public void input(MouseHandler mouse, KeyHandler key)
-    {
-        stateManager.input(mouse, key);
-    }
+    public abstract void draw();
 
 }
