@@ -42,7 +42,7 @@ import java.util.List;
 public class Sprites
 {
 
-    protected final BufferedImage SPRITESHEET;
+    protected BufferedImage SPRITESHEET;
 
     protected BufferedImage[][] spriteArray;
 
@@ -55,6 +55,10 @@ public class Sprites
     protected int spriteHeight;
 
     protected static final int TILE_SIZE = 32;
+
+    public Sprites()
+    {
+    }
 
     public Sprites(ImageResources resources)
     {

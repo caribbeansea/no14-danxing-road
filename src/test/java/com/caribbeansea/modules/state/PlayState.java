@@ -31,6 +31,7 @@ import com.caribbeansea.engine.handler.MouseHandler;
 import com.caribbeansea.engine.state.GameState;
 import com.caribbeansea.engine.state.GameStateManager;
 import com.caribbeansea.modules.entity.PlayerUnit;
+import com.caribbeansea.modules.font.Font1;
 import com.caribbeansea.modules.resources.ImageResources;
 
 import java.awt.*;
@@ -48,7 +49,7 @@ public class PlayState extends GameState
     public PlayState(GameStateManager stateManager)
     {
         super(stateManager);
-        this.font = new GameFont(ImageResources.FONT_0, 16, 16);
+        this.font = new Font1();
         this.player = new PlayerUnit(new Sprites(ImageResources.LINK_FORMATTED), new Vector2f(300, 300), 128);
     }
 
@@ -62,10 +63,10 @@ public class PlayState extends GameState
     public void render(Graphics2D graphics)
     {
         player.render(graphics);
-        Sprites.drawArray(graphics, font, "A I love you", new Vector2f(100, 100), 32, 32, 16, 0);
+        Sprites.drawArray(graphics, font, "A I love you", new Vector2f(100, 100), 32, 32, 20, 0);
 
-        String fps = GamePanel.GAME_CURRENT_FPS + "FPS";
-        Sprites.drawArray(graphics, font, fps, new Vector2f(100, 100), 32, 32, 16, 0);
+        String fps = GamePanel.GAME_CURRENT_FPS + " FPS";
+        Sprites.drawArray(graphics, font, fps, new Vector2f(100, 150), 32, 32, 20, 0);
     }
 
     @Override

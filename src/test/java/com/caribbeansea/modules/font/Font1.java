@@ -1,4 +1,4 @@
-package com.caribbeansea.engine.component;
+package com.caribbeansea.modules.font;
 
 /* ************************************************************************
  *
@@ -19,49 +19,50 @@ package com.caribbeansea.engine.component;
  * ************************************************************************/
 
 /*
- * Creates on 2021/1/3.
+ * Creates on 2021/1/4.
  */
 
+import com.caribbeansea.engine.component.GameFont;
 import com.caribbeansea.modules.resources.ImageResources;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * 游戏字体
- *
  * @author tiansheng
  */
-public abstract class GameFont extends Sprites
+public class Font1 extends GameFont
 {
 
-    public GameFont() {}
+    public Font1()
+    {
+        this(ImageResources.FONT_1, 10, 10);
+    }
 
-    public GameFont(ImageResources resources)
+    public Font1(ImageResources resources)
     {
         super(resources);
     }
 
-    public GameFont(ImageResources resources, int width, int height)
+    public Font1(ImageResources resources, int width, int height)
     {
         super(resources, width, height);
     }
 
-    /**
-     * 获取字母对应的Image
-     *
-     * @param x 字符在整张图片中对应的X轴坐标位置
-     * @param y 字符在整张图片中对应的Y轴坐标位置
-     * @return 字符图片
-     */
-    public abstract BufferedImage getLetter(int x, int y);
+    @Override
+    public BufferedImage getLetter(int x, int y)
+    {
+        return SPRITESHEET.getSubimage(x * width, y * width, width, height);
+    }
 
-    /**
-     * 获取字体图片
-     *
-     * @param ch char
-     * @return 对应的字符图片
-     */
-    public abstract Image getFont(char ch);
+    @Override
+    public Image getFont(char ch)
+    {
+        int value = ch;
+        int x = value % spriteWidth;
+        int y = value / spriteWidth;
+
+        return getLetter(x, y);
+    }
 
 }
