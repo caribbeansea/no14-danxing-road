@@ -29,6 +29,7 @@ import com.caribbeansea.engine.handler.KeyHandler;
 import com.caribbeansea.engine.handler.MouseHandler;
 import com.caribbeansea.engine.state.GameState;
 import com.caribbeansea.engine.state.GameStateManager;
+import com.caribbeansea.modules.Player;
 import com.caribbeansea.modules.resources.ImageResources;
 
 import java.awt.*;
@@ -41,30 +42,31 @@ public class PlayState extends GameState
 
     private GameFont font;
 
+    private Player player;
+
     public PlayState(GameStateManager stateManager)
     {
         super(stateManager);
         this.font = new GameFont(ImageResources.FONT_0, 16, 16);
+        this.player = new Player(new Sprite(ImageResources.LINK_FORMATTED), new Vector2f(300, 300), 128);
     }
 
     @Override
     public void update()
     {
+        player.update();
     }
 
     @Override
     public void render(Graphics2D graphics)
     {
-        Sprite.drawArray(graphics, font, "A I love you", new Vector2f(100, 100), 32, 32, 16, 0);
+        player.render(graphics);
     }
 
     @Override
     public void input(MouseHandler mouse, KeyHandler key)
     {
-        if (key.VK_DOWN.isDown())
-        {
-            System.out.println("down");
-        }
+       player.input(mouse, key);
     }
 
 }

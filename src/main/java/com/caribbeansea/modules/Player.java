@@ -48,6 +48,7 @@ public class Player extends GameEntity
         move();
         origin.setX(origin.getX() + dx);
         origin.setY(origin.getY() + dy);
+        animation.update();
     }
 
     public void move()
@@ -139,12 +140,6 @@ public class Player extends GameEntity
     @Override
     public void input(MouseHandler mouse, KeyHandler key)
     {
-
-        if (mouse.getButton() == 1)
-        {
-            System.out.println("Player: " + origin.getX() + ", " + origin.getY());
-        }
-
         this.up = key.VK_UP.isDown();
         this.down = key.VK_DOWN.isDown();
         this.left = key.VK_LEFT.isDown();

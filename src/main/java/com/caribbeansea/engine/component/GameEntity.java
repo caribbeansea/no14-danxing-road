@@ -40,10 +40,10 @@ public abstract class GameEntity implements Render
 
     protected Animation animation;
 
-    protected final int UP    = 0;
-    protected final int DOWN  = 1;
-    protected final int LEFT  = 2;
-    protected final int RIGHT = 3;
+    protected final int UP    = 3;
+    protected final int DOWN  = 2;
+    protected final int LEFT  = 1;
+    protected final int RIGHT = 0;
 
     protected boolean up;
     protected boolean down;
@@ -68,6 +68,8 @@ public abstract class GameEntity implements Render
     protected AABB hit_bounds;
 
     protected AABB bounds;
+
+    private int setting_delay = 20;
 
     public GameEntity(Sprite sprite, Vector2f origin, int size)
     {
@@ -100,25 +102,25 @@ public abstract class GameEntity implements Render
         {
             if (current_animation != UP || animation.getDelay() == -1)
             {
-                set_animation(UP, sprite.getSpriteArray(UP), 5);
+                set_animation(UP, sprite.getSpriteArray(UP), setting_delay);
             }
         } else if (down)
         {
             if (current_animation != DOWN || animation.getDelay() == -1)
             {
-                set_animation(DOWN, sprite.getSpriteArray(DOWN), 5);
+                set_animation(DOWN, sprite.getSpriteArray(DOWN), setting_delay);
             }
         } else if (left)
         {
             if (current_animation != LEFT || animation.getDelay() == -1)
             {
-                set_animation(LEFT, sprite.getSpriteArray(LEFT), 5);
+                set_animation(LEFT, sprite.getSpriteArray(LEFT), setting_delay);
             }
         } else if (right)
         {
             if (current_animation != RIGHT || animation.getDelay() == -1)
             {
-                set_animation(RIGHT, sprite.getSpriteArray(RIGHT), 5);
+                set_animation(RIGHT, sprite.getSpriteArray(RIGHT), setting_delay);
             }
         } else
         {

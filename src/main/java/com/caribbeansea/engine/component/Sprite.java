@@ -76,13 +76,13 @@ public class Sprite
 
     public void loadSpriteArray()
     {
-        this.spriteArray = new BufferedImage[spriteWidth][spriteHeight];
+        this.spriteArray = new BufferedImage[spriteHeight][spriteWidth];
 
         for (int x = 0; x < spriteWidth; x++)
         {
             for (int y = 0; y < spriteHeight; y++)
             {
-                spriteArray[x][y] = getSprite(x, y);
+                spriteArray[y][x] = getSprite(x, y);
             }
         }
     }
