@@ -22,6 +22,8 @@ package com.caribbeansea.engine.component;
  * Creates on 2021/1/4.
  */
 
+import com.caribbeansea.engine.extranl.tile.TileMapObject;
+
 /**
  * 包围盒
  *
@@ -98,6 +100,23 @@ public class AABB
         float y_delta = c_x - Math.max(box.vec2f.get_world().y + (box.width / 2), Math.min(c_y, box.getVector2f().y));
 
         return (x_delta * x_delta + y_delta * y_delta) < ((this.radius / Math.sqrt(2)) * (this.radius / Math.sqrt(2)));
+    }
+
+    public boolean collisionTile(float box_x, float box_y)
+    {
+        for (int c = 0; c < 4; c++)
+        {
+            int xt = (int) ((vec2f.x + box_x) + (c % 2) * width + x_offset) / 64;
+            int yt = (int) ((vec2f.x + box_y) + (c / 2) * height + y_offset) / 64;
+
+            String key = xt + "," + yt;
+            if (TileMapObject.blocks.containsKey(key))
+            {
+                return TileMapObject.blocks.get(key).update(this);
+            }
+        }
+
+        return false;
     }
 
     public void setVector2f(Vector2f vec2f)

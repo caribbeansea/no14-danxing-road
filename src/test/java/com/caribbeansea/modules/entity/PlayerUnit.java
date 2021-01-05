@@ -28,6 +28,7 @@ import com.caribbeansea.engine.component.Vector2f;
 import com.caribbeansea.engine.handler.KeyHandler;
 import com.caribbeansea.engine.handler.MouseHandler;
 import com.caribbeansea.modules.state.PlayState;
+import com.sun.media.jfxmedia.events.PlayerStateEvent;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -67,6 +68,12 @@ public class PlayerUnit extends GameEntity
     public PlayerUnit(Sprites sprites, Vector2f origin, int size)
     {
         super(sprites, origin, size);
+
+        bounds.setWidth(42);
+        bounds.setHeight(20);
+        bounds.setXOffset(12);
+        bounds.setYOffset(40);
+
         this.setting_delay = 30;
         this.acc = 2f;
         this.max_speed = 3f;
@@ -79,11 +86,19 @@ public class PlayerUnit extends GameEntity
         super.update();
         move();
 
-        PlayState.map.x += dx;
-        PlayState.map.y += dy;
+        // 碰撞判断
+        if (!bounds.collisionTile(dx, 0))
+        {
+            PlayState.map.x += dx;
+            origin.x += dx;
+        }
 
-        origin.x += dx;
-        origin.y += dy;
+        if (!bounds.collisionTile(0, dy))
+        {
+            PlayState.map.y += dy;
+            origin.y += dy;
+        }
+
         animation.update();
     }
 
@@ -232,6 +247,9 @@ public class PlayerUnit extends GameEntity
     public void render(Graphics2D graphics)
     {
         graphics.drawImage(animation.getFrames(), (int) origin.get_world().x, (int) origin.get_world().y, size, size, null);
+        graphics.setColor(Color.RED);
+        graphics.drawRect((int) (origin.get_world().x + bounds.getXOffset()), (int) (origin.get_world().y + bounds.getYOffset())
+                , (int) bounds.getWidth(), (int) bounds.getHeight());
     }
 
     @Override
