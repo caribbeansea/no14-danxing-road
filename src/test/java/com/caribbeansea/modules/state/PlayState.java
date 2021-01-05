@@ -31,6 +31,9 @@ import com.caribbeansea.engine.handler.MouseHandler;
 import com.caribbeansea.engine.state.GameState;
 import com.caribbeansea.engine.state.GameStateManager;
 import com.caribbeansea.engine.utils.ToolBox;
+import com.caribbeansea.modules.StartGame;
+import com.caribbeansea.modules.UnitFrame;
+import com.caribbeansea.modules.UnitPanel;
 import com.caribbeansea.modules.entity.PlayerUnit;
 import com.caribbeansea.modules.font.Font1;
 import com.caribbeansea.modules.resources.ImageResources;
@@ -50,30 +53,39 @@ public class PlayState extends GameState
 
     private TileManager tileManager;
 
+    public static Vector2f map;
+
     public PlayState(GameStateManager stateManager)
     {
         super(stateManager);
-        this.font = new Font1();
+
+        map = new Vector2f();
+        Vector2f.setWorld(map.x, map.y);
+
         this.tileManager = new TileManager(ToolBox.read_file_in_resources("/tile/tilemap.xml").getAbsolutePath());
-        this.player = new PlayerUnit(new Sprites(ImageResources.LINK_FORMATTED), new Vector2f(300, 300), 128);
+        this.font = new Font1();
+        this.player = new PlayerUnit(new Sprites(ImageResources.LINK_FORMATTED),
+                new Vector2f((StartGame.width / 2) - 32, (StartGame.height / 2) - 32), 64);
     }
 
     @Override
     public void update()
     {
+        Vector2f.setWorld(map.x, map.y);
         player.update();
     }
 
     @Override
     public void render(Graphics2D graphics)
     {
+        tileManager.render(graphics);
+
         player.render(graphics);
         Sprites.drawArray(graphics, font, "A I love you", new Vector2f(100, 100), 32, 32, 20, 0);
 
         String fps = GamePanel.GAME_CURRENT_FPS + " FPS";
         Sprites.drawArray(graphics, font, fps, new Vector2f(100, 150), 32, 32, 20, 0);
 
-        tileManager.render(graphics);
     }
 
     @Override

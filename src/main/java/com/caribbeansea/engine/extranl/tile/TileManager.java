@@ -103,21 +103,25 @@ public class TileManager implements GameRender
             for (int i = 0; i < layer; i++)
             {
                 element = (Element) nodes.item(i);
-                if (i <= 0)
+                if (i == 0)
                 {
                     width = Integer.parseInt(element.getAttribute("width"));
                     height = Integer.parseInt(element.getAttribute("height"));
                 }
 
                 data[i] = element.getElementsByTagName("data").item(0).getTextContent();
-                System.out.println("---------------------------------------------------------------------------------------------");
-                System.out.println(data[i]);
-                System.out.println("---------------------------------------------------------------------------------------------");
+
+                if(i > 0) {
+                    tile_maps.add(new TileMapNorm(data[i], sprites, width, height, block_width, block_height, tile_columns));
+                } else {
+                    tile_maps.add(new TileMapObject(data[i], sprites, width, height, block_width, block_height, tile_columns));
+                }
             }
 
         } catch (Throwable e)
         {
             Log.error("cloud not read tile xml from: %s", path, e);
+            e.printStackTrace();
         }
     }
 
@@ -130,7 +134,10 @@ public class TileManager implements GameRender
     @Override
     public void render(Graphics2D graphics)
     {
-
+        for (TileMap tile_map : tile_maps)
+        {
+            tile_map.render(graphics);
+        }
     }
 
     @Override

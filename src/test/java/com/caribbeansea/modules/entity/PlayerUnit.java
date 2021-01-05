@@ -27,6 +27,7 @@ import com.caribbeansea.engine.component.Sprites;
 import com.caribbeansea.engine.component.Vector2f;
 import com.caribbeansea.engine.handler.KeyHandler;
 import com.caribbeansea.engine.handler.MouseHandler;
+import com.caribbeansea.modules.state.PlayState;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -67,6 +68,8 @@ public class PlayerUnit extends GameEntity
     {
         super(sprites, origin, size);
         this.setting_delay = 30;
+        this.acc = 2f;
+        this.max_speed = 3f;
         set_animation(RIGHT, sprites.getSpriteArray(RIGHT), setting_delay);
     }
 
@@ -75,6 +78,10 @@ public class PlayerUnit extends GameEntity
     {
         super.update();
         move();
+
+        PlayState.map.x += dx;
+        PlayState.map.y += dy;
+
         origin.x += dx;
         origin.y += dy;
         animation.update();
@@ -224,7 +231,7 @@ public class PlayerUnit extends GameEntity
     @Override
     public void render(Graphics2D graphics)
     {
-        graphics.drawImage(animation.getFrames(), (int) origin.x, (int) origin.y, size, size, null);
+        graphics.drawImage(animation.getFrames(), (int) origin.get_world().x, (int) origin.get_world().y, size, size, null);
     }
 
     @Override
