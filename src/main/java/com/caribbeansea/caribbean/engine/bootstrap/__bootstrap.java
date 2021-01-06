@@ -80,29 +80,31 @@ public abstract class __bootstrap implements __initable
     /**
      * 构造器，里面调用初始化方法
      */
-    public __bootstrap(__panel panel)
+    public __bootstrap(__panel _panel)
     {
         init(); /* 所有成员配置都使用它来配置 */
 
-        this.frame = new __frame();
+        if (panel == null && _panel != null)
+            panel = _panel;
 
-        this.frame.setSize(dimension);
+        frame = new __frame();
+
+        frame.setSize(dimension);
 
         if (exit_on_close)
-            this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         if (centered)
-            this.frame.setLocationRelativeTo(null);
+            frame.setLocationRelativeTo(null);
 
-        __frame_configure(this.frame); /* 用户对 __frame 的自定义配置*/
+        __frame_configure(frame); /* 用户对 __frame 的自定义配置*/
 
         if (panel != null)
         {
-            this.panel = panel;
-            this.frame.setContentPane(panel); /* 添加面板 */
+            frame.setContentPane(panel); /* 添加面板 */
         }
 
-        this.frame.setVisible(visible);
+        frame.setVisible(visible);
     }
 
     /**
@@ -114,6 +116,14 @@ public abstract class __bootstrap implements __initable
     public void size(int width, int height)
     {
         this.dimension.setSize(width, height);
+    }
+
+    /**
+     * @return 当前窗口的尺寸大小
+     */
+    public Dimension size()
+    {
+        return dimension;
     }
 
     /**
@@ -134,6 +144,12 @@ public abstract class __bootstrap implements __initable
     public void panel(__panel panel)
     {
         this.panel = panel;
+    }
+
+    public void panel(__panel panel, boolean running)
+    {
+        this.panel = panel;
+        this.panel.running(running);
     }
 
     public __frame frame()

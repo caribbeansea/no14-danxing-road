@@ -22,6 +22,8 @@ package com.caribbeansea.caribbean.engine.process;
  * Creates on 2021/1/5.
  */
 
+import java.awt.*;
+
 /**
  * 图像渲染接口
  *
@@ -32,7 +34,9 @@ public interface __renderer
 
     /**
      * 实现这个接口进行渲染
+     *
+     * @param graphics 画笔
      */
-    void render();
+    void render(Graphics graphics);
 
 }

@@ -28,7 +28,9 @@ import com.caribbeansea.caribbean.engine.process.__inputer;
 import com.caribbeansea.caribbean.engine.process.__renderer;
 import com.caribbeansea.caribbean.engine.process.__updater;
 
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -39,36 +41,42 @@ import java.util.TimerTask;
  * @author tiansheng
  */
 public abstract class __panel extends JPanel
-        implements __updater, __renderer, __inputer, Runnable
+        implements __updater, __renderer, __inputer
 {
 
     /**
      * 是否显示当前FPS
      */
-    private boolean visible_fps = false;
-
-    /**
-     * 游戏启动线程
-     */
-    private Thread thread;
+    protected boolean visible_fps = false;
 
     /**
      * 键盘输入监听
      */
-    private __key_handler key_handler;
+    protected __key_handler key_handler;
 
     /**
      * 鼠标输入监听
      */
-    private __mouse_handler mouse_handler;
+    protected __mouse_handler mouse_handler;
 
     /**
      * 是否暂停游戏
      */
-    private boolean running = false;
+    protected boolean running = false;
 
-    public __panel()
+    /**
+     * 窗口尺寸
+     */
+    protected Dimension dimension;
+
+    public __panel(Dimension dimension)
     {
+        this.dimension = dimension;
+
+        setPreferredSize(dimension);
+        setFocusable(true);
+        requestFocus();
+
         /* 定时器，每秒执行一次 */
         new Timer().schedule(new TimerTask()
         {
@@ -83,7 +91,6 @@ public abstract class __panel extends JPanel
         key_handler = new __key_handler(this);
         mouse_handler = new __mouse_handler(this);
 
-        thread = new Thread(this, "game-thread-bootstrap");
     }
 
     /**
@@ -92,26 +99,18 @@ public abstract class __panel extends JPanel
     public abstract void do_every_second();
 
     @Override
-    public void run()
+    public void paint(Graphics g)
     {
-        while (true)
-        {
-            if (running)
-            {
-                update();
-                input(key_handler, mouse_handler);
-                render();
-            }
-        }
-    }
+        super.paint(g);
 
-    /**
-     * 开始游戏
-     */
-    public void start_game()
-    {
-        this.running = true;
-        thread.start();
+        if (!running)
+        {
+            update();
+            input(key_handler, mouse_handler);
+            render(g);
+        }
+
+        repaint();
     }
 
     /**
@@ -119,7 +118,12 @@ public abstract class __panel extends JPanel
      */
     public void pause()
     {
-        this.running = false;
+        this.running = true;
+    }
+
+    public void running(boolean running)
+    {
+        this.running = running;
     }
 
     public boolean visible_fps()
