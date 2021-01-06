@@ -41,7 +41,9 @@ Java有`GC`，这是一个非常好的功能。避免我们去手动管理内存
 ***所以如果在Fx出来之前你问我Java适合开发游戏吗？我的回答一定是不是很适合。但是现在我可以告诉大家，Java适合开发游戏！***
 
 
-# Caribbean 2D Game Engine
+-----------------
+
+# Caribbean 2D Game Engine (English doc)
 
 > This game engine is a simple and quick-to-use game engine for Java developers. In order to make up for us Java developers
 > The sorrow of not having a game engine available.
