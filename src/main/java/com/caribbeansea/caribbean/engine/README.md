@@ -40,7 +40,7 @@ Java有`GC`，这是一个非常好的功能。避免我们去手动管理内存
 
 ***所以如果在Fx出来之前你问我Java适合开发游戏吗？我的回答一定是不是很适合。但是现在我可以告诉大家，Java适合开发游戏！***
 
-
+-- 作者：罗添胜
 -----------------
 
 # Caribbean 2D Game Engine (English doc)
@@ -84,3 +84,5 @@ OSX supports openGL very well, but does not support DirectX, so the JavaGUI deve
 When FX came out, it was separated from the JDK to support different packages on various platforms, and support `DirectX and openGL` for `hardware acceleration` to achieve high-performance graphics rendering.
 
 ***So if you ask me before Fx comes out, is Java suitable for game development? My answer must be very suitable. But now I can tell you that Java is suitable for developing games!***
+
+-- author: tiansheng luo
