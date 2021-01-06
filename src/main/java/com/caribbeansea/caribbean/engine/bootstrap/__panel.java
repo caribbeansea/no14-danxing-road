@@ -30,7 +30,6 @@ import com.caribbeansea.caribbean.engine.process.__updater;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -43,11 +42,6 @@ import java.util.TimerTask;
 public abstract class __panel extends JPanel
         implements __updater, __renderer, __inputer
 {
-
-    /**
-     * 是否显示当前FPS
-     */
-    protected boolean visible_fps = false;
 
     /**
      * 键盘输入监听
@@ -69,6 +63,11 @@ public abstract class __panel extends JPanel
      */
     protected Dimension dimension;
 
+    /**
+     * 帧数
+     */
+    private int count_frames = 0;
+
     public __panel(Dimension dimension)
     {
         this.dimension = dimension;
@@ -84,6 +83,7 @@ public abstract class __panel extends JPanel
             public void run()
             {
                 do_every_second();
+                count_frames = 0;
             }
         }, 0, 1000L);
 
@@ -111,6 +111,8 @@ public abstract class __panel extends JPanel
         }
 
         repaint();
+
+        count_frames++;
     }
 
     /**
@@ -121,19 +123,17 @@ public abstract class __panel extends JPanel
         this.running = true;
     }
 
+    /**
+     * @return 当前游戏帧数
+     */
+    public int fps()
+    {
+        return count_frames;
+    }
+
     public void running(boolean running)
     {
         this.running = running;
-    }
-
-    public boolean visible_fps()
-    {
-        return visible_fps;
-    }
-
-    public void visible_fps(boolean visible_fps)
-    {
-        this.visible_fps = visible_fps;
     }
 
 }

@@ -42,7 +42,7 @@ public class __$panel extends __panel
     @Override
     public void do_every_second()
     {
-        System.out.printf("NEW SECOND %s MS\n", System.currentTimeMillis());
+        System.out.printf("NEW SECOND %s MS, FPS:[%s]\n", System.currentTimeMillis(), fps());
     }
 
     @Override
