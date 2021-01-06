@@ -51,9 +51,9 @@ Java有`GC`，这是一个非常好的功能。避免我们去手动管理内存
 > Game is a kind of art, it can directly express the world in your imagination and your longing and fantasy about anything. So in order to make up for our Java developers
 > The sadness of a good game engine I decided to develop this game engine.
 
-**First of all, I am here to answer the most common questions in your head to help you understand whether Java is good for games. **
+**First of all, I am here to answer the most common questions in your head to help you understand whether Java is good for games.**
 
-**1) Why do so many people say that Java is not suitable for games? **
+**1) Why do so many people say that Java is not suitable for games?**
 
 Is Java suitable for games? My answer to this is yes, Way not? Of course you can play games. Why do we say that `C/C++` has high performance, because it can do `direct access`. What is direct access?
 That is to say, we can directly manipulate the memory, but this unavoidable to manually manage the memory.
