@@ -22,9 +22,49 @@ package com.caribbeansea.begin.engine.handler;
  * Creates on 2021/1/5.
  */
 
+import com.caribbeansea.begin.engine.bootstrap.__panel;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 /**
  * @author tiansheng
  */
-public class __mouse_handler
+public class __mouse_handler implements MouseListener
 {
+    public __mouse_handler(__panel panel)
+    {
+        panel.addMouseListener(this);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e)
+    {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e)
+    {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e)
+    {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e)
+    {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e)
+    {
+
+    }
+
 }

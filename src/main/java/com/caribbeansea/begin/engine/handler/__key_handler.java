@@ -22,9 +22,36 @@ package com.caribbeansea.begin.engine.handler;
  * Creates on 2021/1/5.
  */
 
+import com.caribbeansea.begin.engine.bootstrap.__panel;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 /**
  * @author tiansheng
  */
-public class __key_handler
+public class __key_handler implements KeyListener
 {
+    public __key_handler(__panel panel)
+    {
+        panel.addKeyListener(this);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e)
+    {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e)
+    {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e)
+    {
+
+    }
 }
