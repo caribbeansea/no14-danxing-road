@@ -82,9 +82,6 @@ public abstract class __bootstrap implements __initable
      */
     public __bootstrap(__panel panel)
     {
-        if (panel != null)
-            this.panel = panel;
-
         init(); /* 所有成员配置都使用它来配置 */
 
         this.frame = new __frame();
@@ -99,7 +96,11 @@ public abstract class __bootstrap implements __initable
 
         __frame_configure(this.frame); /* 用户对 __frame 的自定义配置*/
 
-        this.frame.setContentPane(panel); /* 添加面板 */
+        if (panel != null)
+        {
+            this.panel = panel;
+            this.frame.setContentPane(panel); /* 添加面板 */
+        }
 
         this.frame.setVisible(visible);
     }
