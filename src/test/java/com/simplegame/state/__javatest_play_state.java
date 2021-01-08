@@ -1,4 +1,4 @@
-package com.caribbeansea.caribbean;
+package com.simplegame.state;
 
 /* ************************************************************************
  *
@@ -19,28 +19,36 @@ package com.caribbeansea.caribbean;
  * ************************************************************************/
 
 /*
- * Creates on 2021/1/6.
+ * Creates on 2021/1/8.
  */
 
-import com.caribbeansea.caribbean.engine.bootstrap.__panel;
-
-import java.awt.*;
+import com.caribbeansea.caribbean.engine.handler.__key_handler;
+import com.caribbeansea.caribbean.engine.handler.__mouse_handler;
+import com.caribbeansea.caribbean.engine.render.__depict;
+import com.caribbeansea.caribbean.engine.state.__enable_state;
 
 /**
  * @author tiansheng
  */
-public class __gt_panel extends __panel
+public class __javatest_play_state extends __enable_state
 {
 
-    public __gt_panel(Dimension dimension)
+    @Override
+    public void input(__key_handler key_handler, __mouse_handler mouse_handler)
     {
-        super(dimension);
+
     }
 
     @Override
-    public void do_every_second()
+    public void update()
     {
-        System.out.printf("NEW SECOND %s MS, FPS:[%s]\n", System.currentTimeMillis(), fps());
+
+    }
+
+    @Override
+    public void render(__depict depict)
+    {
+
     }
 
 }

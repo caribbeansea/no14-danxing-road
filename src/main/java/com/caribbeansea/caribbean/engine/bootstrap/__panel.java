@@ -24,10 +24,9 @@ package com.caribbeansea.caribbean.engine.bootstrap;
 
 import com.caribbeansea.caribbean.engine.handler.__key_handler;
 import com.caribbeansea.caribbean.engine.handler.__mouse_handler;
-import com.caribbeansea.caribbean.engine.process.__inputer;
 import com.caribbeansea.caribbean.engine.render.__depict;
-import com.caribbeansea.caribbean.engine.render.__renderer;
-import com.caribbeansea.caribbean.engine.process.__updater;
+import com.caribbeansea.caribbean.engine.state.__state;
+import com.caribbeansea.caribbean.engine.state.__state_manager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,7 +40,6 @@ import java.util.TimerTask;
  * @author tiansheng
  */
 public abstract class __panel extends JPanel
-        implements __updater, __renderer, __inputer
 {
 
     /**
@@ -68,6 +66,11 @@ public abstract class __panel extends JPanel
      * 帧数
      */
     private int count_frames = 0;
+
+    /**
+     * 状态管理
+     */
+    private final __state_manager __STATE_MANAGER__ = new __state_manager();
 
     public __panel(Dimension dimension)
     {
@@ -106,9 +109,9 @@ public abstract class __panel extends JPanel
 
         if (!running)
         {
-            update();
-            input(key_handler, mouse_handler);
-            render(new __depict(g));
+            __STATE_MANAGER__.update();
+            __STATE_MANAGER__.input(key_handler, mouse_handler);
+            __STATE_MANAGER__.render(new __depict(g));
         }
 
         repaint();
@@ -132,9 +135,19 @@ public abstract class __panel extends JPanel
         return count_frames;
     }
 
-    public void running(boolean running)
+    /**
+     * 继续游戏
+     */
+    public void __continue__()
     {
-        this.running = running;
+        this.running = true;
+    }
+
+    /**
+     * 添加状态
+     */
+    public void addState(__state state) {
+        __STATE_MANAGER__.addState(state);
     }
 
 }

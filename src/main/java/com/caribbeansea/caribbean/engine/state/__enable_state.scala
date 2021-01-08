@@ -1,4 +1,4 @@
-package com.caribbeansea.caribbean;
+package com.caribbeansea.caribbean.engine.state
 
 /* ************************************************************************
  *
@@ -19,28 +19,14 @@ package com.caribbeansea.caribbean;
  * ************************************************************************/
 
 /*
- * Creates on 2021/1/6.
+ * Creates on 2021/1/5.
  */
-
-import com.caribbeansea.caribbean.engine.bootstrap.__panel;
-
-import java.awt.*;
 
 /**
+ * 初始化时为启用的状态对象
+ *
  * @author tiansheng
  */
-public class __gt_panel extends __panel
-{
-
-    public __gt_panel(Dimension dimension)
-    {
-        super(dimension);
-    }
-
-    @Override
-    public void do_every_second()
-    {
-        System.out.printf("NEW SECOND %s MS, FPS:[%s]\n", System.currentTimeMillis(), fps());
-    }
-
+abstract class __enable_state extends __state{
+  super.enable = true
 }

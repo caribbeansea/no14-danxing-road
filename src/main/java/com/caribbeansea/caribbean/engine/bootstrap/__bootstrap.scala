@@ -23,6 +23,7 @@ package com.caribbeansea.caribbean.engine.bootstrap
  */
 
 import com.caribbeansea.caribbean.engine.__initable
+import com.caribbeansea.caribbean.engine.bootstrap.__bootstrap.__DIMENSION__
 import com.caribbeansea.caribbean.engine.state.__state_manager
 
 import java.awt.Dimension
@@ -41,32 +42,24 @@ import javax.swing.JFrame
 abstract class __bootstrap(var panel: __panel) extends __initable {
 
   /**
-   * 窗口的尺寸（宽高），默认是一个 500*500 大小的窗口。
-   * <p>
-   * 这个窗体的长宽高是具有传递性的，也就是说在我们的{@link __panel},{@link __state_manager},
-   * {@link com.caribbeansea.caribbean.engine.state.__state}等对象中全局通用的。
-   */
-  private val dimension: Dimension = new Dimension(500, 500)
-
-  /**
    * 是否显示窗体，默认为true
    */
-  private var visible: Boolean = true
+  var visible: Boolean = true
 
   /**
    * 当游戏关闭时程序也随之关闭, 默认为 true
    */
-  private var exit_on_close: Boolean = true
+  var exit_on_close: Boolean = true
 
   /**
    * 当游戏启动时默认居中显示
    */
-  private var centered: Boolean = true
+  var centered: Boolean = true
 
   /**
    * 窗体对象，所有的参数配置实际上都是在配置它。
    */
-  private var frame: __frame = null
+  val frame: JFrame = new JFrame()
 
   /**
    * 构造器，里面调用初始化方法
@@ -78,9 +71,7 @@ abstract class __bootstrap(var panel: __panel) extends __initable {
     if (this.panel == null && panel != null)
       this.panel = panel
 
-    frame = new __frame()
-
-    frame.setSize(dimension)
+    frame.setSize(__DIMENSION__)
 
     if (exit_on_close)
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
@@ -98,17 +89,22 @@ abstract class __bootstrap(var panel: __panel) extends __initable {
   }
 
   /**
+   * 设置窗口标题
+   */
+  def title(title: String): Unit = frame.setTitle(title)
+
+  /**
    * 设置窗体大小
    *
    * @param w 窗口宽度
    * @param h 窗口高度
    */
-  def size(w: Int, h: Int): Unit = this.dimension.setSize(w, h)
+  def size(w: Int, h: Int): Unit = __DIMENSION__.setSize(w, h)
 
   /**
    * @return 当前窗口的尺寸大小
    */
-  def size(): Dimension = dimension
+  def size(): Dimension = __DIMENSION__
 
   /**
    * 如果有特殊需要去单独配置 __frame 的话可以去重写这个方法进行配置。
@@ -116,7 +112,7 @@ abstract class __bootstrap(var panel: __panel) extends __initable {
    *
    * @param frame __frame实例
    */
-  def frameConfigure(frame: __frame): Unit = {
+  def frameConfigure(frame: JFrame): Unit = {
     // do nothing
   }
 
@@ -126,5 +122,17 @@ abstract class __bootstrap(var panel: __panel) extends __initable {
    * @param panel 面板对象
    */
   def addPanel(panel: __panel): Unit = this.panel = panel
+
+}
+
+object __bootstrap {
+
+  /**
+   * 窗口的尺寸（宽高），默认是一个 500*500 大小的窗口。
+   * <p>
+   * 这个窗体的长宽高是具有传递性的，也就是说在我们的{@link __panel},{@link __state_manager},
+   * {@link com.caribbeansea.caribbean.engine.state.__state}等对象中全局通用的。
+   */
+  var __DIMENSION__ : Dimension = new Dimension(500, 500)
 
 }

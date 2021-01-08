@@ -1,4 +1,6 @@
-package com.caribbeansea.caribbean.engine.handler;
+package com.caribbeansea.caribbean.engine.handler
+
+;
 
 /* ************************************************************************
  *
@@ -24,47 +26,22 @@ package com.caribbeansea.caribbean.engine.handler;
 
 import com.caribbeansea.caribbean.engine.bootstrap.__panel;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * @author tiansheng
  */
-public class __mouse_handler implements MouseListener
-{
-    public __mouse_handler(__panel panel)
-    {
-        panel.addMouseListener(this);
-    }
+class __key_handler(panel: __panel) extends KeyListener {
 
-    @Override
-    public void mouseClicked(MouseEvent e)
-    {
+  {
+    panel.addKeyListener(this);
+  }
 
-    }
+  override def keyTyped(e: KeyEvent): Unit = ???
 
-    @Override
-    public void mousePressed(MouseEvent e)
-    {
+  override def keyPressed(e: KeyEvent): Unit = ???
 
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e)
-    {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e)
-    {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e)
-    {
-
-    }
+  override def keyReleased(e: KeyEvent): Unit = ???
 
 }

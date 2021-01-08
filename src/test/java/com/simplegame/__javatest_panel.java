@@ -1,4 +1,4 @@
-package com.caribbeansea.caribbean;
+package com.simplegame;
 
 /* ************************************************************************
  *
@@ -19,28 +19,27 @@ package com.caribbeansea.caribbean;
  * ************************************************************************/
 
 /*
- * Creates on 2021/1/6.
+ * Creates on 2021/1/8.
  */
 
+import com.caribbeansea.caribbean.engine.bootstrap.__bootstrap;
 import com.caribbeansea.caribbean.engine.bootstrap.__panel;
-
-import java.awt.*;
 
 /**
  * @author tiansheng
  */
-public class __gt_panel extends __panel
+public class __javatest_panel extends __panel
 {
 
-    public __gt_panel(Dimension dimension)
+    public __javatest_panel()
     {
-        super(dimension);
+        super(__bootstrap.__DIMENSION__());
     }
 
     @Override
     public void do_every_second()
     {
-        System.out.printf("NEW SECOND %s MS, FPS:[%s]\n", System.currentTimeMillis(), fps());
+
     }
 
 }

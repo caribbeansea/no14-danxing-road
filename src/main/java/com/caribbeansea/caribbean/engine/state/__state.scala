@@ -1,10 +1,10 @@
-package com.caribbeansea.caribbean.engine.handler;
+package com.caribbeansea.caribbean.engine.state
 
 /* ************************************************************************
  *
  * Copyright (C) 2020 caribbeansea All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -22,36 +22,19 @@ package com.caribbeansea.caribbean.engine.handler;
  * Creates on 2021/1/5.
  */
 
-import com.caribbeansea.caribbean.engine.bootstrap.__panel;
-
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import com.caribbeansea.caribbean.engine.process.{__inputer, __updater}
+import com.caribbeansea.caribbean.engine.render.__renderer
 
 /**
+ * 游戏状态
+ *
  * @author tiansheng
  */
-public class __key_handler implements KeyListener
-{
-    public __key_handler(__panel panel)
-    {
-        panel.addKeyListener(this);
-    }
+abstract class __state extends __updater with __renderer with __inputer {
 
-    @Override
-    public void keyTyped(KeyEvent e)
-    {
+  /**
+   * 是否启用，如果状态被禁用的话将不会去调用
+   */
+  var enable: Boolean = true
 
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e)
-    {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e)
-    {
-
-    }
 }

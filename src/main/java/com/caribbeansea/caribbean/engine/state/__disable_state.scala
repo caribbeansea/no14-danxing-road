@@ -1,4 +1,4 @@
-package com.caribbeansea.caribbean.engine.state;
+package com.caribbeansea.caribbean.engine.state
 
 /* ************************************************************************
  *
@@ -23,8 +23,10 @@ package com.caribbeansea.caribbean.engine.state;
  */
 
 /**
+ * 初始化时为禁用的状态对象
+ *
  * @author tiansheng
  */
-public class __state
-{
+abstract class __disable_state extends __state {
+  super.enable = false
 }

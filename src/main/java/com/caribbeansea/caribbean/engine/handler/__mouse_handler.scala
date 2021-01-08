@@ -1,4 +1,9 @@
-package com.caribbeansea.caribbean.engine.state;
+package com.caribbeansea.caribbean.engine.handler
+
+import com.caribbeansea.caribbean.engine.bootstrap.__panel
+
+import java.awt.event.{MouseEvent, MouseListener}
+;
 
 /* ************************************************************************
  *
@@ -25,6 +30,20 @@ package com.caribbeansea.caribbean.engine.state;
 /**
  * @author tiansheng
  */
-public class __state_manager
-{
+class __mouse_handler(panel: __panel) extends MouseListener {
+
+  {
+    panel.addMouseListener(this)
+  }
+
+  override def mouseClicked(e: MouseEvent): Unit = ???
+
+  override def mousePressed(e: MouseEvent): Unit = ???
+
+  override def mouseReleased(e: MouseEvent): Unit = ???
+
+  override def mouseEntered(e: MouseEvent): Unit = ???
+
+  override def mouseExited(e: MouseEvent): Unit = ???
+
 }
