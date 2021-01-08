@@ -36,10 +36,10 @@ public class __tool_box
      * @param timemillis 保存的时间戳
      * @return 毫秒
      */
-    public static int __interval_millis__(long timemillis)
+    public static float __interval_millis__(long timemillis)
     {
         long delta = (System.currentTimeMillis() - timemillis) / 100;
-        return delta > 0 ? (int) delta : (int) Math.abs(delta);
+        return delta > 0 ? delta : Math.abs(delta);
     }
 
 }
