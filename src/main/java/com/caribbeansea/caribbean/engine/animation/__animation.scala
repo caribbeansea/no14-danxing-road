@@ -1,9 +1,7 @@
 package com.caribbeansea.caribbean.engine.animation
 
 import com.caribbeansea.caribbean.engine.render.{__depict, __renderer}
-import com.caribbeansea.caribbean.engine.sprites.__sprites
 
-import java.awt.Graphics
 import java.awt.image.BufferedImage
 
 /* ************************************************************************
@@ -33,19 +31,24 @@ import java.awt.image.BufferedImage
  *
  * @author tiansheng
  * @param frames 每帧动画图片数组
- * @param delay   播放延迟，默认为2。代表每调用两次播放一次
+ * @param delay  播放延迟，默认为2。代表每调用两次播放一次
  */
-class __animation(val frames: Array[BufferedImage], val delay: Int) extends __renderer {
+class __animation(val frames: Array[BufferedImage], var delay: Int) extends __renderer {
 
   /**
    * 当前播放到了第几帧
    */
-  var _current_frames: Int = 0
+  var current_frames: Int = 0
 
   /**
    * 播放次数
    */
-  var _time_played: Int = 0
+  var time_played: Int = 0
+
+  /**
+   * 调用次数统计
+   */
+  var call_count: Int = 0
 
   /**
    * 辅构造器
@@ -58,6 +61,22 @@ class __animation(val frames: Array[BufferedImage], val delay: Int) extends __re
    * 实现此方法进行图像渲染
    */
   override def render(depict: __depict): Unit = {
+
+    if (delay == -1)
+      return
+
+    /* 如果当前调用帧数到达最后一帧后就重置回0 */
+    if (current_frames == frames.length) {
+      current_frames = 0
+      time_played += 1
+    }
+
+    /* 到达延迟后播放下一帧 */
+    if (call_count == delay) {
+      current_frames += 1
+    }
+
+    depict.graphics.drawImage(frames(current_frames), depict.x, depict.y, depict.width, depict.height, null)
 
   }
 

@@ -27,7 +27,9 @@ import java.awt.Graphics
 /**
  * @author tiansheng
  * @param graphics 画图需要使用的对象（画笔）
- * @param x 初始X坐标
- * @param y 初始Y坐标
+ * @param x        初始X坐标
+ * @param y        初始Y坐标
+ * @param width    初始宽度
+ * @param height   初始高度
  */
-class __depict(val graphics: Graphics, val x: Int, y: Int)
+class __depict(var graphics: Graphics, var x: Int, var y: Int, var width: Int, var height: Int)
