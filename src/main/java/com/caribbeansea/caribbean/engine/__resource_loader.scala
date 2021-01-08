@@ -1,4 +1,8 @@
-package com.simplegame;
+package com.caribbeansea.caribbean.engine
+
+import java.awt.image.BufferedImage
+import java.io.File
+import javax.imageio.ImageIO
 
 /* ************************************************************************
  *
@@ -19,29 +23,22 @@ package com.simplegame;
  * ************************************************************************/
 
 /*
- * Creates on 2021/1/8.
+ * Creates on 2021/1/5.
  */
-
-import com.caribbeansea.caribbean.engine.bootstrap.__bootstrap;
-import com.caribbeansea.caribbean.engine.bootstrap.__panel;
-import com.simplegame.state.__javatest_play_state;
 
 /**
+ * 资源加载器
+ *
  * @author tiansheng
  */
-public class __javatest_panel extends __panel
-{
+object __resource_loader {
 
-    public __javatest_panel()
-    {
-        super(__bootstrap.__DIMENSION__());
-        addState(new __javatest_play_state());
-    }
-
-    @Override
-    public void do_every_second()
-    {
-        System.out.printf("NEW SECONDS: %s, FPS: [%s]\n", System.nanoTime(), fps());
-    }
+  /**
+   * 读取ImageBuffered
+   *
+   * @param path 相对路径或者是绝对路径
+   * @return BufferedImage实例
+   */
+  def __imageio_read__(path: String): BufferedImage = ImageIO.read(new File(path))
 
 }

@@ -1,4 +1,4 @@
-package com.caribbeansea.caribbean.engine.state
+package com.caribbeansea.caribbean.engine.map
 
 /* ************************************************************************
  *
@@ -22,19 +22,7 @@ package com.caribbeansea.caribbean.engine.state
  * Creates on 2021/1/5.
  */
 
-import com.caribbeansea.caribbean.engine.process.{__inputer, __updater}
-import com.caribbeansea.caribbean.engine.render.__renderer
-
 /**
- * 游戏状态
- *
  * @author tiansheng
  */
-abstract class __state extends __updater with __renderer with __inputer {
-
-  /**
-   * 是否启用，如果状态被禁用的话将不会去调用
-   */
-  var enable: Boolean = true
-
-}
+class __vec2f(var x: Int, var y: Int)

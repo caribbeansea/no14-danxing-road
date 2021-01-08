@@ -38,10 +38,10 @@ class __key_handler(panel: __panel) extends KeyListener {
     panel.addKeyListener(this);
   }
 
-  override def keyTyped(e: KeyEvent): Unit = ???
+  override def keyTyped(e: KeyEvent): Unit = {}
 
-  override def keyPressed(e: KeyEvent): Unit = ???
+  override def keyPressed(e: KeyEvent): Unit = {}
 
-  override def keyReleased(e: KeyEvent): Unit = ???
+  override def keyReleased(e: KeyEvent): Unit = {}
 
 }

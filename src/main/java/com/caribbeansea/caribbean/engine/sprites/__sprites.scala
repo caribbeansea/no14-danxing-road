@@ -1,5 +1,6 @@
 package com.caribbeansea.caribbean.engine.sprites
 
+import com.caribbeansea.caribbean.engine.__resource_loader
 import com.caribbeansea.caribbean.engine.animation.__animation
 import com.caribbeansea.caribbean.engine.sprites.__sprites.__DEFAULT_TILE_SIZE__
 import com.caribbeansea.caribbean.engine.tool.{__double_for_achieve, __tool_for_java}
@@ -117,5 +118,10 @@ object __sprites {
    * 默认矩形宽高
    */
   val __DEFAULT_TILE_SIZE__ : Int = 32
+
+  def apply(path: String): __sprites = apply(path, __DEFAULT_TILE_SIZE__, __DEFAULT_TILE_SIZE__)
+
+  def apply(path: String, rect_w: Int, rect_h: Int): __sprites =
+    new __sprites(__resource_loader.__imageio_read__(path), rect_w, rect_h)
 
 }

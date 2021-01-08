@@ -36,14 +36,24 @@ class __mouse_handler(panel: __panel) extends MouseListener {
     panel.addMouseListener(this)
   }
 
-  override def mouseClicked(e: MouseEvent): Unit = ???
+  override def mouseClicked(e: MouseEvent): Unit = {
 
-  override def mousePressed(e: MouseEvent): Unit = ???
+  }
 
-  override def mouseReleased(e: MouseEvent): Unit = ???
+  override def mousePressed(e: MouseEvent): Unit = {
 
-  override def mouseEntered(e: MouseEvent): Unit = ???
+  }
 
-  override def mouseExited(e: MouseEvent): Unit = ???
+  override def mouseReleased(e: MouseEvent): Unit = {
+
+  }
+
+  override def mouseEntered(e: MouseEvent): Unit = {
+
+  }
+
+  override def mouseExited(e: MouseEvent): Unit = {
+
+  }
 
 }

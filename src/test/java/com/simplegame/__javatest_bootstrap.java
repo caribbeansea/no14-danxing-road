@@ -35,13 +35,12 @@ public class __javatest_bootstrap extends __bootstrap
     {
         title("简单的小游戏 - 测试专用");
         size(1000,800);
+        addPanel(new __javatest_panel());
     }
 
     public static void main(String[] args)
     {
-        __javatest_bootstrap bootstrap = new __javatest_bootstrap();
-        bootstrap.addPanel(new __javatest_panel());
-
+        new __javatest_bootstrap();
     }
 
 }

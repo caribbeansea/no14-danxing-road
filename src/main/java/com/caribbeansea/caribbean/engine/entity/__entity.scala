@@ -1,4 +1,8 @@
-package com.caribbeansea.caribbean.engine.map;
+package com.caribbeansea.caribbean.engine.entity
+
+import com.caribbeansea.caribbean.engine.boundbox.__aabb
+import com.caribbeansea.caribbean.engine.map.__vec2f
+import com.caribbeansea.caribbean.engine.sprites.__sprites
 
 /* ************************************************************************
  *
@@ -23,8 +27,23 @@ package com.caribbeansea.caribbean.engine.map;
  */
 
 /**
+ * 游戏对象实体
+ *
+ * @param sprites 游戏精灵
+ * @param vec2f   地图数据
+ * @param size    包围盒大小
  * @author tiansheng
  */
-public class __vector2f
-{
+class __entity(val sprites: __sprites, var vec2f: __vec2f, var size: Int) {
+
+  /**
+   * 包围盒
+   */
+  var aabb: __aabb = {new __aabb}
+
+  /**
+   * 用于移动盒子等物体
+   */
+  var dx, dy: Float = 0F
+
 }

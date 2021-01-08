@@ -86,4 +86,12 @@ class __depict(private var graphics: Graphics, var x: Int, var y: Int, var w: In
     graphics.drawImage(image, x, y, w, h, null)
   }
 
+  def x(x: Int): Unit = this.x = x
+
+  def y(y: Int): Unit = this.y = y
+
+  def width(w: Int): Unit = this.w = w
+
+  def height(h: Int): Unit = this.h = h
+
 }

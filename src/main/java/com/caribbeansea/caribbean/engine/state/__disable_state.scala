@@ -27,6 +27,6 @@ package com.caribbeansea.caribbean.engine.state
  *
  * @author tiansheng
  */
-abstract class __disable_state extends __state {
-  super.enable = false
+abstract class __disable_state() extends __state {
+  this.enable = false
 }

@@ -34,7 +34,7 @@ import java.awt.image.BufferedImage
  * @param frames 每帧动画图片数组
  * @param delay  播放延迟，默认为2。代表每调用两次播放一次
  */
-class __animation(val frames: Array[BufferedImage], var delay: Int)
+class __animation(val frames: Array[BufferedImage], var delay: Long)
   extends __renderer with __updater {
 
   /**
@@ -69,18 +69,22 @@ class __animation(val frames: Array[BufferedImage], var delay: Int)
    */
   override def render(depict: __depict): Unit = {
 
-    if (delay == -1)
+    if (delay == -1L)
       return
+
+    /* 到达延迟后播放下一帧 */
+    if (call_count == delay) {
+      current_frames += 1
+      call_count = 0
+    } else {
+      call_count += 1
+      return
+    }
 
     /* 如果当前调用帧数到达最后一帧后就重置回0 */
     if (current_frames == frames.length) {
       current_frames = 0
       time_played += 1
-    }
-
-    /* 到达延迟后播放下一帧 */
-    if (call_count == delay) {
-      current_frames += 1
     }
 
     depict._draw_image(frames(current_frames))

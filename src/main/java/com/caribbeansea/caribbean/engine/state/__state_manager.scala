@@ -54,13 +54,13 @@ class __state_manager extends __updater with __renderer with __inputer {
    * 实现这个接口进行游戏更新
    */
   override def update(): Unit =
-    for (item <- states.filter(state => state.disable)) item.update()
+    for (item <- states.filter(state => state.enable)) item.update()
 
   /**
    * 实现此方法进行图像渲染
    */
   override def render(depict: __depict): Unit =
-    for (item <- states.filter(state => state.disable)) item.render(depict)
+    for (item <- states.filter(state => state.enable)) item.render(depict)
 
   /**
    * 设备输入接口
@@ -69,6 +69,6 @@ class __state_manager extends __updater with __renderer with __inputer {
    * @param mouse_handler 鼠标输入
    */
   override def input(key_handler: __key_handler, mouse_handler: __mouse_handler): Unit =
-    for (item <- states.filter(state => state.disable)) item.input(key_handler, mouse_handler)
+    for (item <- states.filter(state => state.enable)) item.input(key_handler, mouse_handler)
 
 }

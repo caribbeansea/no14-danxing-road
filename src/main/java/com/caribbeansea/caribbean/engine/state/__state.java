@@ -1,10 +1,10 @@
-package com.caribbeansea.caribbean.engine.state
+package com.caribbeansea.caribbean.engine.state;
 
 /* ************************************************************************
  *
  * Copyright (C) 2020 caribbeansea All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -22,11 +22,37 @@ package com.caribbeansea.caribbean.engine.state
  * Creates on 2021/1/5.
  */
 
+import com.caribbeansea.caribbean.engine.entity.__entity;
+import com.caribbeansea.caribbean.engine.process.__inputer;
+import com.caribbeansea.caribbean.engine.process.__updater;
+import com.caribbeansea.caribbean.engine.render.__renderer;
+
 /**
- * 初始化时为启用的状态对象
+ * 游戏状态
  *
  * @author tiansheng
  */
-abstract class __enable_state() extends __state {
-  this.enable = true
+public abstract class __state implements __updater, __renderer, __inputer
+{
+
+    /**
+     * 是否启用，如果状态被禁用的话将不会去调用
+     */
+    protected boolean enable = false;
+
+    /**
+     * 游戏实体
+     */
+    protected __entity entity;
+
+    public __state()
+    {
+        construct();
+    }
+
+    /**
+     * 初始化操作
+     */
+    public abstract void construct();
+
 }

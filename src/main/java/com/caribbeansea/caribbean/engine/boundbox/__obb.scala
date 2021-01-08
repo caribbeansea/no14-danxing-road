@@ -1,4 +1,4 @@
-package com.simplegame;
+package com.caribbeansea.caribbean.engine.boundbox
 
 /* ************************************************************************
  *
@@ -19,29 +19,12 @@ package com.simplegame;
  * ************************************************************************/
 
 /*
- * Creates on 2021/1/8.
+ * Creates on 2021/1/5.
  */
-
-import com.caribbeansea.caribbean.engine.bootstrap.__bootstrap;
-import com.caribbeansea.caribbean.engine.bootstrap.__panel;
-import com.simplegame.state.__javatest_play_state;
 
 /**
  * @author tiansheng
  */
-public class __javatest_panel extends __panel
-{
-
-    public __javatest_panel()
-    {
-        super(__bootstrap.__DIMENSION__());
-        addState(new __javatest_play_state());
-    }
-
-    @Override
-    public void do_every_second()
-    {
-        System.out.printf("NEW SECONDS: %s, FPS: [%s]\n", System.nanoTime(), fps());
-    }
+class __obb {
 
 }
