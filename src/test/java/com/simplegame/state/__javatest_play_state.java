@@ -31,8 +31,6 @@ import com.caribbeansea.caribbean.engine.render.__depict;
 import com.caribbeansea.caribbean.engine.sprites.__sprites;
 import com.caribbeansea.caribbean.engine.state.__enable_state;
 
-import java.awt.*;
-
 /**
  * @author tiansheng
  */

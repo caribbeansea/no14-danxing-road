@@ -2,6 +2,7 @@ package com.caribbeansea.caribbean.engine.animation
 
 import com.caribbeansea.caribbean.engine.process.__updater
 import com.caribbeansea.caribbean.engine.render.{__depict, __renderer}
+import com.caribbeansea.caribbean.engine.tool.__tool_box
 
 import java.awt.image.BufferedImage
 
@@ -32,9 +33,9 @@ import java.awt.image.BufferedImage
  *
  * @author tiansheng
  * @param frames 每帧动画图片数组
- * @param delay  播放延迟，默认为2。代表每调用两次播放一次
+ * @param delay  播放延迟，默认为1毫秒播放一次
  */
-class __animation(val frames: Array[BufferedImage], var delay: Long)
+class __animation(val frames: Array[BufferedImage], var delay: Int = 1)
   extends __renderer with __updater {
 
   /**
@@ -53,6 +54,11 @@ class __animation(val frames: Array[BufferedImage], var delay: Long)
   var call_count: Int = 0
 
   /**
+   * 动画播放速度控制
+   */
+  var speed: Long = System.currentTimeMillis()
+
+  /**
    * 辅构造器
    *
    * @param frames 每帧动画图片数组
@@ -69,16 +75,12 @@ class __animation(val frames: Array[BufferedImage], var delay: Long)
    */
   override def render(depict: __depict): Unit = {
 
-    if (delay == -1L)
-      return
+    if (delay == -1) return
 
     /* 到达延迟后播放下一帧 */
-    if (call_count == delay) {
+    if (__tool_box.__interval_millis__(speed) >= delay) {
+      speed = System.currentTimeMillis();
       current_frames += 1
-      call_count = 0
-    } else {
-      call_count += 1
-      return
     }
 
     /* 如果当前调用帧数到达最后一帧后就重置回0 */
