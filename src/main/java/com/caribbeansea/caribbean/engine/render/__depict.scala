@@ -1,4 +1,6 @@
-package com.caribbeansea.caribbean.engine.process;
+package com.caribbeansea.caribbean.engine.render
+
+import java.awt.Graphics
 
 /* ************************************************************************
  *
@@ -22,23 +24,10 @@ package com.caribbeansea.caribbean.engine.process;
  * Creates on 2021/1/5.
  */
 
-import com.caribbeansea.caribbean.engine.handler.__key_handler;
-import com.caribbeansea.caribbean.engine.handler.__mouse_handler;
-
 /**
- * 游戏设备输入监听器
- *
  * @author tiansheng
+ * @param graphics 画图需要使用的对象（画笔）
+ * @param x 初始X坐标
+ * @param y 初始Y坐标
  */
-public interface __inputer
-{
-
-    /**
-     * 设备输入接口
-     *
-     * @param key_handler   键盘输入
-     * @param mouse_handler 鼠标输入
-     */
-    void input(__key_handler key_handler, __mouse_handler mouse_handler);
-
-}
+class __depict(val graphics: Graphics, val x: Int, y: Int)

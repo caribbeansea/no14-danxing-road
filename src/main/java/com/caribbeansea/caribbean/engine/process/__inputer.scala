@@ -1,4 +1,6 @@
-package com.caribbeansea.caribbean.engine.process;
+package com.caribbeansea.caribbean.engine.process
+
+import com.caribbeansea.caribbean.engine.handler.{__key_handler, __mouse_handler}
 
 /* ************************************************************************
  *
@@ -22,21 +24,19 @@ package com.caribbeansea.caribbean.engine.process;
  * Creates on 2021/1/5.
  */
 
-import java.awt.*;
-
 /**
- * 图像渲染接口
+ * 游戏设备输入监听器
  *
  * @author tiansheng
  */
-public interface __renderer
-{
+trait __inputer {
 
-    /**
-     * 实现这个接口进行渲染
-     *
-     * @param graphics 画笔
-     */
-    void render(Graphics graphics);
+  /**
+   * 设备输入接口
+   *
+   * @param key_handler   键盘输入
+   * @param mouse_handler 鼠标输入
+   */
+  def input(key_handler: __key_handler, mouse_handler: __mouse_handler): Unit
 
 }

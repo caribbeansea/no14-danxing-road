@@ -1,4 +1,6 @@
-package com.caribbeansea.caribbean.engine.animation;
+package com.caribbeansea.caribbean.engine.process
+
+;
 
 /* ************************************************************************
  *
@@ -19,14 +21,19 @@ package com.caribbeansea.caribbean.engine.animation;
  * ************************************************************************/
 
 /*
- * Creates on 2021/1/6.
+ * Creates on 2021/1/5.
  */
 
 /**
- * 游戏动画
+ * 游戏更新接口
  *
  * @author tiansheng
  */
-public class __animation
-{
+trait __updater {
+
+  /**
+   * 实现这个接口进行游戏更新
+   */
+  def update(): Unit
+
 }

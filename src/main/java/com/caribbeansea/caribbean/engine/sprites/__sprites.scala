@@ -1,5 +1,6 @@
 package com.caribbeansea.caribbean.engine.sprites
 
+import com.caribbeansea.caribbean.engine.animation.__animation
 import com.caribbeansea.caribbean.engine.sprites.__sprites.__DEFAULT_TILE_SIZE__
 import com.caribbeansea.caribbean.engine.tool.{__double_for_achieve, __tool_for_java}
 
@@ -34,36 +35,37 @@ import java.awt.image.BufferedImage
  * 为了提高2d游戏的效率，会将图片资源拼接成一张大图，在游戏运行的时候在将这张图的莫一部分读取出来作为Sprite显示在屏幕上
  * 该图形是基于Texture2D得到的图像。Sprite类主要识别图像的一部分用于特定的精灵。
  * <p>
- * 此类通过游戏对象上的{@link com.caribbeansea.engine.game.GameRender}的组件应用并实际显示该图像。
+ * 此类通过游戏对象上实现的 __game_renderer 的组件应用并实际显示该图像。
  *
- * @param _sprite_sheet 完整的精灵图片
- * @param _rect_width   矩形宽度
- * @param _rect_height  矩形高度
+ *
+ * @param sprite_sheet 完整的精灵图片
+ * @param rect_width   矩形宽度
+ * @param rect_height  矩形高度
  * @author tiansheng
  */
-class __sprites(val _sprite_sheet: BufferedImage, val _rect_width: Int, val _rect_height: Int) {
+class __sprites(private val sprite_sheet: BufferedImage, val rect_width: Int, val rect_height: Int) {
 
   /**
    * 精灵图片宽度
    */
-  var _sprite_width: Int = _sprite_sheet.getWidth() / _rect_width
+  val _sprite_width: Int = sprite_sheet.getWidth() / rect_width
 
   /**
    * 精灵图片高度®
    */
-  var _sprite_height: Int = _sprite_sheet.getHeight() / _rect_height
+  val _sprite_height: Int = sprite_sheet.getHeight() / rect_height
 
   /**
    * 精灵图集数组
    */
-  var _sprite_array: Array[Array[BufferedImage]] = {
+  val _sprite_array: Array[Array[BufferedImage]] = {
     /* 生成一个二维数组 */
     val _sprite_array = Array.ofDim[BufferedImage](_sprite_height, _sprite_width)
 
     /* FIXME: 垃圾SCALA，还要我这样写for循环 */
     __tool_for_java.__double_for__(_sprite_height, _sprite_width, new __double_for_achieve() {
       override def achieve(x: Int, y: Int): Unit = {
-        _sprite_array(x)(y) = _sprite_sheet.getSubimage(y * _rect_height, x * _rect_width, _rect_width, _rect_height)
+        _sprite_array(x)(y) = sprite_sheet.getSubimage(y * rect_height, x * rect_width, rect_width, rect_height)
       }
     })
 
@@ -73,9 +75,9 @@ class __sprites(val _sprite_sheet: BufferedImage, val _rect_width: Int, val _rec
   /**
    * 构造器
    *
-   * @param _sprite_sheet 完整的精灵图片
+   * @param sprite_sheet 完整的精灵图片
    */
-  def this(_sprite_sheet: BufferedImage) = this(_sprite_sheet, __DEFAULT_TILE_SIZE__, __DEFAULT_TILE_SIZE__)
+  def this(sprite_sheet: BufferedImage) = this(sprite_sheet, __DEFAULT_TILE_SIZE__, __DEFAULT_TILE_SIZE__)
 
   /**
    * 获取子精灵图
@@ -84,7 +86,15 @@ class __sprites(val _sprite_sheet: BufferedImage, val _rect_width: Int, val _rec
    * @param y 初始Y坐标
    * @return 子精灵
    */
-  def subsprites(x: Int, y: Int): BufferedImage = _sprite_array(x)(y)
+  def getSubsprites(x: Int, y: Int): BufferedImage = _sprite_array(x)(y)
+
+  /**
+   * 获取精灵不同的状态
+   *
+   * @param state 状态（对应数组下标）
+   * @return 对应状态的帧
+   */
+  def getDiffState(state: Int): Array[BufferedImage] = _sprite_array(state)
 
 }
 
