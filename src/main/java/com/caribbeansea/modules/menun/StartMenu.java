@@ -51,9 +51,9 @@ public class StartMenu extends JPanel
      */
     private final int speed = 15;
 
-    private int width;
+    private int w;
 
-    private int height;
+    private int h;
 
     private int curr_x_group1, curr_y_group1;
 
@@ -108,14 +108,14 @@ public class StartMenu extends JPanel
 
     private AudioPlay curr_play_bgm;
 
-    public StartMenu(int width, int height)
+    public StartMenu(int w, int h)
     {
-        this.width = width;
-        this.height = height;
+        this.w = w;
+        this.h = h;
         initGroup1();
         initGroup2();
-        this.negativeWidth = -width;
-        this.sun_moon_x = width - 130;
+        this.negativeWidth = -w;
+        this.sun_moon_x = w - 130;
 
         this.curr_play_bgm = ToolBox.randomValue(backgroundAudios);
         this.curr_play_bgm.play(AudioPlay.Play.LOOP);
@@ -129,7 +129,7 @@ public class StartMenu extends JPanel
 
     void initGroup2()
     {
-        curr_x_group2 = width;
+        curr_x_group2 = w;
         curr_y_group2 = 0;
     }
 
@@ -173,9 +173,9 @@ public class StartMenu extends JPanel
         // 初始化3朵云
         if (!isInitCloud)
         {
-            cloud_1 = new Cloud(300, width, height, 30);
-            cloud_2 = new Cloud(600, width, height, 30);
-            cloud_3 = new Cloud(930, width, height, 30);
+            cloud_1 = new Cloud(300, w, h, 30);
+            cloud_2 = new Cloud(600, w, h, 30);
+            cloud_3 = new Cloud(930, w, h, 30);
             isInitCloud = true;
         }
 
@@ -279,7 +279,7 @@ public class StartMenu extends JPanel
     {
         if (curr_x_group1 < 0 && !isDrawGroup2)
         {
-            startDrawGroup2(width, 0);
+            startDrawGroup2(w, 0);
         }
     }
 
@@ -295,12 +295,12 @@ public class StartMenu extends JPanel
     }
 
     /**
-     * 当第二组图片的X轴小于{@link #width}时停止第二组图片的绘制，并启动
+     * 当第二组图片的X轴小于{@link #w}时停止第二组图片的绘制，并启动
      * 第一组图片的绘制工作。
      */
     void whenXForGroup2LeWidth()
     {
-        if (curr_x_group2 <= width && !isDrawGroup1)
+        if (curr_x_group2 <= w && !isDrawGroup1)
         {
             stopDrawGroup2();
             startDrawGroup1(0, 0);

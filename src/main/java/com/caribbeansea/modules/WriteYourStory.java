@@ -36,9 +36,9 @@ import java.awt.*;
 public class WriteYourStory extends JFrame
 {
 
-    public static int width = 1245;
+    public static int w = 1245;
 
-    public static int height = 813;
+    public static int h = 813;
 
     public static final String RESOURCES = "resources";
 
@@ -47,7 +47,7 @@ public class WriteYourStory extends JFrame
     public WriteYourStory()
     {
         super("单行路22号");
-        setSize(width, height);
+        setSize(w, h);
 
         Container panels = getContentPane();
 
@@ -58,7 +58,7 @@ public class WriteYourStory extends JFrame
 
         // --------------------------------------------
         // 开始菜单
-        StartMenu startMenu = new StartMenu(width, height);
+        StartMenu startMenu = new StartMenu(w, h);
         panels.add(startMenu);
         // --------------------------------------------
 

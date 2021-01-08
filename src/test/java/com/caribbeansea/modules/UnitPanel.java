@@ -35,9 +35,9 @@ import java.awt.image.BufferedImage;
 public class UnitPanel extends GamePanel
 {
 
-    public UnitPanel(int width, int height)
+    public UnitPanel(int w, int h)
     {
-        super(width, height);
+        super(w, h);
     }
 
     @Override

@@ -46,12 +46,12 @@ public class Cloud
     /**
      * 面板宽度
      */
-    private int width;
+    private int w;
 
     /**
      * 面板高度
      */
-    private int height;
+    private int h;
 
     /**
      * 初始化X轴坐标
@@ -72,14 +72,14 @@ public class Cloud
     /**
      * Cloud构造器
      *
-     * @param width  面板宽度
-     * @param height 面板高度
+     * @param w  面板宽度
+     * @param h 面板高度
      */
-    public Cloud(int x, int width, int height, int interval)
+    public Cloud(int x, int w, int h, int interval)
     {
         initImage();
-        this.width = width;
-        this.height = height;
+        this.w = w;
+        this.h = h;
         this.interval = interval;
         initCoords(x);
     }
@@ -111,7 +111,7 @@ public class Cloud
         if (x == -imageWidth)
         {
             initImage();
-            initCoords(width);
+            initCoords(w);
         }
         graphics.drawImage(cloudImage, x--, y, null);
     }

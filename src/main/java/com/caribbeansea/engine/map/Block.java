@@ -37,18 +37,18 @@ import java.awt.image.BufferedImage;
 public abstract class Block implements GameRender
 {
 
-    protected int width;
+    protected int w;
 
-    protected int height;
+    protected int h;
 
     protected BufferedImage buffimage;
 
     protected Vector2f vec2f;
 
-    public Block(int width, int height, BufferedImage buffimage, Vector2f vec2f)
+    public Block(int w, int h, BufferedImage buffimage, Vector2f vec2f)
     {
-        this.width = width;
-        this.height = height;
+        this.w = w;
+        this.h = h;
         this.buffimage = buffimage;
         this.vec2f = vec2f;
     }
@@ -58,7 +58,7 @@ public abstract class Block implements GameRender
     @Override
     public void render(Graphics2D graphics)
     {
-        graphics.drawImage(buffimage, (int) vec2f.get_world().x, (int) vec2f.get_world().y, width, height, null);
+        graphics.drawImage(buffimage, (int) vec2f.get_world().x, (int) vec2f.get_world().y, w, h, null);
     }
 
 }

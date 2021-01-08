@@ -25,6 +25,7 @@ package com.caribbeansea.caribbean.engine.bootstrap;
 import com.caribbeansea.caribbean.engine.handler.__key_handler;
 import com.caribbeansea.caribbean.engine.handler.__mouse_handler;
 import com.caribbeansea.caribbean.engine.process.__inputer;
+import com.caribbeansea.caribbean.engine.render.__depict;
 import com.caribbeansea.caribbean.engine.render.__renderer;
 import com.caribbeansea.caribbean.engine.process.__updater;
 
@@ -107,7 +108,7 @@ public abstract class __panel extends JPanel
         {
             update();
             input(key_handler, mouse_handler);
-            render(g);
+            render(new __depict(g));
         }
 
         repaint();

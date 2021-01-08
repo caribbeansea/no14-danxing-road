@@ -71,9 +71,9 @@ public abstract class GamePanel extends JPanel implements Runnable, GameRender
      */
     public static int GAME_CURRENT_FPS = 0;
 
-    public GamePanel(int width, int height)
+    public GamePanel(int w, int h)
     {
-        setPreferredSize(new Dimension(width, height));
+        setPreferredSize(new Dimension(w, h));
         setFocusable(true);
         requestFocus();
 

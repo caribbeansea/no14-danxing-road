@@ -32,9 +32,9 @@ import javax.swing.*;
 public abstract class GameFrame extends JFrame
 {
 
-    public GameFrame(int width, int height)
+    public GameFrame(int w, int h)
     {
-        setContentPane(setting_panel(width, height));
+        setContentPane(setting_panel(w, h));
         init_frame();
     }
 
@@ -46,10 +46,10 @@ public abstract class GameFrame extends JFrame
     /**
      * 返回游戏面板对象实例
      *
-     * @param width  窗体初始化宽度
-     * @param height 窗体初始化高度
+     * @param w  窗体初始化宽度
+     * @param h 窗体初始化高度
      * @return 面板实例对象
      */
-    public abstract GamePanel setting_panel(int width, int height);
+    public abstract GamePanel setting_panel(int w, int h);
 
 }

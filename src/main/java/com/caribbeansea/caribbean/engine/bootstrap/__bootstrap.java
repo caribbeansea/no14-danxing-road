@@ -110,12 +110,12 @@ public abstract class __bootstrap implements __initable
     /**
      * 设置窗体大小
      *
-     * @param width  窗口宽度
-     * @param height 窗口高度
+     * @param w  窗口宽度
+     * @param h 窗口高度
      */
-    public void size(int width, int height)
+    public void size(int w, int h)
     {
-        this.dimension.setSize(width, height);
+        this.dimension.setSize(w, h);
     }
 
     /**
@@ -192,9 +192,9 @@ public abstract class __bootstrap implements __initable
         return this.dimension.width;
     }
 
-    public void width(int width)
+    public void width(int w)
     {
-        this.dimension.width = width;
+        this.dimension.width = w;
     }
 
     public int height()
@@ -202,9 +202,9 @@ public abstract class __bootstrap implements __initable
         return this.dimension.height;
     }
 
-    public void height(int height)
+    public void height(int h)
     {
-        this.dimension.height = height;
+        this.dimension.height = h;
     }
 
 }

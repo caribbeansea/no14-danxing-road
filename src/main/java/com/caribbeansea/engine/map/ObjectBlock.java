@@ -36,9 +36,9 @@ import java.awt.image.BufferedImage;
 public class ObjectBlock extends Block
 {
 
-    public ObjectBlock(int width, int height, BufferedImage buffimage, Vector2f vec2f)
+    public ObjectBlock(int w, int h, BufferedImage buffimage, Vector2f vec2f)
     {
-        super(width, height, buffimage, vec2f);
+        super(w, h, buffimage, vec2f);
     }
 
     @Override
@@ -64,6 +64,6 @@ public class ObjectBlock extends Block
     {
         super.render(graphics);
         graphics.setColor(Color.white);
-        graphics.drawRect((int) vec2f.get_world().x, (int) vec2f.get_world().y, width, height);
+        graphics.drawRect((int) vec2f.get_world().x, (int) vec2f.get_world().y, w, h);
     }
 }

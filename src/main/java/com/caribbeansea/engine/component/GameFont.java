@@ -42,9 +42,9 @@ public abstract class GameFont extends Sprites
         super(resources);
     }
 
-    public GameFont(ImageResources resources, int width, int height)
+    public GameFont(ImageResources resources, int w, int h)
     {
-        super(resources, width, height);
+        super(resources, w, h);
     }
 
     /**

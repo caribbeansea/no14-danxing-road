@@ -33,9 +33,9 @@ import javax.swing.*;
 public class UnitFrame extends GameFrame
 {
 
-    public UnitFrame(int width, int height)
+    public UnitFrame(int w, int h)
     {
-        super(width, height);
+        super(w, h);
     }
 
     @Override
@@ -51,8 +51,8 @@ public class UnitFrame extends GameFrame
     }
 
     @Override
-    public GamePanel setting_panel(int width, int height)
+    public GamePanel setting_panel(int w, int h)
     {
-        return new UnitPanel(width, height);
+        return new UnitPanel(w, h);
     }
 }

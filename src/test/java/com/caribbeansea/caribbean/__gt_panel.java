@@ -25,6 +25,7 @@ package com.caribbeansea.caribbean;
 import com.caribbeansea.caribbean.engine.bootstrap.__panel;
 import com.caribbeansea.caribbean.engine.handler.__key_handler;
 import com.caribbeansea.caribbean.engine.handler.__mouse_handler;
+import com.caribbeansea.caribbean.engine.render.__depict;
 
 import java.awt.*;
 
@@ -52,10 +53,10 @@ public class __gt_panel extends __panel
     }
 
     @Override
-    public void render(Graphics graphics)
+    public void render(__depict depict)
     {
-        graphics.setColor(new Color(66, 134, 244));
-        graphics.fillRect(0, 0, getWidth(), getHeight());
+        depict._set_color(new Color(66, 134, 244));
+        depict._fill_rect(0, 0, getWidth(), getHeight());
     }
 
     @Override

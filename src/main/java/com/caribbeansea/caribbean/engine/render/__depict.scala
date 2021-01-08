@@ -1,6 +1,7 @@
 package com.caribbeansea.caribbean.engine.render
 
-import java.awt.Graphics
+import java.awt.{Color, Graphics}
+import java.awt.image.BufferedImage
 
 /* ************************************************************************
  *
@@ -29,7 +30,60 @@ import java.awt.Graphics
  * @param graphics 画图需要使用的对象（画笔）
  * @param x        初始X坐标
  * @param y        初始Y坐标
- * @param width    初始宽度
- * @param height   初始高度
+ * @param w        初始宽度
+ * @param h        初始高度
  */
-class __depict(var graphics: Graphics, var x: Int, var y: Int, var width: Int, var height: Int)
+class __depict(private var graphics: Graphics, var x: Int, var y: Int, var w: Int, var h: Int) {
+
+  /**
+   * 辅构造器，只传入画笔对象
+   *
+   * @param graphics 画笔
+   */
+  def this(graphics: Graphics) = this(graphics, 0, 0, 0, 0)
+
+  /**
+   * 画一个边框
+   *
+   * @param x 矩形X坐标
+   * @param y 矩形Y坐标
+   * @param w 矩形宽度
+   * @param h 矩形高度
+   */
+  def _fill_rect(x: Int, y: Int, w: Int, h: Int): Unit = {
+    graphics.fillRect(x, y, w, h)
+  }
+
+  /**
+   * 设置颜色
+   *
+   * @param color 颜色对象
+   */
+  def _set_color(color: Color): Unit = {
+    graphics.setColor(color)
+  }
+
+  /**
+   * 在屏幕上画图像，默认的四个参数【x,y,w,h】为对象自带的四个
+   * 参数。也就是构造器上面的参数。
+   *
+   * @param image 被画的图片
+   */
+  def _draw_image(image: BufferedImage): Unit = {
+    _draw_image(image, x, y, w, h)
+  }
+
+  /**
+   * 在屏幕上画图像
+   *
+   * @param image 图片
+   * @param x     初始X坐标
+   * @param y     初始Y坐标
+   * @param w     画出来的图片宽度
+   * @param h     画出来的图片高度
+   */
+  def _draw_image(image: BufferedImage, x: Int, y: Int, w: Int, h: Int): Unit = {
+    graphics.drawImage(image, x, y, w, h, null)
+  }
+
+}

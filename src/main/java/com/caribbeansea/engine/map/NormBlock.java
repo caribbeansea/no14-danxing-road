@@ -35,9 +35,9 @@ import java.awt.image.BufferedImage;
 public class NormBlock extends Block
 {
 
-    public NormBlock(int width, int height, BufferedImage buffimage, Vector2f vec2f)
+    public NormBlock(int w, int h, BufferedImage buffimage, Vector2f vec2f)
     {
-        super(width, height, buffimage, vec2f);
+        super(w, h, buffimage, vec2f);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.caribbeansea.caribbean.engine.animation
 
+import com.caribbeansea.caribbean.engine.process.__updater
 import com.caribbeansea.caribbean.engine.render.{__depict, __renderer}
 
 import java.awt.image.BufferedImage
@@ -33,7 +34,8 @@ import java.awt.image.BufferedImage
  * @param frames 每帧动画图片数组
  * @param delay  播放延迟，默认为2。代表每调用两次播放一次
  */
-class __animation(val frames: Array[BufferedImage], var delay: Int) extends __renderer {
+class __animation(val frames: Array[BufferedImage], var delay: Int)
+  extends __renderer with __updater {
 
   /**
    * 当前播放到了第几帧
@@ -57,6 +59,12 @@ class __animation(val frames: Array[BufferedImage], var delay: Int) extends __re
    */
   def this(frames: Array[BufferedImage]) = this(frames, 2)
 
+
+  /**
+   * 实现这个接口进行游戏更新
+   */
+  override def update(): Unit = {}
+
   /**
    * 实现此方法进行图像渲染
    */
@@ -76,7 +84,7 @@ class __animation(val frames: Array[BufferedImage], var delay: Int) extends __re
       current_frames += 1
     }
 
-    depict.graphics.drawImage(frames(current_frames), depict.x, depict.y, depict.width, depict.height, null)
+    depict._draw_image(frames(current_frames))
 
   }
 

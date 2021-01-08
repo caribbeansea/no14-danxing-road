@@ -65,7 +65,7 @@ public class PlayState extends GameState
         this.tileManager = new TileManager(ToolBox.read_file_in_resources("/tile/tilemap.xml").getAbsolutePath());
         this.font = new Font1();
         this.player = new PlayerUnit(new Sprites(ImageResources.LINK_FORMATTED),
-                new Vector2f((StartGame.width / 2) - 32, (StartGame.height / 2) - 32), 64);
+                new Vector2f((StartGame.w / 2) - 32, (StartGame.h / 2) - 32), 64);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package com.caribbeansea.caribbean.engine.render
 
-import java.awt.Graphics
-
 /**
  * 图像渲染接口
  */

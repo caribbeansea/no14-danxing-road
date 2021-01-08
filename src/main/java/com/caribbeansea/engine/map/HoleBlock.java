@@ -36,9 +36,9 @@ import java.awt.image.BufferedImage;
 public class HoleBlock extends Block
 {
 
-    public HoleBlock(int width, int height, BufferedImage buffimage, Vector2f vec2f)
+    public HoleBlock(int w, int h, BufferedImage buffimage, Vector2f vec2f)
     {
-        super(width, height, buffimage, vec2f);
+        super(w, h, buffimage, vec2f);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class HoleBlock extends Block
     {
         super.render(graphics);
         graphics.setColor(Color.green);
-        graphics.drawRect((int) vec2f.get_world().x, (int) vec2f.get_world().y, width, height);
+        graphics.drawRect((int) vec2f.get_world().x, (int) vec2f.get_world().y, w, h);
     }
 
 }

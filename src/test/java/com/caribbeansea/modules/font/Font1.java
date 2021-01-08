@@ -44,15 +44,15 @@ public class Font1 extends GameFont
         super(resources);
     }
 
-    public Font1(ImageResources resources, int width, int height)
+    public Font1(ImageResources resources, int w, int h)
     {
-        super(resources, width, height);
+        super(resources, w, h);
     }
 
     @Override
     public BufferedImage getLetter(int x, int y)
     {
-        return SPRITESHEET.getSubimage(x * width, y * width, width, height);
+        return SPRITESHEET.getSubimage(x * w, y * w, w, h);
     }
 
     @Override

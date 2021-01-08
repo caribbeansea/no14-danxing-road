@@ -44,9 +44,9 @@ public class Font0 extends GameFont
         super(resources);
     }
 
-    public Font0(ImageResources resources, int width, int height)
+    public Font0(ImageResources resources, int w, int h)
     {
-        super(resources, width, height);
+        super(resources, w, h);
     }
 
     @Override

@@ -59,14 +59,14 @@ public class TileManager implements GameRender
         addTiledMap(path, 64, 64);
     }
 
-    public void addTiledMap(String path, int block_width, int block_height)
+    public void addTiledMap(String path, int block_w, int block_h)
     {
         String image_path;
 
-        int width = 0;
-        int height = 0;
-        int tile_width = 0;
-        int tile_height = 0;
+        int w = 0;
+        int h = 0;
+        int tile_w = 0;
+        int tile_h = 0;
 
         int tile_count = 0;
         int tile_columns = 0;
@@ -89,12 +89,12 @@ public class TileManager implements GameRender
             Element element = (Element) nodes.item(0);
 
             image_path = element.getAttribute("name");
-            tile_width = Integer.parseInt(element.getAttribute("tilewidth"));
-            tile_height = Integer.parseInt(element.getAttribute("tileheight"));
+            tile_w = Integer.parseInt(element.getAttribute("tilew"));
+            tile_h = Integer.parseInt(element.getAttribute("tileh"));
             tile_count = Integer.parseInt(element.getAttribute("tilecount"));
             tile_columns = Integer.parseInt(element.getAttribute("columns"));
 
-            sprites = new Sprites(ToolBox.read_buffimg_in_resources("/tile/" + image_path + ".png"), tile_width, tile_height);
+            sprites = new Sprites(ToolBox.read_buffimg_in_resources("/tile/" + image_path + ".png"), tile_w, tile_h);
 
             // 读取layer
             nodes = document.getElementsByTagName("layer");
@@ -105,16 +105,16 @@ public class TileManager implements GameRender
                 element = (Element) nodes.item(i);
                 if (i == 0)
                 {
-                    width = Integer.parseInt(element.getAttribute("width"));
-                    height = Integer.parseInt(element.getAttribute("height"));
+                    w = Integer.parseInt(element.getAttribute("w"));
+                    h = Integer.parseInt(element.getAttribute("h"));
                 }
 
                 data[i] = element.getElementsByTagName("data").item(0).getTextContent();
 
                 if(i > 0) {
-                    tile_maps.add(new TileMapNorm(data[i], sprites, width, height, block_width, block_height, tile_columns));
+                    tile_maps.add(new TileMapNorm(data[i], sprites, w, h, block_w, block_h, tile_columns));
                 } else {
-                    tile_maps.add(new TileMapObject(data[i], sprites, width, height, block_width, block_height, tile_columns));
+                    tile_maps.add(new TileMapObject(data[i], sprites, w, h, block_w, block_h, tile_columns));
                 }
             }
 

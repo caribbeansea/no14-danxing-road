@@ -39,37 +39,42 @@ import java.awt.image.BufferedImage
  *
  *
  * @param sprite_sheet 完整的精灵图片
- * @param rect_width   矩形宽度
- * @param rect_height  矩形高度
+ * @param rect_w       矩形宽度
+ * @param rect_h       矩形高度
  * @author tiansheng
  */
-class __sprites(private val sprite_sheet: BufferedImage, val rect_width: Int, val rect_height: Int) {
+class __sprites(private val sprite_sheet: BufferedImage, val rect_w: Int, val rect_h: Int) {
 
   /**
    * 精灵图片宽度
    */
-  val _sprite_width: Int = sprite_sheet.getWidth() / rect_width
+  val sprite_w: Int = sprite_sheet.getWidth() / rect_w
 
   /**
    * 精灵图片高度®
    */
-  val _sprite_height: Int = sprite_sheet.getHeight() / rect_height
+  val sprite_h: Int = sprite_sheet.getHeight() / rect_h
 
   /**
-   * 精灵图集数组
+   * 精灵动画数组
    */
-  val _sprite_array: Array[Array[BufferedImage]] = {
+  val animations: Array[__animation] = {
     /* 生成一个二维数组 */
-    val _sprite_array = Array.ofDim[BufferedImage](_sprite_height, _sprite_width)
+    val sprite_arr = Array.ofDim[BufferedImage](sprite_h, sprite_w)
 
-    /* FIXME: 垃圾SCALA，还要我这样写for循环 */
-    __tool_for_java.__double_for__(_sprite_height, _sprite_width, new __double_for_achieve() {
+    /* 动画数组对象 */
+    val animations = new Array[__animation](sprite_arr.length)
+
+    __tool_for_java.__double_for__(sprite_h, sprite_w, new __double_for_achieve() {
       override def achieve(x: Int, y: Int): Unit = {
-        _sprite_array(x)(y) = sprite_sheet.getSubimage(y * rect_height, x * rect_width, rect_width, rect_height)
+        sprite_arr(x)(y) = sprite_sheet.getSubimage(y * rect_h, x * rect_w, rect_w, rect_h)
       }
     })
 
-    _sprite_array /* return */
+    for (index <- sprite_arr.indices)
+      animations(index) = new __animation(sprite_arr(index))
+
+    animations /* return */
   }
 
   /**
@@ -86,7 +91,7 @@ class __sprites(private val sprite_sheet: BufferedImage, val rect_width: Int, va
    * @param y 初始Y坐标
    * @return 子精灵
    */
-  def getSubsprites(x: Int, y: Int): BufferedImage = _sprite_array(x)(y)
+  def getSubsprites(x: Int, y: Int): BufferedImage = animations(x).frames(y)
 
   /**
    * 获取精灵不同的状态
@@ -94,7 +99,15 @@ class __sprites(private val sprite_sheet: BufferedImage, val rect_width: Int, va
    * @param state 状态（对应数组下标）
    * @return 对应状态的帧
    */
-  def getDiffState(state: Int): Array[BufferedImage] = _sprite_array(state)
+  def getDiffState(state: Int): Array[BufferedImage] = animations(state).frames
+
+  /**
+   * 获取对应状态的动画对象
+   *
+   * @param state 状态ID（数组索引）
+   * @return 对应状态的动画实例
+   */
+  def getAnimation(state: Int): __animation = animations(state)
 
 }
 
@@ -103,6 +116,6 @@ object __sprites {
   /**
    * 默认矩形宽高
    */
-  val __DEFAULT_TILE_SIZE__ : Int = 32;
+  val __DEFAULT_TILE_SIZE__ : Int = 32
 
 }

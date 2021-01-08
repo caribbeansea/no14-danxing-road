@@ -46,9 +46,9 @@ public class Sprites
 
     protected BufferedImage[][] spriteArray;
 
-    protected int width;
+    protected int w;
 
-    protected int height;
+    protected int h;
 
     protected int spriteWidth;
 
@@ -65,28 +65,28 @@ public class Sprites
         this(resources, TILE_SIZE, TILE_SIZE);
     }
 
-    public Sprites(ImageResources resources, int width, int height)
+    public Sprites(ImageResources resources, int w, int h)
     {
-        this(resources.getBufferedImage(), width, height);
+        this(resources.getBufferedImage(), w, h);
     }
 
-    public Sprites(BufferedImage resources, int width, int height)
+    public Sprites(BufferedImage resources, int w, int h)
     {
-        this.width = width;
-        this.height = height;
+        this.w = w;
+        this.h = h;
 
         this.SPRITESHEET = resources;
 
-        this.spriteWidth = this.SPRITESHEET.getWidth() / width;
-        this.spriteHeight = this.SPRITESHEET.getHeight() / height;
+        this.spriteWidth = this.SPRITESHEET.getWidth() / w;
+        this.spriteHeight = this.SPRITESHEET.getHeight() / h;
 
         loadSpriteArray();
     }
 
-    public void setSize(int width, int height)
+    public void setSize(int w, int h)
     {
-        setWidth(width);
-        setHeight(height);
+        setWidth(w);
+        setHeight(h);
     }
 
     public void loadSpriteArray()
@@ -104,18 +104,18 @@ public class Sprites
 
     public BufferedImage getSprite(int x, int y)
     {
-        return SPRITESHEET.getSubimage(x * width, y * height, width, height);
+        return SPRITESHEET.getSubimage(x * w, y * h, w, h);
     }
 
-    public void setWidth(int width)
+    public void setWidth(int w)
     {
-        this.width = width;
-        this.spriteWidth = SPRITESHEET.getWidth() / this.width;
+        this.w = w;
+        this.spriteWidth = SPRITESHEET.getWidth() / this.w;
     }
 
-    public void setHeight(int height)
+    public void setHeight(int h)
     {
-        this.height = height;
+        this.h = h;
         this.spriteHeight = SPRITESHEET.getHeight();
     }
 
@@ -136,12 +136,12 @@ public class Sprites
 
     public int getWidth()
     {
-        return width;
+        return w;
     }
 
     public int getHeight()
     {
-        return height;
+        return h;
     }
 
     public int getSpriteWidth()
@@ -155,8 +155,8 @@ public class Sprites
     }
 
     public static void drawArray(Graphics2D graphics, List<BufferedImage> images, Vector2f vec2f,
-                                 int width,
-                                 int height,
+                                 int w,
+                                 int h,
                                  int xOffset,
                                  int yOffset)
     {
@@ -166,7 +166,7 @@ public class Sprites
         for (BufferedImage image : images)
         {
             if (image != null)
-                graphics.drawImage(image, (int) x, (int) y, width, height, null);
+                graphics.drawImage(image, (int) x, (int) y, w, h, null);
 
             x += xOffset;
             y += yOffset;
@@ -174,8 +174,8 @@ public class Sprites
     }
 
     public static void drawArray(Graphics2D graphics, GameFont font, String word, Vector2f vec2f,
-                                 int width,
-                                 int height,
+                                 int w,
+                                 int h,
                                  int xOffset,
                                  int yOffset)
     {
@@ -187,7 +187,7 @@ public class Sprites
         {
             // 32 ' '
             if (ch != 32)
-                graphics.drawImage(font.getFont(ch), (int) x, (int) y, width, height, null);
+                graphics.drawImage(font.getFont(ch), (int) x, (int) y, w, h, null);
 
             x += xOffset;
             y += yOffset;

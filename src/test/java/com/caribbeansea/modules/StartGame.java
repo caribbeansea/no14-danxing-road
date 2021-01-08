@@ -28,11 +28,11 @@ package com.caribbeansea.modules;
 public class StartGame
 {
 
-    public static int width = 1245, height = 813;
+    public static int w = 1245, h = 813;
 
     public static void main(String[] args)
     {
-        new UnitFrame(width, height);
+        new UnitFrame(w, h);
     }
 
 }

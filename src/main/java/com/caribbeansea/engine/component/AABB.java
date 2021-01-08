@@ -34,9 +34,9 @@ public class AABB
 
     private Vector2f vec2f;
 
-    private float width;
+    private float w;
 
-    private float height;
+    private float h;
 
     private float radius;
 
@@ -48,9 +48,9 @@ public class AABB
 
     private GameEntity entity;
 
-    public AABB(Vector2f vec2f, int width, int height)
+    public AABB(Vector2f vec2f, int w, int h)
     {
-        setBox(vec2f, width, height);
+        setBox(vec2f, w, h);
     }
 
     public AABB(Vector2f vec2f, int radius, GameEntity entity)
@@ -61,13 +61,13 @@ public class AABB
         this.entity = entity;
     }
 
-    public void setBox(Vector2f vec2f, int width, int height)
+    public void setBox(Vector2f vec2f, int w, int h)
     {
         this.vec2f = vec2f;
-        this.width = width;
-        this.height = height;
+        this.w = w;
+        this.h = h;
 
-        this.size = Math.max(width, height);
+        this.size = Math.max(w, h);
     }
 
     /**
@@ -78,14 +78,14 @@ public class AABB
      */
     public boolean collides(AABB box)
     {
-        float a_x = ((vec2f.get_world().x + x_offset) + (width / 2));
-        float a_y = ((vec2f.get_world().y + y_offset) + (height / 2));
+        float a_x = ((vec2f.get_world().x + x_offset) + (w / 2));
+        float a_y = ((vec2f.get_world().y + y_offset) + (h / 2));
 
-        float b_x = ((vec2f.get_world().x + box.x_offset) + (width / 2));
-        float b_y = ((vec2f.get_world().y + box.y_offset) + (height / 2));
+        float b_x = ((vec2f.get_world().x + box.x_offset) + (w / 2));
+        float b_y = ((vec2f.get_world().y + box.y_offset) + (h / 2));
 
-        return Math.abs(a_x - b_x) < ((this.width / 2) + box.width / 2) &&
-                Math.abs(a_y - b_y) < ((this.height / 2) + box.height / 2);
+        return Math.abs(a_x - b_x) < ((this.w / 2) + box.w / 2) &&
+                Math.abs(a_y - b_y) < ((this.h / 2) + box.h / 2);
     }
 
     /**
@@ -96,8 +96,8 @@ public class AABB
         float c_x = (float) (vec2f.get_world().x + radius / Math.sqrt(2) - entity.getSize() / Math.sqrt(2));
         float c_y = (float) (vec2f.get_world().y + radius / Math.sqrt(2) - entity.getSize() / Math.sqrt(2));
 
-        float x_delta = c_x - Math.max(box.vec2f.get_world().x + (box.width / 2), Math.min(c_x, box.getVector2f().x));
-        float y_delta = c_x - Math.max(box.vec2f.get_world().y + (box.width / 2), Math.min(c_y, box.getVector2f().y));
+        float x_delta = c_x - Math.max(box.vec2f.get_world().x + (box.w / 2), Math.min(c_x, box.getVector2f().x));
+        float y_delta = c_x - Math.max(box.vec2f.get_world().y + (box.w / 2), Math.min(c_y, box.getVector2f().y));
 
         return (x_delta * x_delta + y_delta * y_delta) < ((this.radius / Math.sqrt(2)) * (this.radius / Math.sqrt(2)));
     }
@@ -106,8 +106,8 @@ public class AABB
     {
         for (int c = 0; c < 4; c++)
         {
-            int xt = (int) ((vec2f.x + box_x) + (c % 2) * width + x_offset) / 64;
-            int yt = (int) ((vec2f.x + box_y) + (c / 2) * height + y_offset) / 64;
+            int xt = (int) ((vec2f.x + box_x) + (c % 2) * w + x_offset) / 64;
+            int yt = (int) ((vec2f.x + box_y) + (c / 2) * h + y_offset) / 64;
 
             String key = xt + "," + yt;
             if (TileMapObject.blocks.containsKey(key))
@@ -124,14 +124,14 @@ public class AABB
         this.vec2f = vec2f;
     }
 
-    public void setWidth(float width)
+    public void setWidth(float w)
     {
-        this.width = width;
+        this.w = w;
     }
 
-    public void setHeight(float height)
+    public void setHeight(float h)
     {
-        this.height = height;
+        this.h = h;
     }
 
     public void setRadius(float radius)
@@ -161,12 +161,12 @@ public class AABB
 
     public float getWidth()
     {
-        return width;
+        return w;
     }
 
     public float getHeight()
     {
-        return height;
+        return h;
     }
 
     public float getRadius()

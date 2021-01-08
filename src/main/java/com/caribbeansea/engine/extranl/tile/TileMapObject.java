@@ -44,51 +44,51 @@ public class TileMapObject extends TileMap
 
     private Sprites sprites;
 
-    private int width;
+    private int w;
 
-    private int height;
+    private int h;
 
-    private int tile_width;
+    private int tile_w;
 
-    private int tile_height;
+    private int tile_h;
 
     private int tile_columns;
 
     public static Map<String, Block> blocks = Maps.newHashMap();
 
     public TileMapObject(String data, Sprites sprites,
-                         int width, int height,
-                         int tile_width, int tile_height,
+                         int w, int h,
+                         int tile_w, int tile_h,
                          int tile_columns)
     {
         this.data = data;
         this.sprites = sprites;
-        this.width = width;
-        this.height = height;
-        this.tile_width = tile_width;
-        this.tile_height = tile_height;
+        this.w = w;
+        this.h = h;
+        this.tile_w = tile_w;
+        this.tile_h = tile_h;
         this.tile_columns = tile_columns;
 
         Block temp_block;
 
         String[] block = data.split(",");
-        for (int i = 0, len = (width * height); i < len; i++)
+        for (int i = 0, len = (w * h); i < len; i++)
         {
             int temp = Integer.parseInt(block[i].trim());
             if (temp != 0)
             {
                 if (temp == 172)
                 {
-                    temp_block = new HoleBlock(tile_width, tile_height,
+                    temp_block = new HoleBlock(tile_w, tile_h,
                             sprites.getSprite((temp - 1) % tile_columns, (temp - 1) / tile_columns),
-                            new Vector2f((int) (i % width) * tile_width, (int) (i / height) * height));
+                            new Vector2f((int) (i % w) * tile_w, (int) (i / h) * h));
                 } else
                 {
-                    temp_block = new ObjectBlock(tile_width, tile_height,
+                    temp_block = new ObjectBlock(tile_w, tile_h,
                             sprites.getSprite((temp - 1) % tile_columns, (temp - 1) / tile_columns),
-                            new Vector2f((int) (i % width) * tile_width, (int) (i / height) * height));
+                            new Vector2f((int) (i % w) * tile_w, (int) (i / h) * h));
                 }
-                blocks.put(String.valueOf((i % width)).concat(",").concat(String.valueOf((i / height))), temp_block);
+                blocks.put(String.valueOf((i % w)).concat(",").concat(String.valueOf((i / h))), temp_block);
             }
         }
     }
