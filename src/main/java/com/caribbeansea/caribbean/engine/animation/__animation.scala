@@ -59,7 +59,6 @@ class __animation(val frames: Array[BufferedImage], var delay: Int)
    */
   def this(frames: Array[BufferedImage]) = this(frames, 2)
 
-
   /**
    * 实现这个接口进行游戏更新
    */
