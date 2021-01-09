@@ -38,7 +38,7 @@ public class __tool_box
      */
     public static float __interval_millis__(long timemillis)
     {
-        long delta = (System.currentTimeMillis() - timemillis) / 100;
+        long delta = (System.currentTimeMillis() - timemillis) / 10;
         return delta > 0 ? delta : Math.abs(delta);
     }
 

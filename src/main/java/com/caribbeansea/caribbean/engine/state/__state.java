@@ -32,8 +32,7 @@ import com.caribbeansea.caribbean.engine.render.__renderer;
  *
  * @author tiansheng
  */
-public abstract class __state implements __updater, __renderer, __inputer
-{
+public abstract class __state implements __updater, __renderer, __inputer {
 
     /**
      * 是否启用，如果状态被禁用的话将不会去调用
@@ -45,8 +44,7 @@ public abstract class __state implements __updater, __renderer, __inputer
      */
     protected __entity entity;
 
-    public __state()
-    {
+    public __state() {
         construct();
     }
 

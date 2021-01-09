@@ -33,7 +33,7 @@ import java.awt.image.BufferedImage
  *
  * @author tiansheng
  * @param frames 每帧动画图片数组
- * @param delay  播放延迟，默认为1毫秒播放一次
+ * @param delay  动画播放速度控制，默认为12毫秒播放一次
  */
 class __animation(val frames: Array[BufferedImage], var delay: Float)
   extends __renderer with __updater {
@@ -54,16 +54,23 @@ class __animation(val frames: Array[BufferedImage], var delay: Float)
   var call_count: Int = 0
 
   /**
-   * 动画播放速度控制
+   * 上一次播放时间
    */
-  var speed: Long = System.currentTimeMillis()
+  var last_play_time: Long = System.currentTimeMillis()
 
   /**
    * 辅构造器
    *
    * @param frames 每帧动画图片数组
    */
-  def this(frames: Array[BufferedImage]) = this(frames, 1F)
+  def this(frames: Array[BufferedImage]) = this(frames, 12F)
+
+  /**
+   * 设置当前帧
+   *
+   * @param current_frames 当前帧数
+   */
+  def current_frames(current_frames: Int): Unit = this.current_frames = current_frames
 
   /**
    * 实现这个接口进行游戏更新
@@ -78,8 +85,8 @@ class __animation(val frames: Array[BufferedImage], var delay: Float)
     if (delay == -1F) return
 
     /* 到达延迟后播放下一帧 */
-    if (__tool_box.__interval_millis__(speed) >= delay) {
-      speed = System.currentTimeMillis();
+    if (__tool_box.__interval_millis__(last_play_time) >= delay) {
+      last_play_time = System.currentTimeMillis()
       current_frames += 1
     }
 

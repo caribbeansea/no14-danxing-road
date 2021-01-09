@@ -86,12 +86,19 @@ class __depict(private var graphics: Graphics, var x: Int, var y: Int, var w: In
     graphics.drawImage(image, x, y, w, h, null)
   }
 
-  def x(x: Int): Unit = this.x = x
-
-  def y(y: Int): Unit = this.y = y
-
-  def width(w: Int): Unit = this.w = w
-
-  def height(h: Int): Unit = this.h = h
+  /**
+   * 设置基本数值
+   *
+   * @param x 初始X坐标
+   * @param y 初始Y坐标
+   * @param w 初始宽度
+   * @param h 初始高度
+   */
+  def _number_value(x: Int, y: Int, w: Int, h: Int): Unit = {
+    this.x = x
+    this.y = y
+    this.w = w
+    this.h = h
+  }
 
 }

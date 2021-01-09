@@ -110,6 +110,19 @@ class __sprites(private val sprite_sheet: BufferedImage, val rect_w: Int, val re
    */
   def getAnimation(state: Int): __animation = animations(state)
 
+  /**
+   * 获取对应状态的动画对象
+   *
+   * @param delay 播放延迟
+   * @param state 状态ID（数组索引）
+   * @return 对应状态的动画实例
+   */
+  def getAnimation(state: Int, delay: Float): __animation = {
+    val animation = animations(state)
+    animation.delay = delay
+    return animation
+  }
+
 }
 
 object __sprites {
