@@ -111,7 +111,7 @@ public abstract class __panel extends JPanel
         {
             __STATE_MANAGER__.update();
             __STATE_MANAGER__.input(key_handler, mouse_handler);
-            __STATE_MANAGER__.render(new __depict(g));
+            __STATE_MANAGER__.render(new __depict((Graphics2D) g));
         }
 
         repaint();

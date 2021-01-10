@@ -63,7 +63,7 @@ class __animation(val frames: Array[BufferedImage], var delay: Float)
    *
    * @param frames 每帧动画图片数组
    */
-  def this(frames: Array[BufferedImage]) = this(frames, 12F)
+  def this(frames: Array[BufferedImage]) = this(frames, 10.0F)
 
   /**
    * 设置当前帧

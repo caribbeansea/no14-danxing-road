@@ -41,7 +41,7 @@ public class __javatest_play_state extends __enable_state {
 
     /* 控制人物移动 */
     private float x;
-    private float y;
+    private float y = 200;
 
     private __animation animation;
 
@@ -64,12 +64,16 @@ public class __javatest_play_state extends __enable_state {
      */
     void move() {
         if (UP) {
+            y--;
             set_animation(3);
         } else if (DOWN) {
+            y++;
             set_animation(2);
         } else if (LEFT) {
+            x--;
             set_animation(1);
         }else if (RIGHT) {
+            x++;
             set_animation(0);
         } else {
             set_animation(directing);
@@ -77,6 +81,9 @@ public class __javatest_play_state extends __enable_state {
         }
     }
 
+    /**
+     * 动画切换
+     */
     void set_animation(int state) {
         this.directing = state;
         animation = entity.sprites().getAnimation(state);

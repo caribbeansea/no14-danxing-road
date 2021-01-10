@@ -1,6 +1,6 @@
 package com.caribbeansea.caribbean.engine.render
 
-import java.awt.{Color, Graphics}
+import java.awt.{Color, Graphics, Graphics2D}
 import java.awt.image.BufferedImage
 
 /* ************************************************************************
@@ -33,14 +33,14 @@ import java.awt.image.BufferedImage
  * @param w        初始宽度
  * @param h        初始高度
  */
-class __depict(private var graphics: Graphics, var x: Int, var y: Int, var w: Int, var h: Int) {
+class __depict(private var graphics: Graphics2D, var x: Int, var y: Int, var w: Int, var h: Int) {
 
   /**
    * 辅构造器，只传入画笔对象
    *
    * @param graphics 画笔
    */
-  def this(graphics: Graphics) = this(graphics, 0, 0, 0, 0)
+  def this(graphics: Graphics2D) = this(graphics, 0, 0, 0, 0)
 
   /**
    * 画一个边框
