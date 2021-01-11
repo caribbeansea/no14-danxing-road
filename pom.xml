@@ -13,6 +13,8 @@
         <jflac.version>1.5.2</jflac.version>
         <googlecode.version>1.9.5.4</googlecode.version>
         <project.jdk.version>1.8</project.jdk.version>
+        <groovy.version>3.0.7</groovy.version>
+        <jopengl.version>2.3.2</jopengl.version>
     </properties>
 
     <dependencies>
@@ -33,7 +35,7 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>3.0.7</version>
+            <version>${groovy.version}</version>
             <type>pom</type>
             <scope>test</scope>
         </dependency>
@@ -43,6 +45,32 @@
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
             <version>2.11.8</version>
+        </dependency>
+
+        <!-- opengl -->
+        <dependency>
+            <groupId>org.jogamp.jogl</groupId>
+            <artifactId>jogl-all</artifactId>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/opengl/jogl-all.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.jogamp.gluegen</groupId>
+            <artifactId>gluegen-rt</artifactId>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/opengl/gluegen-rt.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.jogamp.gluegen</groupId>
+            <artifactId>gluegen</artifactId>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/opengl/gluegen.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.jogamp.gluegen</groupId>
+            <artifactId>macosx-universal</artifactId>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/opengl/macos/gluegen-rt-natives-macosx-universal.jar</systemPath>
         </dependency>
 
     </dependencies>

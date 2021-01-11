@@ -104,6 +104,7 @@ public class __javatest_play_state extends __enable_state {
 
     @Override
     public void render(__depict depict) {
+        System.out.printf("X[%s], Y[%s]\n", (int) x, (int) y);
         depict._number_value((int) x, (int) y, 64, 64);
         animation.render(depict);
     }
