@@ -28,7 +28,6 @@ import com.caribbeansea.engine.component.Vector2f;
 import com.caribbeansea.engine.handler.KeyHandler;
 import com.caribbeansea.engine.handler.MouseHandler;
 import com.caribbeansea.modules.state.PlayState;
-import com.sun.media.jfxmedia.events.PlayerStateEvent;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

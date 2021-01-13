@@ -27,7 +27,7 @@ import com.caribbeansea.caribbean.engine.bootstrap.__bootstrap.__DIMENSION__
 import com.caribbeansea.caribbean.engine.state.__state_manager
 
 import java.awt.Dimension
-import javax.swing.JFrame
+import javax.swing.{JFrame, WindowConstants}
 
 
 /**
@@ -74,7 +74,7 @@ abstract class __bootstrap(var panel: __panel) extends __initable {
     frame.setSize(__DIMENSION__)
 
     if (exit_on_close)
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+      frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE)
 
     if (centered)
       frame.setLocationRelativeTo(null)
