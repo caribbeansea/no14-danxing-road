@@ -22,12 +22,31 @@ package com.opengl;
  * Creates on 2021/1/11.
  */
 
+import com.jogamp.opengl.awt.GLCanvas;
+
+import javax.swing.*;
+
 /**
  * @author tiansheng
  */
 public class HelloOpengl {
 
     public static void main(String[] args) {
+
+        HelloOpenglLis test = new HelloOpenglLis();
+
+        JFrame jf = new JFrame();
+        GLCanvas canvas = new GLCanvas();
+
+        jf.setSize(500,500);
+        canvas.setSize(500,500);
+
+        canvas.addGLEventListener(test);
+
+        jf.getContentPane().add(canvas);
+
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jf.setVisible(true);
     }
 
 
