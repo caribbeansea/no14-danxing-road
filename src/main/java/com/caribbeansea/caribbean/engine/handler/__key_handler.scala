@@ -25,7 +25,7 @@ package com.caribbeansea.caribbean.engine.handler
  */
 
 import com.caribbeansea.caribbean.engine.bootstrap.__panel
-import com.caribbeansea.engine.utils.Maps
+import engine.utils.Maps
 
 import java.awt.event.{KeyEvent, KeyListener}
 
